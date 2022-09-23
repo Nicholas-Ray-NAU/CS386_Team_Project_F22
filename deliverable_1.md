@@ -78,12 +78,17 @@ Representative quotes:
 - "Website games are more accusable than any other way to play games"
 Assessment: Nice to have
 
-Who was interviewed and who participated in the interview (Suji baek)
-When
-Customer segment
-Key insights from the interview
-Representative quotes
-Assessment: Must have / Nice to have / Don’t care (how the interviewee sees the solution)
+## Suji Baek interviewed Bryson
+When: September 19, 2022
+Customer segment: Casual game player early 20's
+Key insights from the interview:
+- People not only playing PC casual game, also the console game or 
+etc.
+- The reason why playing PC casual game is easy & quick.
+- Casual game players could want to play with a real user.
+Representative quotes: "The reason why I playing the casual game is 
+easy & quick."
+Assessment: Nice to have
 
 ## Zachary Hallemeyer interviewed Shehla Eggen
 When: September 21, 2022
