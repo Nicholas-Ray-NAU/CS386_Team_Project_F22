@@ -1,28 +1,44 @@
 # Introduction:
-describe in one paragraph what your project is about. Make it clear what problem your software is solving and the context of the solution.
-
-Grading criteria (5 points): Your paragraph should be well written in formal language and must contain all the required information. Be clear, concise, and check for typos and grammar errors. 
+    We have decided to create a web-hosted gaming site featuring 4-5 simple games. Some games we most likely will include are Pong, Chess, Checkers, and Tic-tac-toe. The website will have a queueing system that tracks when a user selects a game and pairs them with the next available user. Skill-based matchmaking may be implemented, as well as potentially having a leaderboard and even an AI to play with in the event of low user counts. The website will offer a wide variety of games that provides open access to anyone looking to play.
 
 # Initial value proposition and customer segments: 
-report the initial guesses for the (i) value proposition and (ii) customer segment. The value proposition should make clear what your product is, the target customer, the value you provide, and why your product is unique. See examples on the lecture slides.
 
-Grading criteria (5 points): The value proposition should make clear the value from the point of view of the customer. It should not be a slogan or a description of functionality. The value proposition and consumer segment should be coherent with the text in the previous section---in particular, the value should address the problem reported above (problem-solution fit). The customer segment should not be too broad or too specific. 
+## Value Proposition
+- Simple
+- Free
+- Quick Play
+- No Download, browser-based online game
+- Stat tracking
 
-# Interviews summary:
+## Consumer Segment
+- Anyone with an internet connection
+- Casual gamers
+- All ages
 
-Who was interviewed and who participated in the interview (Nicholas Ray)
-When
-Customer segment
-Key insights from the interview
-Representative quotes
-Assessment: Must have / Nice to have / Don’t care (how the interviewee sees the solution)
+#Interviews summary:
 
-Who was interviewed and who participated in the interview (Nicholas Ray)
-When
-Customer segment
-Key insights from the interview
-Representative quotes
-Assessment: Must have / Nice to have / Don’t care (how the interviewee sees the solution)
+## Nicholas Ray interviewed Aeris Whitlock
+When: September 15, 2022
+Customer segment: Young female gamer
+Key insights from the interview:
+- clean and simple UI is necessary
+- dark colors
+- wide variety
+Representative quotes:
+- "Nice to have to kill some time"
+- "Not big on causal games"
+Assessment: Nice to have
+
+## Nicholas Ray interviewed Nicholas Persley
+When: September 21, 2022
+Customer segment: Young male casual gamer
+Key insights from the interview:
+- Clean and simple UI is a must
+- matchmaking with friends
+- no ads
+Representative quotes:
+- "I like physical board games"
+Assessment: Don’t care
 
 Who was interviewed and who participated in the interview (Gavin Russell)
 When
@@ -76,6 +92,9 @@ Assessment: Must have / Nice to have / Don’t care (how the interviewee sees th
 Grading criteria (15 points): You should have at least the required number of interviews. For each interview, you should report the required information. The insight should be grounded on the interview and illustrated by the representative quotes. 
 
 # Final value proposition and consumer segments:
-report the refined versions of these elements (the ones that you reached after the interviews). 
 
-Grading criteria (5 points): There must be a connection between the key insights of the interviews and the refinement of the value proposition and customer segments previously presented. See also criteria for Section 2 of this document. 
+##Value Proposition
+    We aim to deliver a quick, easy and efficient browser-based gaming website that will offer a wide variety of games for free. The website is easily accessible for any type of person of any age and will allow multiple people to quickly connect and play together online.
+
+##Consumer Segment
+    Our intended audience/consumer is casual gamers of any age who also have access to an internet connection and are not opposed to playing browser based games in their spare time.
