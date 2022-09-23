@@ -1,6 +1,6 @@
 # Introduction:
 
-    We have decided to create a web-hosted gaming site featuring 4-5 simple games. Some games we most likely will include are Pong, Chess, Checkers, and Tic-tac-toe. The website will have a queueing system that tracks when a user selects a game and pairs them with the next available user. Skill-based matchmaking may be implemented, as well as potentially having a leaderboard and even an AI to play with in the event of low user counts. The website will offer a wide variety of games that provides open access to anyone looking to play.
+   We have decided to create a web-hosted gaming site featuring 4-5 simple games. Some games we most likely will include are Pong, Chess, Checkers, and Tic-tac-toe. The website will have a queueing system that tracks when a user selects a game and pairs them with the next available user. Skill-based matchmaking may be implemented, as well as potentially having a leaderboard and even an AI to play with in the event of low user counts. The website will offer a wide variety of games that provides open access to anyone looking to play.
 
 # Initial value proposition and customer segments: 
 
@@ -16,7 +16,7 @@
 - Casual gamers
 - All ages
 
-#Interviews summary:
+# Interviews summary:
 
 ## Nicholas Ray interviewed Aeris Whitlock
 When: September 15, 2022
@@ -128,12 +128,10 @@ Representative quotes:
 - "I like websites that are not clutered and are easy to use"
 Assessment: Nice to have
 
-Grading criteria (15 points): You should have at least the required number of interviews. For each interview, you should report the required information. The insight should be grounded on the interview and illustrated by the representative quotes.
-
 # Final value proposition and consumer segments:
 
-##Value Proposition
-    We aim to deliver a quick, easy and efficient browser-based gaming website that will offer a wide variety of games for free. The website is easily accessible for any type of person of any age and will allow multiple people to quickly connect and play together online.
+## Value Proposition
+   We aim to deliver a quick, easy and efficient browser-based gaming website that will offer a wide variety of games for free. The website is easily accessible for any type of person of any age and will allow multiple people to quickly connect and play together online.
 
-##Consumer Segment
-    Our intended audience/consumer is casual gamers of any age who also have access to an internet connection and are not opposed to playing browser based games in their spare time.
+## Consumer Segment
+   Our intended audience/consumer is casual gamers of any age who also have access to an internet connection and are not opposed to playing browser based games in their spare time.
