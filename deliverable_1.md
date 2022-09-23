@@ -66,19 +66,26 @@ Key insights from the interview
 Representative quotes
 Assessment: Must have / Nice to have / Don’t care (how the interviewee sees the solution)
 
-Who was interviewed and who participated in the interview (Zachary Hallemeyer)
-When
-Customer segment
-Key insights from the interview
-Representative quotes
-Assessment: Must have / Nice to have / Don’t care (how the interviewee sees the solution)
+## Zachary Hallemeyer interviewed Shehla Eggen
+When: September 21, 2022
+Customer segment: Casual gamer in their 20's 
+Key insights from the interview:
+- Interviewee played browser games when they are bored.
+- Interviewee found that a clean and simple UI was preferable.
+Representative quotes: 
+- "I really like it when the UI is simple and to the point"
+Assessment: Nice to have
 
-Who was interviewed and who participated in the interview (Zachary Hallemeyer)
-When
-Customer segment
-Key insights from the interview
-Representative quotes
-Assessment: Must have / Nice to have / Don’t care (how the interviewee sees the solution)
+## Zachary Hallemeyer interviewed Hunter Beach
+When: September 21, 2022
+Customer segment: A moderate gamer in their 20's
+Key insights from the interview:
+- Interviewee plays online games when friends are online to play with.
+- Interviewee likes a clean and simple UI
+Representative quotes:
+- "I only really play online games when my friends are online to play with me"
+- "I like websites that are not clutered and are easy to use"
+Assessment: Nice to have
 
 Grading criteria (15 points): You should have at least the required number of interviews. For each interview, you should report the required information. The insight should be grounded on the interview and illustrated by the representative quotes.
 
