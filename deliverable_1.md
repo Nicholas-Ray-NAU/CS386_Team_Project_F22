@@ -1,12 +1,12 @@
 # Introduction:
 describe in one paragraph what your project is about. Make it clear what problem your software is solving and the context of the solution.
 
-Grading criteria (5 points): Your paragraph should be well written in formal language and must contain all the required information. Be clear, concise, and check for typos and grammar errors. 
+Grading criteria (5 points): Your paragraph should be well written in formal language and must contain all the required information. Be clear, concise, and check for typos and grammar errors.
 
-# Initial value proposition and customer segments: 
+# Initial value proposition and customer segments:
 report the initial guesses for the (i) value proposition and (ii) customer segment. The value proposition should make clear what your product is, the target customer, the value you provide, and why your product is unique. See examples on the lecture slides.
 
-Grading criteria (5 points): The value proposition should make clear the value from the point of view of the customer. It should not be a slogan or a description of functionality. The value proposition and consumer segment should be coherent with the text in the previous section---in particular, the value should address the problem reported above (problem-solution fit). The customer segment should not be too broad or too specific. 
+Grading criteria (5 points): The value proposition should make clear the value from the point of view of the customer. It should not be a slogan or a description of functionality. The value proposition and consumer segment should be coherent with the text in the previous section---in particular, the value should address the problem reported above (problem-solution fit). The customer segment should not be too broad or too specific.
 
 # Interviews summary:
 
@@ -38,19 +38,26 @@ Key insights from the interview
 Representative quotes
 Assessment: Must have / Nice to have / Don’t care (how the interviewee sees the solution)
 
-Who was interviewed and who participated in the interview (Cristian Marrufo)
-When
-Customer segment
-Key insights from the interview
-Representative quotes
-Assessment: Must have / Nice to have / Don’t care (how the interviewee sees the solution)
+## Cristian Marrufo interviewed Edgar M
+When: September 20, 2022
+Customer segment: Casual game player mid 20's
+Key insights from the interview:
+- A wide selection of games hosted on our website can appeal to a larger audience
+- An online component would make our website standout
+Representative quotes:
+- "Providing online components that allow players to interact"
+Assessment: Would be nice to have
 
-Who was interviewed and who participated in the interview (Cristian Marrufo)
-When
-Customer segment
-Key insights from the interview
-Representative quotes
-Assessment: Must have / Nice to have / Don’t care (how the interviewee sees the solution)
+## Cristian Marrufo interviewed Marsch
+When: September 21, 2022
+Customer segment: PC Game player in her 20's
+Key insights from the interview:
+- Browser games are more incredibly accusable
+- A good user interface is always nice to have
+Representative quotes:
+- "Appealing visual design can make you standout"
+- "Website games are more accusable than any other way to play games"
+Assessment: Nice to have
 
 Who was interviewed and who participated in the interview (Suji baek)
 When
@@ -73,9 +80,9 @@ Key insights from the interview
 Representative quotes
 Assessment: Must have / Nice to have / Don’t care (how the interviewee sees the solution)
 
-Grading criteria (15 points): You should have at least the required number of interviews. For each interview, you should report the required information. The insight should be grounded on the interview and illustrated by the representative quotes. 
+Grading criteria (15 points): You should have at least the required number of interviews. For each interview, you should report the required information. The insight should be grounded on the interview and illustrated by the representative quotes.
 
 # Final value proposition and consumer segments:
-report the refined versions of these elements (the ones that you reached after the interviews). 
+report the refined versions of these elements (the ones that you reached after the interviews).
 
-Grading criteria (5 points): There must be a connection between the key insights of the interviews and the refinement of the value proposition and customer segments previously presented. See also criteria for Section 2 of this document. 
+Grading criteria (5 points): There must be a connection between the key insights of the interviews and the refinement of the value proposition and customer segments previously presented. See also criteria for Section 2 of this document.
