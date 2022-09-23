@@ -53,7 +53,7 @@
 - Dislikes the losing aspect in casual games 
 - He looks for simplicity and cooler colors (Basically something nice to look at) in UI. Likes it to be easy to find games 
 - Wants it to look professional, authentic , and unique.
-#### Representative quotes
+#### Representative quotes:
 - "I want it to look like Google made it"
 - "Pizzaz in your qebsite will make it stand out"
 #### Assessment: Nice to have
