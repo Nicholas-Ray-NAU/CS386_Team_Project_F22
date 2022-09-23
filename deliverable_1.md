@@ -24,19 +24,38 @@ Key insights from the interview
 Representative quotes
 Assessment: Must have / Nice to have / Don’t care (how the interviewee sees the solution)
 
-Who was interviewed and who participated in the interview (Gavin Russell)
-When
-Customer segment
-Key insights from the interview
+## Gavin Russell interviewed Kyler Conant
+When: September 21, 2022
+Customer segment: 22, Competitive Gamer, (games every other day)
+Key insights from the interview: 
+- hasnt played casual games online or digitally, but would
+- would rather play online rather than split screen
+- plays casual/board games ONLY with friends
+- Rather play browser games
+- Enjoys browser games as they are quick to load up, and dont require a download
+- Dislikes the losing aspect in casual games 
+- He looks for simplicity and cooler colors (Basically something nice to look at) in UI. Likes it to be easy to find games 
+- Wants it to look professional, authentic , and unique.
 Representative quotes
-Assessment: Must have / Nice to have / Don’t care (how the interviewee sees the solution)
+- "I want it to look like Google made it"
+- "Pizzaz in your qebsite will make it stand out"
+Assessment: Nice to have
 
-Who was interviewed and who participated in the interview (Gavin Russell)
-When
-Customer segment
-Key insights from the interview
-Representative quotes
-Assessment: Must have / Nice to have / Don’t care (how the interviewee sees the solution)
+## Gavin Russell interviewed Jade Hayes
+When: September 21, 2022
+Customer segment: 28 year old, very Casual gamer. Not much gaming experience
+Key insights from the interview: 
+- Games mostly with friends or family
+- would play browser games over application games for convienence.
+- plays browser games while at work or in a time crunch. 
+- what annoys her when playing is the people shes playing with
+- She likes the amount of options in browser game websites, as well as how organized and simplistic they are
+- Our website could stand out as long as it doesnt look like a school project
+- wants it simplistic but not boring or bland
+Representative quotes:
+- "Make it look like its not a school project"
+- "Needs to be clean and easy to find what I want"
+Assessment: Nice to have
 
 Who was interviewed and who participated in the interview (Cristian Marrufo)
 When
