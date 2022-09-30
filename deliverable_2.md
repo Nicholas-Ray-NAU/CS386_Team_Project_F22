@@ -59,15 +59,24 @@ For our team project, we will be creating a simple browser-based gaming website 
 ##    Use Case Diagram
 ![This is a use case diagram png](/GameyTime_-_Use_case.png)
 ##    Use case descriptions and interface sketch
-# Present one complete use case description for each member of the group.
-# Follow the template provided by OpenUP to describe the use cases (see also the example):
-# https://people.cs.clemson.edu/~johnmc/courses/Publish/openup/guidances/templates/resources/uc_specification_tpl.dot 
-# After each use case description, add a sketch of the corresponding user interface. This will be a good opportunity to start thinking about usability. 
+**Use Case**: User Selects a game lobby/game to play
+**Actor**: User
+**Description**: User will select a single game lobby to join from a variety of possible lobbies
+**Preconditions**: User is connected to server
+**Postconditions**: User will be placed into selected game lobby queue
+**Main Flow**:
+1. User will be placed into game queue
+2. User will wait for game to start
+**Alternative Flow**:
+None
 
 # User Stories
-# Write two user stories for each member of the group. 
-# They can be related to the same features described in the use cases or to different ones. Adopt the following format: "As a <ROLE>, I want <SOMETHING> so that <GOAL>." 
-# Establish a priority level for each user story and estimate how many hours each one will demand using the planning poker approach. 
+## Highest Priority is Largest Value
+### Nick:
+- As a gamer, I want easy access so that I waste less time with credentials. (Priority #)
+- As a parent, I want safe chats so that children aren’t exposed to violent users. (Priority #)
+
 
 # Issue Tracker
-# Git hub or Tello
+## GitHub
+
