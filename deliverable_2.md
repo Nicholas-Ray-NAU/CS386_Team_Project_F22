@@ -92,6 +92,17 @@ None
 **Alternative Flow**:
 None
 
+**Use Case**: Connect with other players
+**Actor**: User 
+**Description**: User will enter the game, and play a game with another connected player.
+**Preconditions**: User has already selected the game that the user wants to play. The user is already waiting for the match with another user to play with.
+**Postconditions**: User will play the game with another online user 
+**Main Flow**:
+1. Users start to play the game with matched user
+2. Once the game is finished, users can choose to play once again or exit the game.
+**Alternative Flow**: 
+ If the other person terminates the connection during the game, you must wait until the other person reconnects.
+
 # User Stories
 ## Highest Priority is Largest Value
 ### Nick:
@@ -106,6 +117,9 @@ None
 - As a player, I want a simple UI so that I can find my desired game fast.
 - As a front-end developer, I want a html template so that the style of the website is consistent.
 
+### Suji:
+As a user, I want to play games without log-in so that I can play the game without an inconvenient process.
+As a user, I want to check the ranking for the game so that I can know who is the best player.
 
 # Issue Tracker
 ## GitHub
