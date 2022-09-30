@@ -57,93 +57,121 @@ For our team project, we will be creating a simple browser-based gaming website 
 
 # Use Cases
 ##    Use Case Diagram
+
 ![This is a use case diagram png](/Images/GameyTime_-_Use_case.png)
+
 ##    Use case descriptions and interface sketch
-**Use Case**: User Selects a game lobby/game to play
-**Actor**: User
-**Description**: User will select a single game lobby to join from a variety of possible lobbies
-**Preconditions**: User is connected to server
-**Postconditions**: User will be placed into selected game lobby queue
-**Main Flow**:
-1. User will be placed into game queue
-2. User will wait for game to start
-**Alternative Flow**:
-None
+**Use Case**: User Selects a game lobby/game to play  
+**Actor**: User  
+**Description**: User will select a single game lobby to join from a variety of possible lobbies  
+**Preconditions**: User is connected to server  
+**Postconditions**: User will be placed into selected game lobby queue  
+**Main Flow**:  
+1. User will be placed into game queue  
+2. User will wait for game to start  
+**Alternative Flow**:  
+   None  
+
 ![This is a use case diagram png](/Images/UseCaseNick.png)
 
-**Use Case**: Create an account
-**Actor**: User
-**Description**: Create an account to the website which will store the user rankings and scores ( this will be optional ) 
-**Preconditions**: The user has access to the internet 
-**Postconditions**: The user selects  the option to create 
-**Main Flow**:
-1. The user connects to the website
-2. Select the option to make an account
-**Alternative Flow**:
-2b. The user declines the option to make an account
+**Use Case**: Create an account  
+**Actor**: User  
+**Description**: Create an account to the website which will store the user rankings and scores ( this will be optional )   
+**Preconditions**: The user has access to the internet   
+**Postconditions**: The user selects  the option to create  
+**Main Flow**:  
+1. The user connects to the website  
+2. Select the option to make an account  
+**Alternative Flow**:  
+2b. The user declines the option to make an account  
+
 ![This is a use case diagram png](/Images/ChristianUseCase.png)
 
-**Use Case**: Connect to Website
-**Actor**: Player 
-**Description**: Player connects to website via browser
-**Preconditions**: Player has a device with a browser
-**Postconditions**: Player is connected to the website
-**Main Flow**:
-1. Player connects to the website by inputting the link www.gameytime.xyz (link tentative to change) to a browser. 
-2. User browses webpage
-**Alternative Flow**:
-None
+**Use Case**: Connect to Website  
+**Actor**: Player   
+**Description**: Player connects to website via browser  
+**Preconditions**: Player has a device with a browser  
+**Postconditions**: Player is connected to the website  
+**Main Flow**:  
+1. Player connects to the website by inputting the link www.gameytime.xyz (link tentative to change) to a browser.   
+2. User browses webpage  
+**Alternative Flow**:  
+  None  
+
 ![This is a use case diagram png](/Images/zachUseCase.png)
 
-**Use Case**: Connect with other players
-**Actor**: User 
-**Description**: User will enter the game, and play a game with another connected player.
-**Preconditions**: User has already selected the game that the user wants to play. The user is already waiting for the match with another user to play with.
-**Postconditions**: User will play the game with another online user 
-**Main Flow**:
-1. Users start to play the game with matched user
-2. Once the game is finished, users can choose to play once again or exit the game.
-**Alternative Flow**: 
- If the other person terminates the connection during the game, you must wait until the other person reconnects.
- ![This is a use case diagram png](/Images/SujiTicTacToe)
+**Use Case**: Connect with other players  
+**Actor**: User   
+**Description**: User will enter the game, and play a game with another connected player.  
+**Preconditions**: User has already selected the game that the user wants to play. The user is already waiting for the match with another user to play with.  
+**Postconditions**: User will play the game with another online user   
+**Main Flow**:  
+1. Users start to play the game with matched user  
+2. Once the game is finished, users can choose to play once again or exit the game.  
+**Alternative Flow**:   
+   If the other person terminates the connection during the game, you must wait until the other person reconnects.  
+
+![This is a use case diagram png](/Images/SujiTicTacToe)
  
  
-**Use Case**: Communicate With Other Players
-**Actor**: User 
-**Description**: User sends a message selected from a list of pre-created messages chosen by the website creators to the other user they are connected on the game server with.
-**Preconditions**: Both users are connected to the game website server
-**Postconditions**: The message is read by the receiving user
-**Main Flow**:
-1. The server shows the user what available messages there are to send
-2. The user chooses the message to send to the other user
-3. The user sends the message
-4. The server sends the message to the other user
-5. The other user receives the message
+**Use Case**: Communicate With Other Players  
+**Actor**: User   
+**Description**: User sends a message selected from a list of pre-created messages chosen by the website creators to the other user they are connected on the game server with.  
+**Preconditions**: Both users are connected to the game website server  
+**Postconditions**: The message is read by the receiving user  
+**Main Flow**:  
+1. The server shows the user what available messages there are to send  
+2. The user chooses the message to send to the other user  
+3. The user sends the message  
+4. The server sends the message to the other user  
+5. The other user receives the message  
+
 ![This is a use case diagram png](/Images/GavinUseCase.png)
 
-# User Stories
-## Highest Priority is Largest Value
-### Nick:
-- As a gamer, I want easy access so that I waste less time with credentials. (Priority #)
-- As a parent, I want safe chats so that children aren’t exposed to violent users. (Priority #)
+# User Stories  
+#### Highest Priority is Lowest Value  
+### Nick:  
+- As a gamer, I want easy access so that I waste less time with credentials.   
+    Priority: 6  
+    Est. Time: 10 Hours  
+- As a parent, I want safe chats so that children aren’t exposed to violent users.  
+    Priority: 7  
+    Est. Time: 1 Hour  
 
-### Cristian:
-- As a user, I want to create an account so that I can access my scores and rankings easily.
-- As a player, I want to communicate with my opponent so that they are aware of what I have to say.
+### Cristian:  
+- As a user, I want to create an account so that I can access my scores and rankings easily.  
+    Priority: 9  
+    Est. Time: 2 Hours   
+- As a player, I want to communicate with my opponent so that they are aware of what I have to say.  
+    Priority: 10  
+    Est. Time: 5 Hours   
 
-### Gavin:
-- As a social gamer, I want an easy way to game with friends so that I can connect with them in a way I am used to.
-- As an impatient person, I want my technology to run efficiently so that I do not have to wait long.
+### Gavin:  
+- As a social gamer, I want an easy way to game with friends so that I can connect with them in a way I am used to.  
+    Priority: 2  
+    Est. Time: 30 Hours  
+- As an impatient person, I want my technology to run efficiently so that I do not have to wait long.  
+    Priority: 3  
+    Est. Time: 10 Hours   
 
 ### Zachary:
-- As a player, I want a simple UI so that I can find my desired game fast.
-- As a front-end developer, I want a html template so that the style of the website is consistent.
+- As a player, I want a simple UI so that I can find my desired game fast.  
+    Priority: 5  
+    Est. Time: 4 Hours   
+- As a front-end developer, I want a html template so that the style of the website is consistent. 
+    Priority: 8  
+    Est. Time: 2.5 Hours  
 
 ### Suji:
-As a user, I want to play games without log-in so that I can play the game without an inconvenient process.
-As a user, I want to check the ranking for the game so that I can know who is the best player.
+- As a user, I want to play games without log-in so that I can play the game without an inconvenient process.  
+    Priority: 1  
+    Est. Time: 15 Hours  
+- As a user, I want to check the ranking for the game so that I can know who is the best player.  
+    Priority: 4  
+    Est. Time: 10 Hours  
 
 # Issue Tracker
-## GitHub
+## GitHub  
+
 https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/issues
 ![This is a use case diagram png](/Images/IssueTrackerImage.png)
