@@ -69,6 +69,7 @@ For our team project, we will be creating a simple browser-based gaming website 
 2. User will wait for game to start
 **Alternative Flow**:
 None
+![This is a use case diagram png](/Images/UseCaseNick.png)
 
 **Use Case**: Create an account
 **Actor**: User
@@ -80,6 +81,7 @@ None
 2. Select the option to make an account
 **Alternative Flow**:
 2b. The user declines the option to make an account
+![This is a use case diagram png](/Images/ChristianUseCase.png)
 
 **Use Case**: Connect to Website
 **Actor**: Player 
@@ -91,6 +93,7 @@ None
 2. User browses webpage
 **Alternative Flow**:
 None
+![This is a use case diagram png](/Images/zachUseCase.png)
 
 **Use Case**: Connect with other players
 **Actor**: User 
@@ -102,6 +105,7 @@ None
 2. Once the game is finished, users can choose to play once again or exit the game.
 **Alternative Flow**: 
  If the other person terminates the connection during the game, you must wait until the other person reconnects.
+ ![This is a use case diagram png](/Images/SujiTicTacToe.png)
  
  
 **Use Case**: Communicate With Other Players
@@ -115,6 +119,7 @@ None
 3. The user sends the message
 4. The server sends the message to the other user
 5. The other user receives the message
+![This is a use case diagram png](/Images/GavinUseCase.png)
 
 # User Stories
 ## Highest Priority is Largest Value
