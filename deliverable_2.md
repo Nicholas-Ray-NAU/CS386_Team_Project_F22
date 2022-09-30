@@ -1,14 +1,16 @@
 # Positioning
 ##    Problem Statement
-| The Problem Of | *describe the problem* |
+|||
 | -------------- | ---------------------- |
+| The Problem Of | *describe the problem* |
 | Affects | *the stakeholders affected by the problem* |
 | The Impact of Which is | *what is the impact of the problem? What is it cost?* |
 
 
 ##    Product Position Statement
-| For | *target customer* |
+|||
 | -------------- | ---------------------- |
+| For | *target customer* |
 | Who | *statement of the need or opportunity* |
 | The (Product Name) | *product name* is a *product category* |
 | That | *statement of key benifit; that is the compelling reason to buy* |
