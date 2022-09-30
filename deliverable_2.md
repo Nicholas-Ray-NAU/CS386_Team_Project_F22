@@ -103,8 +103,8 @@ None
 - As a player, I want to communicate with my opponent so that they are aware of what I have to say.
 
 ### Zachary:
-As a player, I want a simple UI so that I can find my desired game fast.
-As a front-end developer, I want a html template so that the style of the website is consistent.
+- As a player, I want a simple UI so that I can find my desired game fast.
+- As a front-end developer, I want a html template so that the style of the website is consistent.
 
 
 # Issue Tracker
