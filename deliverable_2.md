@@ -31,10 +31,26 @@
 5. Competitors - Free Games Max, Addicting Games, io games, cool math games 
 
 # Functional Requirements (Features)
-## Make a numbered list of requirements for your software. Just self-explanatory titles are enough at this point. (requirements should deliver the value proposition)
+1. Network application to connect two or more players
+2. Without Log-in / Automatic generated user profile
+3. Games to play with other players
+4. Simple UI / No ads
+5. Be able to join specific lobby rooms
+6. Preset communication between players 
+7. Synchronize games between players
+8. Random selection of players
+9. Gamer’s leaderboard
+10. Tier-based matching
+11. End of game summary
 
 # Non-Functional Requirements
-# Make a numbered list of non-functional requirements that are important for your software.
+1. Usability - The UI will be simple and clear. Users are able to find their end goal within 30 seconds.
+2. Speed - 8 out of 10 users are satisfied with the speed. The game response speed for each user should be limited in variance and little latency. 
+3. Performance - Receives at least all B’s from web page test (https://www.webpagetest.org/)
+3. Security - Account will be secured with passwords encrypted and communication between players will be client-server architecture.
+4. Accessibility - 8 out of 10 users are satisfied with the website UI. UI will have high contrast to help all users to navigate the website.
+5. Readability - Program will be commented on for every functional unit.
+6. Reliability -  Website will be accessible to at least 8 out of 10 users at any time.
 
 # MVP (Minimum Viable Product)
 # What will be your MVP? Which features are you going to validate? How?
