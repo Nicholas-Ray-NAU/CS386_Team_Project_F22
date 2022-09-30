@@ -57,7 +57,7 @@ For our team project, we will be creating a simple browser-based gaming website 
 
 # Use Cases
 ##    Use Case Diagram
-![This is a use case diagram png](/GameyTime_-_Use_case.png)
+![This is a use case diagram png](/Images/GameyTime_-_Use_case.png)
 ##    Use case descriptions and interface sketch
 **Use Case**: User Selects a game lobby/game to play
 **Actor**: User
