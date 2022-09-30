@@ -2,28 +2,23 @@
 ##    Problem Statement
 |||
 | -------------- | ---------------------- |
-| The Problem Of | *describe the problem* |
-| Affects | *the stakeholders affected by the problem* |
-| The Impact of Which is | *what is the impact of the problem? What is it cost?* |
+| The Problem Of | A lack of convenient and inclusive ways to game with others |
+| Affects | Gamers |
+| The Impact of Which is | A disconnected group of gamers |
 
 
 ##    Product Position Statement
 |||
 | -------------- | ---------------------- |
-| For | *target customer* |
-| Who | *statement of the need or opportunity* |
-| The (Product Name) | *product name* is a *product category* |
-| That | *statement of key benifit; that is the compelling reason to buy* |
-| Unlike | *primary competetive alternative* |
-| Our Product | *statement of primary differentiation* |
+| For | Gamers |
+| Who | Need an online platfor to connect with others |
+| The (Product Name) | GameyTime is a online gaming platform |
+| That | Is an extremely convenient way to connect with other gamers |
+| Unlike | Other platfroms that require you to download extra software or create an online account |
+| Our Product | Will make it easier and faster for all gamers to game together  |
 
 ##    Value Proposition and Consumer Segment
-### Report the value propositions and customer segments of your product.
-### contains the following elements: 
-#### i) what your product is; 
-#### ii) the target customer; 
-#### iii) the value your product provides
-#### iv) why your product is unique.
+   We aim to deliver a fast, easy to navigate and efficient browser-based gaming website that will offer a wide variety of games for free. The website is easily accessible for any type of person of any age and will allow multiple people to quickly connect and play together online. Our intended audience/consumer is casual gamers of any age who also have access to an internet connection and are looking to play a casual game with someone else online.
 
 # Stakeholders
 ## Make a list of all stakeholders of the project with a brief description of each one of them, emphasizing any responsibilities with the project. 
