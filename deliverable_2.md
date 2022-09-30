@@ -105,7 +105,7 @@ None
 2. Once the game is finished, users can choose to play once again or exit the game.
 **Alternative Flow**: 
  If the other person terminates the connection during the game, you must wait until the other person reconnects.
- ![This is a use case diagram png](/Images/SujiTicTacToe.png)
+ ![This is a use case diagram png](/Images/SujiTicTacToe)
  
  
 **Use Case**: Communicate With Other Players
