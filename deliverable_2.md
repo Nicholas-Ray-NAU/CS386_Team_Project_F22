@@ -53,7 +53,7 @@
 6. Reliability -  Website will be accessible to at least 8 out of 10 users at any time.
 
 # MVP (Minimum Viable Product)
-# What will be your MVP? Which features are you going to validate? How?
+For our team project, we will be creating a simple browser-based gaming website for our MVP. It will be developed slowly, by first creating the website as a basis for our games, with this website following the first 5 functional requirements. The website will only contain 1 game, and the game and the website will be created in collaboration with all of us. Each of these requirements will be tested and validated by creating the working website first, and then having all of us, as well as some outside sources, attempt to make sure the functional requirements are satisfied by testing the website and the game. This will allow us to collect feedback on the quality of our MVP.
 
 # Use Cases
 ##    Use Case Diagram
