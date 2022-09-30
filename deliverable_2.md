@@ -109,4 +109,5 @@ None
 
 # Issue Tracker
 ## GitHub
-
+https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/issues
+![This is a use case diagram png](/Images/IssueTrackerImage.png)
