@@ -102,6 +102,19 @@ None
 2. Once the game is finished, users can choose to play once again or exit the game.
 **Alternative Flow**: 
  If the other person terminates the connection during the game, you must wait until the other person reconnects.
+ 
+ 
+**Use Case**: Communicate With Other Players
+**Actor**: User 
+**Description**: User sends a message selected from a list of pre-created messages chosen by the website creators to the other user they are connected on the game server with.
+**Preconditions**: Both users are connected to the game website server
+**Postconditions**: The message is read by the receiving user
+**Main Flow**:
+1. The server shows the user what available messages there are to send
+2. The user chooses the message to send to the other user
+3. The user sends the message
+4. The server sends the message to the other user
+5. The other user receives the message
 
 # User Stories
 ## Highest Priority is Largest Value
@@ -112,6 +125,10 @@ None
 ### Cristian:
 - As a user, I want to create an account so that I can access my scores and rankings easily.
 - As a player, I want to communicate with my opponent so that they are aware of what I have to say.
+
+### Gavin:
+- As a social gamer, I want an easy way to game with friends so that I can connect with them in a way I am used to.
+- As an impatient person, I want my technology to run efficiently so that I do not have to wait long.
 
 ### Zachary:
 - As a player, I want a simple UI so that I can find my desired game fast.
