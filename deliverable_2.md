@@ -69,6 +69,7 @@ For our team project, we will be creating a simple browser-based gaming website 
 **Main Flow**:  
 1. User will be placed into game queue  
 2. User will wait for game to start  
+
 **Alternative Flow**:  
    None  
 
@@ -82,6 +83,7 @@ For our team project, we will be creating a simple browser-based gaming website 
 **Main Flow**:  
 1. The user connects to the website  
 2. Select the option to make an account  
+
 **Alternative Flow**:  
 2b. The user declines the option to make an account  
 
@@ -95,6 +97,7 @@ For our team project, we will be creating a simple browser-based gaming website 
 **Main Flow**:  
 1. Player connects to the website by inputting the link www.gameytime.xyz (link tentative to change) to a browser.   
 2. User browses webpage  
+
 **Alternative Flow**:  
   None  
 
@@ -108,6 +111,7 @@ For our team project, we will be creating a simple browser-based gaming website 
 **Main Flow**:  
 1. Users start to play the game with matched user  
 2. Once the game is finished, users can choose to play once again or exit the game.  
+
 **Alternative Flow**:   
    If the other person terminates the connection during the game, you must wait until the other person reconnects.  
 
@@ -158,7 +162,7 @@ For our team project, we will be creating a simple browser-based gaming website 
 - As a player, I want a simple UI so that I can find my desired game fast.  
     Priority: 5  
     Est. Time: 4 Hours   
-- As a front-end developer, I want a html template so that the style of the website is consistent. 
+- As a front-end developer, I want a html template so that the style of the website is consistent.  
     Priority: 8  
     Est. Time: 2.5 Hours  
 
