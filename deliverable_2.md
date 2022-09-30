@@ -81,6 +81,17 @@ None
 **Alternative Flow**:
 2b. The user declines the option to make an account
 
+**Use Case**: Connect to Website
+**Actor**: Player 
+**Description**: Player connects to website via browser
+**Preconditions**: Player has a device with a browser
+**Postconditions**: Player is connected to the website
+**Main Flow**:
+1. Player connects to the website by inputting the link www.gameytime.xyz (link tentative to change) to a browser. 
+2. User browses webpage
+**Alternative Flow**:
+None
+
 # User Stories
 ## Highest Priority is Largest Value
 ### Nick:
@@ -91,6 +102,9 @@ None
 - As a user, I want to create an account so that I can access my scores and rankings easily.
 - As a player, I want to communicate with my opponent so that they are aware of what I have to say.
 
+### Zachary:
+As a player, I want a simple UI so that I can find my desired game fast.
+As a front-end developer, I want a html template so that the style of the website is consistent.
 
 
 # Issue Tracker
