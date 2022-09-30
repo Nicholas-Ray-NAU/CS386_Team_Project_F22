@@ -70,11 +70,27 @@ For our team project, we will be creating a simple browser-based gaming website 
 **Alternative Flow**:
 None
 
+**Use Case**: Create an account
+**Actor**: User
+**Description**: Create an account to the website which will store the user rankings and scores ( this will be optional ) 
+**Preconditions**: The user has access to the internet 
+**Postconditions**: The user selects  the option to create 
+**Main Flow**:
+1. The user connects to the website
+2. Select the option to make an account
+**Alternative Flow**:
+2b. The user declines the option to make an account
+
 # User Stories
 ## Highest Priority is Largest Value
 ### Nick:
 - As a gamer, I want easy access so that I waste less time with credentials. (Priority #)
 - As a parent, I want safe chats so that children aren’t exposed to violent users. (Priority #)
+
+### Cristian:
+- As a user, I want to create an account so that I can access my scores and rankings easily.
+- As a player, I want to communicate with my opponent so that they are aware of what I have to say.
+
 
 
 # Issue Tracker
