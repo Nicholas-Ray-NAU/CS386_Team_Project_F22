@@ -57,7 +57,7 @@
 
 # Use Cases
 ##    Use Case Diagram
-*Include a UML use case diagram for your project*
+![This is a use case diagram png](/GameyTime_-_Use_case.png)
 ##    Use case descriptions and interface sketch
 # Present one complete use case description for each member of the group.
 # Follow the template provided by OpenUP to describe the use cases (see also the example):
