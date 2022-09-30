@@ -24,8 +24,12 @@
    We aim to deliver a fast, easy to navigate and efficient browser-based gaming website that will offer a wide variety of games for free. The website is easily accessible for any type of person of any age and will allow multiple people to quickly connect and play together online. Our intended audience/consumer is casual gamers of any age who also have access to an internet connection and are looking to play a casual game with someone else online.
 
 # Stakeholders
-## Make a list of all stakeholders of the project with a brief description of each one of them, emphasizing any responsibilities with the project. 
-## Examples of stakeholders include users, clients, competitors, detractors, developers, etc.
+1. Front end Developers - Front end developers are responsible for the aesthetics and UI of the gaming website
+2. Back end Developers - Back end developers are responsible for creating the games as well as corresponding network application to connect clients
+3. Testers - Testers are responsible to find bugs, glitches, and exploits on the website
+4. Players - Users that only play games on the website
+5. Competitors - Free Games Max, Addicting Games, io games, cool math games 
+
 # Functional Requirements (Features)
 ## Make a numbered list of requirements for your software. Just self-explanatory titles are enough at this point. (requirements should deliver the value proposition)
 
