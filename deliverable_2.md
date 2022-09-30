@@ -6,16 +6,19 @@
 | Affects | Gamers |
 | The Impact of Which is | A disconnected group of gamers |
 
+"The problem of lack of convenient and inclusive ways to game with others affects gamers. The Impact of Which is a disconnected group of gamers."
 
 ##    Product Position Statement
 |||
 | -------------- | ---------------------- |
 | For | Gamers |
-| Who | Need an online platfor to connect with others |
-| The (Product Name) | GameyTime is a online gaming platform |
+| Who | Need an online platform to connect with others |
+| The (Product Name) | GameyTime is an online gaming platform |
 | That | Is an extremely convenient way to connect with other gamers |
 | Unlike | Other platfroms that require you to download extra software or create an online account |
 | Our Product | Will make it easier and faster for all gamers to game together  |
+
+"For gamers who need an online platform to connect with others, GameyTime is an online gaming platform that is an extremely convenient way to connect with other gamers: unlike other platforms that require you to download extra software or create an online account, our product will make it easier and faster for all gamers to game together."
 
 ##    Value Proposition and Consumer Segment
    We aim to deliver a fast, easy to navigate and efficient browser-based gaming website that will offer a wide variety of games for free. The website is easily accessible for any type of person of any age and will allow multiple people to quickly connect and play together online. Our intended audience/consumer is casual gamers of any age who also have access to an internet connection and are looking to play a casual game with someone else online.
