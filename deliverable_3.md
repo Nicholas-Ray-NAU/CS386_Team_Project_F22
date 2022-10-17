@@ -5,7 +5,7 @@
    **Users** *connect* to the website by inputting the link www.gameytime.xyz (link tentative to change) to a browser. **Users** have the option to <ins>create</ins> a *profile* to the website which will <ins>store</ins> the user *rankings*, **games ratings**, and **achievements**. **Users** will <ins>select</ins> a single game **lobby** to join from a variety of possible **games**, which may include **tic-tac-toe**, **checkers**, and **mancala**. **Users** will enter the **game**, and <ins>play</ins> a **game** with another connected **user**. **Users** have the option to <ins>send</ins> a **message** through the use of an **in-game chat**, by <ins>selecting</ins> from a list of *pre-created messages* chosen by the website creators. **Users** are able to look at their *statistics* if they have registered a *profile* in addition to a **leaderboard** containing *rankings* from other **users**. User interface will be simple and clean.
 
 # Model
-![This is a UML case diagram png](/Images/gameytime-classdiagram.jpg)
+![This is a UML case diagram png](/Images/gameytime-classdiagram-updated.jpg)
 
 ## User:
 - The User Class is responsible for keeping track of a given user's personal information, including contact and authentication data.
