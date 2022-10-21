@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, 
+                       maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="style.css">
+        <title>GameyTime</title>
+    </head>
+    <body>
+        <header id="header" class="header">
+            <ul id="header-unordered-list" class="header-ul">
+                <li class="header-li">Best Group</li>
+                <li class="header-li">Tic Tac Toe</li>
+            </ul>
+        </header>
+        <main id="main-content" class="main">
+            <div class="flex">
+                <div class="col-left">
+                    <h1>Chat</h1>
+                    <p>
+                        <br>
+                        *CHAT WILL GO HERE*
+                        <br>
+                        <br>
+                        <h2 class="game--status"></h2>
+                        <button class="game--restart">Reset Game</button>
+                    </p>
+                </div>
+                <div class="col-right">
+                    <div class="game--container">
+                        <div data-cell-index="0" class="cell"></div>
+                        <div data-cell-index="1" class="cell"></div>
+                        <div data-cell-index="2" class="cell"></div>
+                        <div data-cell-index="3" class="cell"></div>
+                        <div data-cell-index="4" class="cell"></div>
+                        <div data-cell-index="5" class="cell"></div>
+                        <div data-cell-index="6" class="cell"></div>
+                        <div data-cell-index="7" class="cell"></div>
+                        <div data-cell-index="8" class="cell"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer id="footer" class="footer">
+        </footer>
+        <script defer src='tic_tac_toe.js'></script>
+    </body>
+</html>
