@@ -3,48 +3,47 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, 
+              content="width=device-width, user-scalable=no, initial-scale=1.0,
                        maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="style.css">
         <title>GameyTime</title>
     </head>
     <body>
         <header id="header" class="header">
-            <ul id="header-unordered-list" class="header-ul">
-                <li class="header-li">Best Group</li>
-                <li class="header-li">Tic Tac Toe</li>
-            </ul>
+            <img src="images/logo.png" class="logo">
+            <span class="menu">
+              <a href="index.html">Home</a>
+              <a href="index.html">Login</a>
+            </span>
         </header>
-        <main id="main-content" class="main">
-            <div class="flex">
+            <div class="flex" id="main_content">
                 <div class="col-left">
-                    <h1>Chat</h1>
-                    <p>
-                        <br>
-                        *CHAT WILL GO HERE*
-                        <br>
-                        <br>
-                        <h2 class="game--status"></h2>
-                        <button class="game--restart">Reset Game</button>
-                    </p>
+                  <h2>Tic Tac Toe</h2>
+                  <div class="game--status"></div>
+                  <div class="game--container">
+                      <div data-cell-index="0" class="cell"></div>
+                      <div data-cell-index="1" class="cell"></div>
+                      <div data-cell-index="2" class="cell"></div>
+                      <div data-cell-index="3" class="cell"></div>
+                      <div data-cell-index="4" class="cell"></div>
+                      <div data-cell-index="5" class="cell"></div>
+                      <div data-cell-index="6" class="cell"></div>
+                      <div data-cell-index="7" class="cell"></div>
+                      <div data-cell-index="8" class="cell"></div>
+                  </div>
                 </div>
                 <div class="col-right">
-                    <div class="game--container">
-                        <div data-cell-index="0" class="cell"></div>
-                        <div data-cell-index="1" class="cell"></div>
-                        <div data-cell-index="2" class="cell"></div>
-                        <div data-cell-index="3" class="cell"></div>
-                        <div data-cell-index="4" class="cell"></div>
-                        <div data-cell-index="5" class="cell"></div>
-                        <div data-cell-index="6" class="cell"></div>
-                        <div data-cell-index="7" class="cell"></div>
-                        <div data-cell-index="8" class="cell"></div>
-                    </div>
+                  <h2>In-Game Chat</h2>
+                  <div id="chat">
+                      CHAT WILL GO HERE
+                  </div>
+                  <button class="game--restart ingame_button">Reset Game</button>
                 </div>
             </div>
-        </main>
         <footer id="footer" class="footer">
+            CS386 Team project
         </footer>
         <script defer src='tic_tac_toe.js'></script>
     </body>
