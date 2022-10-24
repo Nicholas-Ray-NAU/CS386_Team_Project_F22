@@ -195,5 +195,6 @@ function restartGame(socket) {
       socket.to(playerOne.id).emit('playerTurn', '')
       socket.emit('notTurn', '')
     }
+    gameLocked = false;
   }
 }
