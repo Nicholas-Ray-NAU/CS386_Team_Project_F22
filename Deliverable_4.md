@@ -1,11 +1,7 @@
-Introduction
-Provide a short paragraph that describes your system. This paragraph should contain the value proposition and the description of the main features of the software.
-At the end of the introduction, include links to your project on GitHub and Trello, which should be up-to-date.
+# Introduction
+We aim to deliver a fast, easy-to-navigate, and efficient browser-based gaming website that will offer a wide variety of games for free. The website is easily accessible for any type of person of any age and will allow multiple people to quickly connect and play together online. Our webpage will have a database that will store user account data. User accounts will have achievements, and game statistics. Games hosted on the website are open to being reviewed by the players to ensure the quality of games. Games will also have a queueing lobby so that everyone has a fair chance to play a game. In a game, users will have access to an in-game chat and game leaderboard.
 
-Grading criteria (1 point): This section will be evaluated in terms of correctness, completeness, thoroughness, consistency, coherence, and adequate use of language.
-The description should be consistent with the current state of the project. You should include the links to GitHub and Trello, which should be up-to-date.
-
-Implemented requirements
+# Implemented requirements
 List in this section, the requirements and associated pull request that you implemented for this release, following the example below---include the description of 
 the requirement, link to the issue, a link to the pull request(s) that implement the requirement, who implemented the requirement, who approved it, and a print screen
 that depicts the implemented feature (if applicable). I expect that you implement the features you specified in your MVP (c.f. D.2 Requirements). 
@@ -13,7 +9,7 @@ that depicts the implemented feature (if applicable). I expect that you implemen
 Order the requirements below by the name of the student who implemented them. All the members of the group should have worked on implementation activities and 
 submitted pull requests. Only stable code should be included in the release. Code that is still under development should be in branches.
 
-Example:
+
 Requirement: As a Student, I want to add a homework assignment so that I can organize my ToDo list.
 Issue: <link to your Trello or GitHub issue>
 Pull request: https://github.com/user/project/pull/426
@@ -22,78 +18,36 @@ Approved by: Ada Lovelace
 Print screen: A print screen that depicts the implemented feature (if applicable)
 
 
-All source code should be submitted by means of pull requests and the quality assurance person in the team should review and approve each pull request. For more 
-information about pull requests:
-https://help.github.com/articles/about-pull-requests/  
-
-Grading criteria (10 points): This section will be evaluated in terms of correctness, completeness, thoroughness, consistency, coherence, adequate use of language,
-and amount of work put into the implementation. Students can receive different grades depending on their involvement. It is expected that all members contribute with 
-non-trivial implementation. All pull requests should be approved and integrated by the quality assurance person. You should follow an adequate workflow (description
-of the requirement on the issue tracker, submission of the implemented requirement as a pull request, and review of the pull request by another developer). 
-
-Tests
-You should implement automated tests that aim to verify the correct behavior of your code. Provide the following information:
-
-Test framework you used to develop your tests (e.g., JUnit, unittest, pytest, etc.):
-Link to your GitHub folder where your automated unit tests are located.
-An example of a test case. Include in your answer a GitHub link to the class being tested and to the test.
-A print screen showing the result of the automated tests execution. 
-
-Grading criteria (4 points): You should have an adequate number of automated tests. They should be well written to exercise the main components of your system, 
-covering the relevant inputs.
-
-Adopted technologies
-List the adopted technologies with a brief description and justification for choosing them.
-
-Grading criteria (1 point): This section will be evaluated in terms of correctness, completeness, thoroughness, consistency, coherence, and adequate use of language.
-
-Learning/training
-Describe the strategies employed by the team to learn the adopted technologies. 
-
-Grading criteria (1 point): This section will be evaluated in terms of correctness, completeness, thoroughness, consistency, coherence, and adequate use of language.
-
-Deployment
-Provide a link for the system in production and describe how you are deploying your system. 
-
-Some alternatives for deploying your system in the cloud: 
-AWS. AWS Educate offers free credits for students. See the tutorial at https://docker-curriculum.com/ on how to create a container and deploy it on AWS. 
-Digital Ocean or Azzure. As part of the GitHub Education benefits, as a student, you can get $100 at Digital Ocean and $100 at Microsoft Azzure cloud 
-computing platforms (see more details at https://education.github.com/students).
-Oracle Cloud. Oracle offers a free tier in its cloud environment that should be more than enough for your needs.
-Firebase. Firebase can be a good choice if you are building a mobile phone app. 
- 
-Grading criteria (3 points): This section will be graded based on the adequate use of the technology and its adequate description.
-
-Licensing
-Inform the license you adopted for your source code (remember to configure GitHub accordingly). Explain why you adopted this license. For more information, 
-check https://choosealicense.com/ and http://redhat.slides.com/glikins/open-source-licensing-101#/ 
-
-Grading criteria (1 point): This section will be evaluated in terms of correctness, completeness, thoroughness, consistency, coherence, and adequate use of language.
-
-Readme File
-You should also prepare your repository for receiving new contributors. You should prepare a Readme.md file. See an example at 
-https://gist.github.com/PurpleBooth/109311bb0361f32d87a2   In the Readme file, the current version should be stated. You should follow the Semantic Versioning 
-schema (https://semver.org/). Tag the GitHub repository accordingly (https://git-scm.com/book/en/v2/Git-Basics-Tagging). 
+# Tests
 
 
-Your repository should contain a CONTRIBUTING.md file, a LICENSE file, and a CODE_OF_CONDUCT.md file. Search online for some examples of these files. In this 
-section of the deliverable, put links to these files on GitHub.
+# Adopted technologies
+| Part | Technologies | Description |
+|------|--------------|-------------|
+| Server-host | Digital Ocean |      |                                                                                                    |   |   |
+| Backend | Game implementing - javascript Server - python | We can implement web games with javascript. We can create various functions. (such as leaderboard) | 
+| Frontend | html css | Basic language for website |
+| Testing framework | Cypress | Cypress is one of the test automation tools for javascript. |
+| Design | Figma  | Figma is one of the best tool for UI and co-working |
 
-Grading criteria (3 points): This section will be based on the presence and quality of the information presented in the files.
+# Learning/training
 
-Look & feel
-Describe the approach you adopted to design your user interface. Include some screenshots.
+# Deployment
 
-Grading criteria (3 points): This section will be graded based on the appearance (aesthetics) and usability (ease of use) of the system.
 
-Lessons learned
-In retrospective, describe what your team learned during this first release and what you are planning to change for the second release. 
+# Licensing
 
-Grading criteria (2 points): Adequate reflection about problems and solutions, clear description with adequate use of language. 
 
-Demo
-Include a link to a video showing the system working.
+# Readme File
+https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/tree/main#readme
 
-Grading criteria (6 points): This section will be graded based on the quality of the video and on the evidence that the features are running as expected. Additional 
-criteria are the relevance of the demonstrated functionalities, the correctness of the functionalities, and quality of the developed system from the external point
-of view (user interface).
+
+# Look & feel
+We intended to create a user interface which remained as accessible as possible while also creating a cohesive aesthetic style. Simplicity and ease of use were our primary objectives, as this would in turn allow a wider variety of players to use our website. Furthermore, we tried to maintain a consistent style throughout the website, which will give our website a signature aesthetic no matter which game the user decides to play.
+
+
+# Lessons learned
+
+
+
+# Demo
