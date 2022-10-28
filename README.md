@@ -109,8 +109,15 @@ Give an example
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
-
+To deploy an on an actual server, you must already have a live server, and you must install all previous dependancies listed.
+Once the dependancies are installed, simply file transfer the wesbite folder into the server, move into the wesbite directory,
+and type
+```
+node server.js
+```
+and the server will be up and running!
+  
+  
 ## Built With
 
 * [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
