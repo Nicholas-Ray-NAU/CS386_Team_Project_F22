@@ -1,0 +1,17 @@
+{
+  "name": "ModifyNumber",
+  "version": "0.0.0",
+  "description": "A client can increment or decrement a number with max of 2 players",
+  "main": "index.js",
+  "author": "Zachary Hallemeyer",
+  "private": true,
+  "license": "BSD",
+  "dependencies": {
+    "express": "~4.17.1",
+    "socket.io": "^4.0.0",
+    "Node.js": "v16.13.2"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
