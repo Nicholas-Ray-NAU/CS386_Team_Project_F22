@@ -10,65 +10,73 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 
-##### 1. Node.js
+
+#### 1. Node.js
+
 ##### Windows/Mac Installation
 
-Visit the link below and choose the installer for your system
+Visit the link below and click the windows/mac installer
 ```
 https://nodejs.org/en/download/
 ```
+An installer will download. Run the installer and follow the steps it gives
 
-##### Linux Installation
-
-Open the terminal and enter this command:
-```
-pip install node
-```
 
 #### 2. Express
 
 ##### Windows/Mac Installation
-Open powershell and enter this command:
+
+In a terminal, enter this command:
 ```
 npm install express
 ```
-Note: This must be done after the node installation
 
 
-##### Linux Installation
-
-???????????
-
-
-##### 3. Socket.io
+#### 3. Socket.io
 
 ##### Windows/Mac Installation
-In powershell enter this command:
-
+In a terminal, enter this command:
 ```
 npm install socket.io
 ```
 
-##### Linux Installation
 
-???????????
+#### 4. Git
+
+##### Windows Installation
+Navigate to this link and choose the latest download for your system
+```
+https://git-scm.com/download/win
+```
+An installer will download. Run the installer and follow the steps it gives
+  
+
+##### Mac Installation
+In a terminal, enter this command:
+```
+sudo dnf install git-all
+```
 
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+Follow these steps to get the server running on your local machine
 
-Say what the step will be
+Open a terminal on your machine and go into a directory where you want to store  
+the repository, otherwise the repository will be stored in the current directory  
+  
+Once there, and enter this command:
+```
+git clone https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22
+```
+The repository is now on your device  
+Now make your current directory the website directory with this command
+```
+cd Website
+```
+    
+This is the server directory!
 
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
 
 End with an example of getting some data out of the system or using it for a little demo
 
