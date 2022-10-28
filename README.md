@@ -82,7 +82,7 @@ node server.js
 The server should now be running on your local machine!
 To enter the server, open any browser of your choice and enter this URL:
 ```
-
+http://localhost:3000
 ```
 You can now freely test the webpage!
 
@@ -120,9 +120,9 @@ and the server will be up and running!
   
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Node.js](https://nodejs.org/en/) - Packet Manager/Allows Javascript to run
+* [Socket.io](https://socket.io/) - Used for network communication
+* [Express](https://expressjs.com/) - Web framework used
 
 ## Contributing
 
