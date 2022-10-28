@@ -138,7 +138,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-Please see the list of [contributors](CONTRIBUTORS.md) who participated in this project.
+Please see the list of [contributors](CONTRIBUTING.md) who participated in this project.
 
 ## License
 
