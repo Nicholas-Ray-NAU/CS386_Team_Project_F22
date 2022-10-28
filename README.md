@@ -138,7 +138,11 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-Please see the list of [contributors](CONTRIBUTING.md) who participated in this project.
+-Gavin Russell
+-Suji Baek
+-Zachary Hellemeyer
+-Nick Ray
+-Cristian Marrufo
 
 ## License
 
