@@ -47,7 +47,9 @@ We intended to create a user interface which remained as accessible as possible 
 
 
 # Lessons learned
-
+In the process of producing this MVP, our team was able to experience the overall work from basic website configuration to server work that allows two users to play games at the same time through the server. Each team member has different advantages, so collaboration could be carried out effectively.
+In the next release, various functions will be incorporated, so we will pay more attention to co-working. In addition, branch management should be paid attention because there are cases where the same code is jointly modified.
 
 
 # Demo
+https://youtu.be/BAnMtcbmj3Q
