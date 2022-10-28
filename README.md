@@ -70,6 +70,10 @@ Once there, and enter this command:
 git clone https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22
 ```
 The repository is now on your device!  
+Now move into the repository with this command:
+```
+cd CS386_Team_Project_F22
+```
 Now make your current directory the website directory with this command:
 ```
 cd Website
