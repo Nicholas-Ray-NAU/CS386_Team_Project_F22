@@ -10,67 +10,82 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 
-##### 1. Node.js
+
+#### 1. Node.js
+
 ##### Windows/Mac Installation
 
-Visit the link below and choose the installer for your system
+Visit the link below and click the windows/mac installer
 ```
 https://nodejs.org/en/download/
 ```
+An installer will download. Run the installer and follow the steps it gives
 
-##### Linux Installation
-
-Open the terminal and enter this command:
-```
-pip install node
-```
 
 #### 2. Express
 
 ##### Windows/Mac Installation
-Open powershell and enter this command:
+
+In a terminal, enter this command:
 ```
 npm install express
 ```
-Note: This must be done after the node installation
 
 
-##### Linux Installation
-
-???????????
-
-
-##### 3. Socket.io
+#### 3. Socket.io
 
 ##### Windows/Mac Installation
-In powershell enter this command:
-
+In a terminal, enter this command:
 ```
 npm install socket.io
 ```
 
-##### Linux Installation
 
-???????????
+#### 4. Git
+
+##### Windows Installation
+Navigate to this link and choose the latest download for your system
+```
+https://git-scm.com/download/win
+```
+An installer will download. Run the installer and follow the steps it gives
+  
+
+##### Mac Installation
+In a terminal, enter this command:
+```
+sudo dnf install git-all
+```
 
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+Follow these steps to get the server running on your local machine
 
-Say what the step will be
+Open a terminal on your machine and go into a directory where you want to store  
+the repository, otherwise the repository will be stored in the current directory  
+  
+Once there, and enter this command:
+```
+git clone https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22
+```
+The repository is now on your device!  
+Now make your current directory the website directory with this command:
+```
+cd Website
+```
+You are now in the server directory! Feel free to move this wesbite directory into any location on your device.
+To run the server on your machine, you must be in the directory and enter this command:
+```
+node server.js
+```
+The server should now be running on your local machine!
+To enter the server, open any browser of your choice and enter this URL:
+```
 
 ```
-Give the example
-```
+You can now freely test the webpage!
 
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
@@ -94,8 +109,15 @@ Give an example
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
-
+To deploy an on an actual server, you must already have a live server, and you must install all previous dependancies listed.
+Once the dependancies are installed, simply file transfer the wesbite folder into the server, move into the wesbite directory,
+and type
+```
+node server.js
+```
+and the server will be up and running!
+  
+  
 ## Built With
 
 * [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
@@ -112,17 +134,8 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+Please see the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
-
+This project is licensed under the MIT License - please see the [LICENSE.md](LICENSE.md) file for details
