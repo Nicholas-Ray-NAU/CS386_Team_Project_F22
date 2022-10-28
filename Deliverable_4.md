@@ -2,20 +2,42 @@
 We aim to deliver a fast, easy-to-navigate, and efficient browser-based gaming website that will offer a wide variety of games for free. The website is easily accessible for any type of person of any age and will allow multiple people to quickly connect and play together online. Our webpage will have a database that will store user account data. User accounts will have achievements, and game statistics. Games hosted on the website are open to being reviewed by the players to ensure the quality of games. Games will also have a queueing lobby so that everyone has a fair chance to play a game. In a game, users will have access to an in-game chat and game leaderboard.
 
 # Implemented requirements
-List in this section, the requirements and associated pull request that you implemented for this release, following the example below---include the description of 
-the requirement, link to the issue, a link to the pull request(s) that implement the requirement, who implemented the requirement, who approved it, and a print screen
-that depicts the implemented feature (if applicable). I expect that you implement the features you specified in your MVP (c.f. D.2 Requirements). 
+MVP
+For our team project, we will be creating a simple browser-based gaming website for our MVP. It will be developed slowly, by first creating the website as a basis for our games, with this website following the first 5 functional requirements. The website will only contain 1 game, and the game and the website will be created in collaboration with all of us. Each of these requirements will be tested and validated by creating the working website first, and then having all of us, as well as some outside sources, attempt to make sure the functional requirements are satisfied by testing the website and the game. This will allow us to collect feedback on the quality of our MVP.
 
-Order the requirements below by the name of the student who implemented them. All the members of the group should have worked on implementation activities and 
-submitted pull requests. Only stable code should be included in the release. Code that is still under development should be in branches.
+1. Network application to connect two or more players
+2. Without Log-in / Automatic generated user profile
+3. Games to play with other players
+4. Simple UI / No ads
+5. Be able to join specific lobby rooms
 
+Requirement: As a social gamer, I want an easy way to game with friends so that I can connect with them in a way I am used to.
+Issue: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/issues/12
+Pull request: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/pull/22
+Implemented by: Zach
+Approved by: Suji
 
-Requirement: As a Student, I want to add a homework assignment so that I can organize my ToDo list.
-Issue: <link to your Trello or GitHub issue>
-Pull request: https://github.com/user/project/pull/426
-Implemented by: Martin Fowler
-Approved by: Ada Lovelace
-Print screen: A print screen that depicts the implemented feature (if applicable)
+Requirement: As a user, I want to play games without log-in so that I can play the game without an inconvenient process.
+Issue: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/issues/6
+Pull request: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/pull/25
+Implemented by: Gavin
+Approved by: Suji
+
+Requirement: As a gamer, I want to be able to play games online so that I'm not bored.
+Issue: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/issues/20
+Pull request: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/pull/21
+Implemented by: Nick
+Approved by: Suji
+
+Requirement: As a player, I want a simple UI so that I can find my desired game fast.
+Issue: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/issues/4
+Pull request: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/pull/23
+Implemented by: Suji
+Approved by: Zack
+Pull request: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/pull/24
+Implemented by: Christian
+Approved by: Suji
+
 
 
 # Tests
@@ -24,23 +46,28 @@ Print screen: A print screen that depicts the implemented feature (if applicable
 # Adopted technologies
 | Part | Technologies | Description |
 |------|--------------|-------------|
-| Server-host | Digital Ocean |      |                                                                                                    |   |   |
-| Backend | Game implementing - javascript Server - python | We can implement web games with javascript. We can create various functions. (such as leaderboard) | 
+| Server-host | Digital Ocean | Digital ocean is a server hosting service. We are using it as it is light-weight and can be accessed directly through ssh |                                                                                                    |   |   |
+| Backend | GGame implementing - socket.io Server - express  Language: Javascript | We can implement web games with javascript library socket.io. Socket.io allows for clients to be connected and communicate through the server.  Express allows the webpages to be dynamically served to clients.  Javascript allows for dynamic html and css web pages | 
 | Frontend | html css | Basic language for website |
-| Testing framework | Cypress | Cypress is one of the test automation tools for javascript. |
-| Design | Figma  | Figma is one of the best tool for UI and co-working |
+| Testing framework | playwright | Playright is one of the test automation tools for javascript. |
+| Design | Figma | Figma is one of the best tool for UI and co-working |
 
 # Learning/training
+We all allotted time to take a look at the documentation for adopted technologies. With the documentation and personal testing, we were able to sufficiently learn the technologies and get the server up and running.
 
 # Deployment
+http://www.gameytime.me:3000/
 
+Domain name from namecheap
+Server hosting from digital ocean (ubuntu system)
+Server is started with express in server.js 
+Command to start: forever start server.js
 
 # Licensing
-
+We Have adopted the MIT License format which grants a variety of permissions to anyone who might want to use any of our work present in the repository. This allows us to maintain an open source format, promotes the use of our work, and encourages anyone interested in software and website development to implement or review our work without much scrutiny. Lastly, while this format is incredibly liberal with its use, it does not provide any warranty from us, in addition from absolving our software from legal issues that might arise or be caused by our work.
 
 # Readme File
 https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/tree/main#readme
-
 
 # Look & feel
 We intended to create a user interface which remained as accessible as possible while also creating a cohesive aesthetic style. Simplicity and ease of use were our primary objectives, as this would in turn allow a wider variety of players to use our website. Furthermore, we tried to maintain a consistent style throughout the website, which will give our website a signature aesthetic no matter which game the user decides to play.
