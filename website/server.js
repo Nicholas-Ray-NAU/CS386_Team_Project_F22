@@ -42,9 +42,13 @@ let gameLocked = true;
 
 io.on('connection', (socket) => {
   numUsers++;
+
+  console.log(numUsers);
+
   // Force disconnects any client that goes over 2 player max
   if(numUsers > maxUsers) {
-    socket.disconnect()
+    socket.emit("reject", "")
+    socket.disconnect();
     return
   }
 

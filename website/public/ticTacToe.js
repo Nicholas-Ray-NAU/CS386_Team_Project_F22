@@ -3,7 +3,7 @@ var socket = io()
 //Listeners (on-click)
 document.querySelector( '.game--restart' ).addEventListener(
                                                          'click', restartGame );
-const GAMEBOARDCONTAINER = document.getElementById("game-container");
+const GAMEBOARDCONTAINER = document.getElementById("game--container");
 const GAMEBOARDSIZE = 9;
 
 const statusDisplay = document.querySelector('.game--status');
@@ -113,6 +113,10 @@ socket.on('playerTurn', (arg) => {
 
 socket.on('notTurn', (arg) => {
   handlePlayerEndTurn();
+})
+
+socket.on('reject', (arg) => {
+  window.location.href = "/rejectPage";
 })
 
 createGameBoard();
