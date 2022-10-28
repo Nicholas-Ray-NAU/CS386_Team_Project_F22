@@ -138,11 +138,11 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
--Gavin Russell
--Suji Baek
--Zachary Hellemeyer
--Nick Ray
--Cristian Marrufo
+-Gavin Russell  
+-Suji Baek  
+-Zachary Hellemeyer  
+-Nick Ray  
+-Cristian Marrufo  
 
 ## License
 
