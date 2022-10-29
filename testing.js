@@ -2,6 +2,17 @@
 const { test, expect } = require('@playwright/test');
 const playwright = require("playwright-core");
 
+// @ts-check
+
+/** @type {import('@playwright/test').PlaywrightTestConfig} */
+const config = {
+  use: {
+    channel: 'chrome',
+  },
+};
+
+module.exports = config;
+
 /*
 Sample gameboard coordinates
     {
