@@ -93,7 +93,7 @@ You can now freely test the webpage!
 
 ## Running the tests
 
-For our project we are using [Playwright](https://playwright.dev/) to implement our automated testing. To prepare the tests to run, download testing.js into the ~/tests folder in the root directory that you installed Playwright into. To run the tests, run the following command:
+For our project we are using [Playwright](https://playwright.dev/) to implement our automated testing. To prepare the tests to run, download [testing.js](/testing.js) into the ~/tests folder in the root directory that you installed Playwright into. To run the tests, run the following command:
 ```
 npx playwright test --project=chromium
 ```
