@@ -93,23 +93,33 @@ You can now freely test the webpage!
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+For our project we are using [Playwright](https://playwright.dev/) to implement our automated testing. To prepare the tests to run, download testing.js into the ~/tests folder in the root directory that you installed Playwright into. To run the tests, run the following command:
+```
+npx playwright test --project=chromium
+```
+The tests should take approximately 10 seconds to run. After the tests finish execution, a *.HTML report will be generated with test details. To view this file, run the following command:
+```
+npx playwright show-report
+```
 
-### Break down into end to end tests
+### Test execution
 
-Explain what these tests test and why
-
+The current test file for the 1.0.0 deployment performs 3 tasks. The first tests the custom socketing framework. It first defines the browser context and then opens 3 different tabs. The first 2 clients are players that interact together on a shared page. The third client is a mock client that is expected to be rejected/redirected. 
+```
+Give an example
+```
+The second test plays a simulated game by initiating a series of clicks at given locations across the screen. This is acheiveable since Playwright uses a fixed viewbox size for each browser instance.
+```
+Give an example
+```
+The final test checks that the winner and looser are correctly assigned by scanning the page for the win/lose text box that will appear after a win condition is met.
 ```
 Give an example
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+### Final test state
+|-----|-----|
+|-----|-----|
 
 ## Deployment
 
