@@ -43,6 +43,12 @@ For our team project, we will be creating a simple browser-based gaming website 
 
 
 # Tests
+##Test framework
+ - [Playwright](https://playwright.dev/)
+ - Tests are located [here](/tests)
+
+## Example code
+
 
 
 # Adopted technologies
