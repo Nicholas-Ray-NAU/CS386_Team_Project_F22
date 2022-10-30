@@ -45,7 +45,7 @@ For our team project, we will be creating a simple browser-based gaming website 
 # Tests
 ### Test framework
  - [Playwright](https://playwright.dev/)
- - Tests are located [here](tests/testing.js)
+ - Tests are located [here](tests/)
 
 ### Example code - Win assingment
 ![MVP testing Part 3](/Images/D4_testing_pt3.PNG)
