@@ -105,21 +105,19 @@ npx playwright show-report
 ### Test execution
 
 The current test file for the 1.0.0 deployment performs 3 tasks. The first tests the custom socketing framework. It first defines the browser context and then opens 3 different tabs. The first 2 clients are players that interact together on a shared page. The third client is a mock client that is expected to be rejected/redirected. 
-```
-Give an example
-```
+![MVP testing Part 1](/Images/D4_testing_pt1.png)
+
 The second test plays a simulated game by initiating a series of clicks at given locations across the screen. This is acheiveable since Playwright uses a fixed viewbox size for each browser instance.
-```
-Give an example
-```
+![MVP testing Part 2](/Images/D4_testing_pt2.png)
+
 The final test checks that the winner and looser are correctly assigned by scanning the page for the win/lose text box that will appear after a win condition is met.
-```
-Give an example
-```
+![MVP testing Part 3](/Images/D4_testing_pt3.png)
 
 ### Final test state
-|-----|-----|
-|-----|-----|
+#### Player One
+![Player One Final State](/Images/D4_playerOne_Complete.png)
+#### Player Two
+![Player One Final State](/Images/D4_playerOne_Complete.png)
 
 ## Deployment
 
