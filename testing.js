@@ -2,25 +2,14 @@
 const { test, expect } = require('@playwright/test');
 const playwright = require("playwright-core");
 
-// @ts-check
-
-/** @type {import('@playwright/test').PlaywrightTestConfig} */
-const config = {
-  use: {
-    channel: 'chrome',
-  },
-};
-
-module.exports = config;
-
 /*
-Sample gameboard coordinates
+Data Cell coordinates (x,y => 0,0 in top left of page)
     {
-        A3  B3  C3
+        (300,300)  (400,300)  (500,300)
         
-        A2  B2  C2
+        (300,400)  (400,400)  (500,400)
         
-        A1  B1  C1
+        (300,500)  (400,500)  (500,500)
     }
 */
 
@@ -45,25 +34,37 @@ test('Website works as intended for release 1.0.0', async ({ page }) => {
     //test that the third client is rejected
     await expect(rejectedPlayer).toHaveTitle(/Rejected Game Access/);
     await expect(rejectedPlayer).toHaveURL(/.*rejectPage/);
+
+    //player one locates and takes cell 0 (300,300)
+    await playerOne.mouse.click( 300, 300 );
+    await page.waitForTimeout(1000);
     
-    /*https://playwright.dev/docs/locators*/
+    //player two locates and takes cell 4 (400,400)
+    await playerTwo.mouse.click( 400, 400 );
+    await page.waitForTimeout(1000);    
     
-    //player one locates and takes A3
+    //player one locates and takes cell 8 (500,500)
+    await playerOne.mouse.click( 500, 500 );
+    await page.waitForTimeout(1000);    
     
-    //player two locates and takes B2
+    //player two locates and takes cell 7 (400,500)
+    await playerTwo.mouse.click( 400, 500 );
+    await page.waitForTimeout(1000);    
     
-    //player one locates and takes C1
+    //player one locates and takes cell 2 (500,300)
+    await playerOne.mouse.click( 500, 300 );
+    await page.waitForTimeout(1000);    
     
-    //player two locates and takes C3
+    //player two locates and takes cell 1 (400,300)
+    await playerTwo.mouse.click( 400, 300 );
+    await page.waitForTimeout(1000);
     
-    //player one locates and takes B1
+    //test that player two receives win message - You won!
+    await expect(playerTwo.getByText('You won!')).toBeVisible();
     
-    //player two locates and takes A1
+    //test that player one recieves lose message - You lost!
+    await expect(playerOne.getByText('You lost!')).toBeVisible();
     
-    /*https://playwright.dev/docs/pages#handling-popups*/
-    
-    //test that player two receives win message
-    
-    //test that player one recieves lose message
-    
+    //close all three browser contexts
+    await context.close();
 });
