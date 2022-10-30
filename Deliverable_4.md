@@ -43,11 +43,17 @@ For our team project, we will be creating a simple browser-based gaming website 
 
 
 # Tests
-##Test framework
+### Test framework
  - [Playwright](https://playwright.dev/)
- - Tests are located [here](/tests)
+ - Tests are located [here](tests/testing.js)
 
-## Example code
+### Example code - Win assingment
+![MVP testing Part 3](/Images/D4_testing_pt3.PNG)
+
+#### Player One
+![Player One Final State](/Images/D4_playerOne_Complete.png)
+#### Player Two
+![Player One Final State](/Images/D4_playerOne_Complete.png)
 
 
 
