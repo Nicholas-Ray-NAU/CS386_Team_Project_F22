@@ -20,9 +20,29 @@ The difference between this class diagram and the one that you presented in D.3 
 Grading criteria (6 points): Adequate use of UML; Adequate choice of classes and relationships; Completeness of the diagram; Adequate presentation of implementation details. 
 
 # Sequence diagram
-Present a sequence diagram that represents how the objects in your system interact for a specific use case. Also include the use case's description in this section. The sequence diagram should be consistent with the class diagram and architecture. 
+[Sequence Diagram](images/D5_SequenceDiagram)
 
-Grading criteria (5 points): Adequate use of UML; Adequate design of the sequence diagram; Consistency with the class diagram; Consistency with the use case description; Not including the use case description; Over simplistic diagram.
+## Use Case Description
+**Use Case:** User Creates an account/profile  
+**Actor:** User  
+**Description:** User attempts to create/access a profile with provided user data (username and profile)  
+**Preconditions:** User is connected to server  
+**Postconditions:** User will have a profile assigned to their username  
+**Main Flow:**  
+- User will travel to login page
+- User will choose to create a new account
+- Server will initialize user data to default values
+- User will provide username and password
+- Server will verify proper data input
+- Database will be updated with new profile
+**Alternative Flow:**  
+- User already has an account
+  - User can view profile data
+  - User can update attempt to update username
+- User provides bad username or password
+  - Server will notify user of bad input
+  - Server will redo request for proper input
+
 
 # Design Patterns
 Split this section into 2 subsections. For each subsection, present a UML class diagram showing the application of a design pattern to your system (a different pattern for each section). Each class diagram should contain only the classes involved in the specific pattern (you don’t need to represent the whole system). Choose patterns from two different categories: Behavioral, Structural, and Creational. You are not limited to design patterns studied in class. 
