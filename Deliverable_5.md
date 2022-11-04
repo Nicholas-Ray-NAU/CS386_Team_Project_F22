@@ -35,6 +35,7 @@ Grading criteria (6 points): Adequate use of UML; Adequate choice of classes and
 - User will provide username and password
 - Server will verify proper data input
 - Database will be updated with new profile  
+  
 **Alternative Flow:**  
 - User already has an account
   - User can view profile data
