@@ -20,7 +20,7 @@ The difference between this class diagram and the one that you presented in D.3 
 Grading criteria (6 points): Adequate use of UML; Adequate choice of classes and relationships; Completeness of the diagram; Adequate presentation of implementation details. 
 
 # Sequence diagram
-[Sequence Diagram](images/D5_SequenceDiagram)
+![Sequence Diagram](Images/D5_SequenceDiagram.jpg)
 
 ## Use Case Description
 **Use Case:** User Creates an account/profile  
