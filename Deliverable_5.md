@@ -4,20 +4,10 @@ We aim to address the problem that there is a lack of convenient and inclusive w
 Users will connect to the website by inputting the link www.gameytime.me into a browser. Users will have the option to create a profile on the website which will store the user rankings, games ratings, and achievements, or create a temporary username to quickly play any game offered by our site. Users will select a single game lobby to join from a variety of possible games, which will include tic-tac-toe, checkers, mancala, and other tabletop games. Once a user selects a game lobby, they will be placed into a queue. Users will wait in a game specific queue until they can be paired with the appropriate number of players needed. Users have the option to send a message through the use of an in-game chat, by typing any string into the chat box. In-game chat will be moderated to ensure a clean dialog between users. Users with a profile will able to look at their game statistics and aquired achievements. The landing page will display a leaderboard containing rankings from other users with profiles. The user interface will be simple and clean.
 
 # Architecture
-Present a diagram of the high-level architecture of your system. Use a UML package diagram to describe the main modules and how they interrelate. See some examples at:
-https://www.uml-diagrams.org/package-diagrams-examples.html 
-Make clear the layers of your architecture (if they exist) as described in:
-https://www.uml-diagrams.org/multi-layered-application-uml-model-diagram-example.html 
-Provide a brief rationale of your architecture explaining why you designed it that way. 
-
-Grading criteria (5 points): Adequate use of UML; Adequate design of an architecture for the system; Adequate description of the rationale.
+![Package UML Diagram](Images/package-diagram.jpg)
 
 # Class diagram
-Present a refined class diagram of your system, including implementation details such as visibilities, attributes to represent associations, attribute types, return types, parameters, etc. The class diagram should match the code you have produced so far, but not be limited to it (e.g., it can contain classes not implemented yet). 
-
-The difference between this class diagram and the one that you presented in D.3 is that the last focuses on the conceptual model of the domain while the former reflects the implementation. Therefore, the implementation details are relevant in this case. 
-
-Grading criteria (6 points): Adequate use of UML; Adequate choice of classes and relationships; Completeness of the diagram; Adequate presentation of implementation details. 
+![Class Diagram](Images/gameytime-umldiagram-d5.jpg)
 
 # Sequence diagram
 ![Sequence Diagram](Images/D5_SequenceDiagram.jpg)
