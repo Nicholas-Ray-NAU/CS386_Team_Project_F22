@@ -42,7 +42,7 @@ Your system may not be appropriate for any design pattern. In this case, for did
 
 Implement each design pattern in your system and provide GitHub links to the corresponding classes
 
-##Below is the singleton design pattern class diagram. It is very simple, as the lobby class can only have a single instance running at any given time.
+## Below is the singleton design pattern class diagram. It is very simple, as the lobby class can only have a single instance running at any given time.
 ![Design Pattern Class Diagram 1](Images/singletonDesignPattern.png)
 
 
