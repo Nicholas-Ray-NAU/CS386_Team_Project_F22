@@ -4,7 +4,7 @@ We aim to address the problem that there is a lack of convenient and inclusive w
 Users will connect to the website by inputting the link www.gameytime.me into a browser. Users will have the option to create a profile on the website which will store the user rankings, games ratings, and achievements, or create a temporary username to quickly play any game offered by our site. Users will select a single game lobby to join from a variety of possible games, which will include tic-tac-toe, checkers, mancala, and other tabletop games. Once a user selects a game lobby, they will be placed into a queue. Users will wait in a game specific queue until they can be paired with the appropriate number of players needed. Users have the option to send a message through the use of an in-game chat, by typing any string into the chat box. In-game chat will be moderated to ensure a clean dialog between users. Users with a profile will able to look at their game statistics and aquired achievements. The landing page will display a leaderboard containing rankings from other users with profiles. The user interface will be simple and clean.
 
 # Architecture
-![Package UML Diagram](Images/package-diagram.jpg)
+![Package UML Diagram](Images/package-diagram.jpg)  
 There are three major groups that are interconnected. The user is the top level module which needs to be used to interact with the rest of the system. The lobby system acts as the middleman between users and games where the user
 
 # Class diagram
