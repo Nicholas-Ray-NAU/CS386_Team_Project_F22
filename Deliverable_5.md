@@ -46,7 +46,7 @@ There are three major groups that are interconnected. The user is the top level 
 
 # Design Principles
 - Single responsibility
- - Each class contains only one job, so the only way in which it would change would be if more data is needed in future versions. For instance, gameTicTacToe class handles all methods and attributes relating to Tic Tac Toe and no other methods or attributes
+  - Each class contains only one job, so the only way in which it would change would be if more data is needed in future versions. For instance, gameTicTacToe class handles all methods and attributes relating to Tic Tac Toe and no other methods or attributes
 - Open-closed
   - An example of this concept is the superclass of Game. The Game class contains the functions required for each game, but each sub game such as Tic Tac Toe will have an overridden function to handle game specific conditions.
 - Liskov substitution principle
