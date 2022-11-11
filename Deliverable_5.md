@@ -5,6 +5,7 @@ Users will connect to the website by inputting the link www.gameytime.me into a 
 
 # Architecture
 ![Package UML Diagram](Images/package-diagram.jpg)
+There are three major groups that are interconnected. The user is the top level module which needs to be used to interact with the rest of the system. The lobby system acts as the middleman between users and games where the user
 
 # Class diagram
 ![Class Diagram](Images/gameytime-umldiagram-d5.jpg)
@@ -44,6 +45,14 @@ Users will connect to the website by inputting the link www.gameytime.me into a 
 ![Design Pattern Class Diagram 2](Images/StrategyDesignPattern.jpg)
 
 # Design Principles
-How does your design observe the SOLID principles? Provide a short description of followed principles giving concrete examples from your classes. 
+- Single responsibility
+ - Each class contains only one job, so the only way in which it would change would be if more data is needed in future versions. For instance, gameTicTacToe class handles all methods and attributes relating to Tic Tac Toe and no other methods or attributes
+- Open-closed
+  - An example of this concept is the superclass of Game. The Game class contains the functions required for each game, but each sub game such as Tic Tac Toe will have an overridden function to handle game specific conditions.
+- Liskov substitution principle
+  - All subclasses of Game will have the same functions with different conditions
+- Interface segregation principle
+  - An example of this in this project is the distinction between user and profile. Players only need to be a user to access the games on the site, but users need to sign up for a profile to have statistics of their played games.
+- Dependency inversion principle
+  - An example of this is the case that the subclasses of Game will have class specific functions to handle game specific conditions
 
-Grading criteria (6 points): Show correct understanding of SOLID principles; Provide enough details to justify how the principles were observed.
