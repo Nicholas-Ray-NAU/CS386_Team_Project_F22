@@ -43,7 +43,7 @@ Your system may not be appropriate for any design pattern. In this case, for did
 Implement each design pattern in your system and provide GitHub links to the corresponding classes
 
 ##Below is the singleton design pattern class diagram. It is very simple, as the lobby class can only have a single instance running at any given time.
-![Design Pattern Class Diagram 1](Images/singletonDesignPattern.jpg)
+![Design Pattern Class Diagram 1](Images/singletonDesignPattern.png)
 
 
 Grading criteria (6 points, 3 each pattern): Correct use of the design pattern as described in the literature; Adequate choice of the design pattern; Adequate implementation of the design pattern.
