@@ -37,7 +37,7 @@ Users will connect to the website by inputting the link www.gameytime.me into a 
 
 # Design Patterns
 
-## Below is the singleton design pattern class diagram, which comes from the Creational category. It is very simple, as the lobby class can only have a single instance running at any given time.
+#### Below is the singleton design pattern class diagram, which comes from the Creational category. It is very simple, as the lobby class can only have a single instance running at any given time.
 ![Design Pattern Class Diagram 1](Images/Singleton.jpg)
 
 
