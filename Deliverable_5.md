@@ -40,6 +40,8 @@ Users will connect to the website by inputting the link www.gameytime.me into a 
 #### Below is the singleton design pattern class diagram, which comes from the Creational category. It is very simple, as the lobby class can only have a single instance running at any given time.
 ![Design Pattern Class Diagram 1](Images/Singleton.jpg)
 
+### The diagram below illustrates the strategy design pattern, in which a set of options is displayed. These objects are able to change the behavior of the class they belong to as needed.  
+![Design Pattern Class Diagram 2](Images/StrategyDesignPattern.jpg)
 
 # Design Principles
 How does your design observe the SOLID principles? Provide a short description of followed principles giving concrete examples from your classes. 
