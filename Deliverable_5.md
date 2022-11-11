@@ -36,17 +36,10 @@ Users will connect to the website by inputting the link www.gameytime.me into a 
 
 
 # Design Patterns
-Split this section into 2 subsections. For each subsection, present a UML class diagram showing the application of a design pattern to your system (a different pattern for each section). Each class diagram should contain only the classes involved in the specific pattern (you don’t need to represent the whole system). Choose patterns from two different categories: Behavioral, Structural, and Creational. You are not limited to design patterns studied in class. 
 
-Your system may not be appropriate for any design pattern. In this case, for didactic purposes, be creative and extend a little bit the scope of your system to make the design patterns appropriate. 
-
-Implement each design pattern in your system and provide GitHub links to the corresponding classes
-
-## Below is the singleton design pattern class diagram. It is very simple, as the lobby class can only have a single instance running at any given time.
+## Below is the singleton design pattern class diagram, which comes from the Creational category. It is very simple, as the lobby class can only have a single instance running at any given time.
 ![Design Pattern Class Diagram 1](Images/Singleton.jpg)
 
-
-Grading criteria (6 points, 3 each pattern): Correct use of the design pattern as described in the literature; Adequate choice of the design pattern; Adequate implementation of the design pattern.
 
 # Design Principles
 How does your design observe the SOLID principles? Provide a short description of followed principles giving concrete examples from your classes. 
