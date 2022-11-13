@@ -5,7 +5,8 @@ Users will connect to the website by inputting the link www.gameytime.me into a 
 
 # Architecture
 ![Package UML Diagram](Images/package-diagram.jpg)  
-There are three major groups that are interconnected. The user is the top level module which needs to be used to interact with the rest of the system. The lobby system acts as the middleman between users and games where the user
+There are three major groups that are interconnected. The user is the top level module which needs to be used to interact with the rest of the system. The lobby system acts as the middleman between users and games where the user is placed into a game. The game module is the lowest level. The game handles all game functions and only interacts with the users in said game.
+
 
 # Class diagram
 ![Class Diagram](Images/gameytime-umldiagram-d5.jpg)
