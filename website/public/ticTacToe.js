@@ -120,4 +120,8 @@ socket.on('reject', (arg) => {
   window.location.href = "/rejectPage";
 })
 
+socket.on('returnToLobby', (arg) => {
+  window.location.href = "../index.html";
+})
+
 createGameBoard();

@@ -155,10 +155,13 @@ io.on('connection', (socket) => {
 
   socket.on('disconnect', () => {
     numUsers--;
+    // Close room if player was in room, and send other player to lobby
+    // closeRoom(socket.id, io);
     removePlayerFromplayerList(socket.id, playerList);
     removePlayerFromQueueList(socket.id, ticTacToeQueue);
-    printPlayerList(playerList);
+    // Remove empty rooms
     setTimeout(() => {removeEmptyRooms(roomList)}, 5000);
+
   });
 
 });
@@ -355,6 +358,12 @@ function removeEmptyRooms(roomList) {
     }
     index++;
   }
+}
+
+function closeRoom(playerID, io) {
+  let player = getPlayerFromID(playerID, playerList);
+  io.in(player.currentRoomID).emit("returnToLobby", "");
+  removeRoom(player.currentRoomID);
 }
 
 // Generate random ID (string of a number)
