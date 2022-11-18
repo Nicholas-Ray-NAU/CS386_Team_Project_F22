@@ -1,6 +1,6 @@
 var socket = io()
 
-document.getElementById( 'join' ).addEventListener('click', sendJoinMessage );
+document.getElementById( 'joinTTT' ).addEventListener('click', sendJoinMessage );
 
 
 function sendJoinMessage() {

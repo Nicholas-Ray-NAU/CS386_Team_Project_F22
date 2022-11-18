@@ -13,6 +13,7 @@ server.listen(port, () => {
 // Routing
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Classes
 class Room {
   roomID;
   playerOneID;
