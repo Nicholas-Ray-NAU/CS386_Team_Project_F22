@@ -10,117 +10,148 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 
-##### 1. Node.js
+
+#### 1. Node.js
+
 ##### Windows/Mac Installation
 
-Visit the link below and choose the installer for your system
+Visit the link below and click the windows/mac installer
 ```
 https://nodejs.org/en/download/
 ```
+An installer will download. Run the installer and follow the steps it gives
 
-##### Linux Installation
-
-Open the terminal and enter this command:
-```
-pip install node
-```
 
 #### 2. Express
 
 ##### Windows/Mac Installation
-Open powershell and enter this command:
+
+In a terminal, enter this command:
 ```
 npm install express
 ```
-Note: This must be done after the node installation
 
 
-##### Linux Installation
-
-???????????
-
-
-##### 3. Socket.io
+#### 3. Socket.io
 
 ##### Windows/Mac Installation
-In powershell enter this command:
-
+In a terminal, enter this command:
 ```
 npm install socket.io
 ```
 
-##### Linux Installation
 
-???????????
+#### 4. Git
+
+##### Windows Installation
+Navigate to this link and choose the latest download for your system
+```
+https://git-scm.com/download/win
+```
+An installer will download. Run the installer and follow the steps it gives
+  
+
+##### Mac Installation
+In a terminal, enter this command:
+```
+sudo dnf install git-all
+```
 
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+Follow these steps to get the server running on your local machine
 
-Say what the step will be
-
+Open a terminal on your machine and go into a directory where you want to store  
+the repository, otherwise the repository will be stored in the current directory  
+  
+Once there, and enter this command:
 ```
-Give the example
+git clone https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22
 ```
-
-And repeat
-
+The repository is now on your device!  
+Now move into the repository with this command:
 ```
-until finished
+cd CS386_Team_Project_F22
 ```
+Now make your current directory the website directory with this command:
+```
+cd Website
+```
+You are now in the server directory! Feel free to move this wesbite directory into any location on your device.
+To run the server on your machine, you must be in the directory and enter this command:
+```
+node server.js
+```
+The server should now be running on your local machine!
+To enter the server, open any browser of your choice and enter this URL:
+```
+http://localhost:3000
+```
+You can now freely test the webpage!
 
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
+For our project we are using [Playwright](https://playwright.dev/) to implement our automated testing. To prepare the tests to run, download [testing.js](tests/testing.js) into the ~/tests folder in the root directory that you installed Playwright into. To run the tests, run the following command:
 ```
-Give an example
+npx playwright test --project=chromium
+```
+The tests should take approximately 10 seconds to run. After the tests finish execution, a *.HTML report will be generated with test details. To view this file, run the following command:
+```
+npx playwright show-report
 ```
 
-### And coding style tests
+### Test execution
 
-* [PlayWright] (https://playwright.dev/) - Automated testing tool used in project
+The current test file for the 1.0.0 deployment performs 3 tasks. The first tests the custom socketing framework. It first defines the browser context and then opens 3 different tabs. The first 2 clients are players that interact together on a shared page. The third client is a mock client that is expected to be rejected/redirected. 
+![MVP testing Part 1](/Images/D4_testing_pt1.PNG)
 
-```
-Give an example
-```
+The second test plays a simulated game by initiating a series of clicks at given locations across the screen. This is acheiveable since Playwright uses a fixed viewbox size for each browser instance.
+![MVP testing Part 2](/Images/D4_testing_pt2.PNG)
+
+The final test checks that the winner and looser are correctly assigned by scanning the page for the win/lose text box that will appear after a win condition is met.
+![MVP testing Part 3](/Images/D4_testing_pt3.PNG)
+
+### Final test state
+#### Player One
+![Player One Final State](/Images/D4_playerOne_Complete.png)
+#### Player Two
+![Player One Final State](/Images/D4_playerOne_Complete.png)
 
 ## Deployment
 
-Server is hosted with digital ocean with an ubuntu system
-
+To deploy an on an actual server, you must already have a live server, and you must install all previous dependancies listed.
+Once the dependancies are installed, simply file transfer the wesbite folder into the server, move into the wesbite directory,
+and type
+```
+node server.js
+```
+and the server will be up and running!
+  
+  
 ## Built With
 
-* [Socket.io](https://socket.io/) - Communication between clients through server
-* [Express](https://expressjs.com/) - Server framework
+* [Node.js](https://nodejs.org/en/) - Packet Manager/Allows Javascript to run
+* [Socket.io](https://socket.io/) - Used for network communication
+* [Express](https://expressjs.com/) - Web framework used
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+We are currently in version 1.0.0
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+-Gavin Russell  
+-Suji Baek  
+-Zachary Hellemeyer  
+-Nick Ray  
+-Cristian Marrufo  
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+This project is licensed under the MIT License - please see the [LICENSE.md](LICENSE.md) file for details
