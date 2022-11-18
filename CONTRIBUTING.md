@@ -1,6 +1,6 @@
 # Contributing
 
-If contributing this repository, you should first create an issue detailing the changes you wish to implement or contact any of the team members with any suggestion.
+If contributing to this repository, you should first create an issue detailing the changes you wish to implement or contact any of the team members with any suggestion.
 
 ## Pull request process
 
