@@ -415,6 +415,7 @@ function addPlayerToQueueList(playerID, playerList, queueList) {
   let player;
   let index = 0;
 
+  // Get player
   while(index < playerList.length) {
     if(playerList[index].id == playerID) {
       player = playerList[index];
@@ -425,6 +426,17 @@ function addPlayerToQueueList(playerID, playerList, queueList) {
 
   if(player == null) {
     return;
+  }
+
+
+  // Check if player is already in queue
+  index = 0;
+  while(index < queueList.length) {
+    if(queueList[index].id == player.id) {
+      // Player is in queue, returns out of function
+      return;
+    }
+    index++;
   }
 
   queueList.push(player);
