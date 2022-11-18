@@ -13,7 +13,38 @@ server.listen(port, () => {
 // Routing
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Tic Tac Toe
+class Room {
+  roomID;
+  playerOneID;
+  playerTwoID;
+  gameBoard;
+  gameLocked;
+  currentPlayerID;
+  gameTitle;
+
+  constructor(roomID, playerOneID, playerTwoID, gameBoard, gameTitle) {
+    this.roomID = roomID;
+    this.playerOneID = playerOneID;
+    this.playerTwoID = playerTwoID;
+    this.gameBoard = gameBoard;
+    this.gameLocked = false;
+    this.currentPlayerID = playerOneID;
+    this.gameTitle = gameTitle;
+  }
+}
+
+class Player {
+  constructor(id){
+    this.id = id
+    this.currentRoomID = null;
+  }
+}
+
+let roomList = [];
+let playerList = [];
+let ticTacToeQueue = [];
+let numUsers = 0;
+let gameBoardTTT = [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
 
 const winningConditions = [
     [0, 1, 2],
@@ -26,110 +57,169 @@ const winningConditions = [
     [2, 4, 6]
 ];
 
-class Player {
-  constructor(id){
-    this.id = id
-  }
-}
-
-let numUsers = 0;
-let maxUsers = 2;
-let playerOne = null;
-let playerTwo = null;
-let currentPlayer = null;
-let gameBoard = [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
-let gameLocked = true;
-
 io.on('connection', (socket) => {
   numUsers++;
 
-  console.log(numUsers);
+  console.log("" + numUsers + " New user: " + socket.id);
 
-  // Force disconnects any client that goes over 2 player max
-  if(numUsers > maxUsers) {
-    socket.emit("reject", "")
-    socket.disconnect();
-    return
-  }
+  addPlayerToplayerList(socket.id, playerList);
+  printPlayerList(playerList);
 
+  // Queuing
 
-  if(playerOne == null) {
-    playerOne = new Player(socket.id);
-    currentPlayer = playerOne;
-  }
-  else {
-    playerTwo = new Player(socket.id);
-    gameLocked = false;
-  }
+  socket.on('joinTicTacToeQueue', (arg) => {
+    let roomID;
+    addPlayerToQueueList(socket.id, playerList, ticTacToeQueue);
+    printQueueList(ticTacToeQueue);
 
-  restartGame(socket)
-  socket.emit('updateGameBoard', gameBoard)
-  socket.broadcast.emit('updateGameBoard', gameBoard)
+    // Check if there are enough players in queue to create room
+    if(checkToCreateRoom(ticTacToeQueue)) {
+      roomObject = createRoom(ticTacToeQueue, gameBoardTTT, "TTT");
 
-  // Handle cell clicked
-  socket.on('cellClicked', (cellClickedIndex) => {
-    handleCellClicked(socket, cellClickedIndex)
+      // Assign rooms to clients
+      io.to(roomObject.playerOneID).emit("joinTicTacToeRoom",
+                                              roomObject.roomID);
+      io.to(roomObject.playerTwoID).emit("joinTicTacToeRoom",
+                                              roomObject.roomID);
+
+      // Send client command to change page
+      socket.to(roomObject.roomID).emit("moveToTicTacToe", "");
+    }
+  });
+
+  // Tic Tac Toe
+
+  socket.on("joinTicTacToeRoom", (roomID) => {
+    let currentRoom = getCurrentRoomFromID(roomID, roomList);
+    // Reset players to null to reassign after they reconnect
+    currentRoom.playerOneID = null;
+    currentRoom.playerTwoID = null;
+    currentRoom.currentPlayerID = null;
+    // Have client join room
+    socket.join(roomID);
+    // Send client command to change page
+    io.in(roomID).emit("moveToTicTacToe", "");
   })
 
-  socket.on('restartGame', (arg) => {
-    restartGame(socket)
+  socket.on("rejoinRoomTTT", (arg) => {
+    let index = 0;
+    let player = null;
+    // Loop through room list
+    while(index < roomList.length) {
+
+      // Check if room is a Tic Tac Toe room
+      if(roomList[index]["RoomObject"].gameTitle == "TTT") {
+
+        // Check if either player is empty
+        if(roomList[index]["RoomObject"].playerOneID == null) {
+
+          // Set client to player one in current room
+          socket.join(roomList[index]["RoomObject"].roomID);
+          roomList[index]["RoomObject"].playerOneID = socket.id;
+          roomList[index]["RoomObject"].currentPlayerID = socket.id;
+
+          player = getPlayerFromID(socket.id, playerList);
+          player.currentRoomID = roomList[index]["RoomObject"].roomID;
+
+          io.to(socket.id).emit("playerTurnTTT", "");
+          // Set index to roomList length to get out of loop
+          index = roomList.length;
+        }
+        else if (roomList[index]["RoomObject"].playerTwoID == null) {
+
+          // Set client to player two  in current room
+          socket.join(roomList[index]["RoomObject"].roomID);
+          roomList[index]["RoomObject"].playerTwoID = socket.id;
+
+          player = getPlayerFromID(socket.id, playerList);
+          player.currentRoomID = roomList[index]["RoomObject"].roomID;
+
+          io.to(socket.id).emit("notTurnTTT", "");
+          // Set index to roomList length to get out of loop
+          index = roomList.length;
+        }
+
+      }
+
+      index++;
+    }
+  })
+
+  socket.on("cellClickedTTT", (cellClickedIndex) => {
+    handleCellClicked(socket, io, cellClickedIndex)
+  })
+
+  socket.on("restartGameTTT", (arg) => {
+    restartGame(socket, io)
   })
 
   socket.on('disconnect', () => {
-    if(playerOne != null && socket.id == playerOne.id) {
-      playerOne = null;
-    }
-    else {
-      playerTwo = null;
-    }
-
     numUsers--;
+    // Close room if player was in room, and send other player to lobby
+    // closeRoom(socket.id, io);
+    removePlayerFromplayerList(socket.id, playerList);
+    removePlayerFromQueueList(socket.id, ticTacToeQueue);
+    // Remove empty rooms
+    setTimeout(() => {removeEmptyRooms(roomList)}, 5000);
+
   });
-})
 
+});
 
-function handleCellClicked(socket, cellClickedIndex) {
-  if(gameLocked || socket.id != currentPlayer.id) {
+// Tic Tac Toe functions
+
+// Handles cell click event from client
+function handleCellClicked(socket, io, cellClickedIndex) {
+  // Get current room and player
+  let currentPlayer = getPlayerFromID(socket.id, playerList);
+  let currentRoom = getRoomFromPlayer(currentPlayer, roomList);
+
+  // Return out of function if the game is locked or client is not current player
+  if(currentRoom.gameLocked || socket.id != currentRoom.currentPlayerID) {
     return;
   }
 
   // Allow click if cell is not used, otherwise, return out of function
-  if(gameBoard[cellClickedIndex] != 0) {
+  if(currentRoom.gameBoard[cellClickedIndex] != 0) {
     return;
   }
 
-  gameLocked = true
+  // Lock game
+  currentRoom.gameLocked = true;
 
-  if(currentPlayer == playerOne) {
-    gameBoard[cellClickedIndex] = 1;
-    socket.emit('updateGameCell', {"Cell Index": cellClickedIndex, "text": 'x'})
-    socket.broadcast.emit('updateGameCell', {"Cell Index": cellClickedIndex, "text": 'x'})
+  // Check if current player is player one
+  if(currentRoom.currentPlayerID == currentRoom.playerOneID) {
+    // Assign game cell to player one
+    currentRoom.gameBoard[cellClickedIndex] = 1;
+    io.in(currentRoom.roomID).emit('updateGameCellTTT',
+                                   {"Cell Index": cellClickedIndex, "text": 'x'})
   }
-  else {
-    gameBoard[cellClickedIndex] = 2;
-    socket.emit('updateGameCell', {"Cell Index": cellClickedIndex, "text": 'o'})
-    socket.broadcast.emit('updateGameCell', {"Cell Index": cellClickedIndex, "text": 'o'})
+  else {  // Otherwise, current player is player two
+    // Assign game cell to player two
+    currentRoom.gameBoard[cellClickedIndex] = 2;
+    io.in(currentRoom.roomID).emit('updateGameCellTTT',
+                                   {"Cell Index": cellClickedIndex, "text": 'o'})
   }
-
 
   // Check if game over
-  if (checkForGameOver(socket)) {
+  if (checkForGameOver(socket, io, currentRoom)) {
     return
   }
 
-  changeCurrentPlayer(socket);
+  changeCurrentPlayer(socket, io, currentRoom);
 }
 
-// If game is won or is in draw state, sends message to client and
-// returns true if game has been completed
-function checkForGameOver(socket) {
+// Checks if game is over
+// Sends 'gameDrawTTT' message, if game resulted in a draw
+// Sends 'gameWonTTT' message, if game resulted in a win
+// Locks game if game resulted in a draw or win
+function checkForGameOver(socket, io, currentRoom) {
   let index = 0;
-  let roundDraw = !gameBoard.includes( 0 );
+  let roundDraw = !currentRoom.gameBoard.includes( 0 );
 
   if(roundDraw) {
     // Send draw to clients and return true
-    socket.emit("gameDraw", "Draw")
-    socket.broadcast.emit("gameDraw", "Draw")
+    io.in(currentRoom.roomID).emit("gameDrawTTT", "Draw")
     return true;
   }
 
@@ -140,9 +230,9 @@ function checkForGameOver(socket) {
       const winCondition = winningConditions[ index ];
 
       //load testing variables at index of possible win condition
-      let cell1 = gameBoard[ winCondition[ 0 ] ];
-      let cell2 = gameBoard[ winCondition[ 1 ] ];
-      let cell3 = gameBoard[ winCondition[ 2 ] ];
+      let cell1 = currentRoom.gameBoard[ winCondition[ 0 ] ];
+      let cell2 = currentRoom.gameBoard[ winCondition[ 1 ] ];
+      let cell3 = currentRoom.gameBoard[ winCondition[ 2 ] ];
 
       //check for empty cell
       if ( cell1 == 0 || cell2 == 0 || cell3 == 0 ) {
@@ -156,8 +246,8 @@ function checkForGameOver(socket) {
       //check for win condition (all cells equal)
       if (cell1 === cell2 && cell2 === cell3 ) {
           // send round won to clients and return true
-          socket.emit("gameWon", currentPlayer.id)
-          socket.broadcast.emit("gameWon", currentPlayer.id)
+          io.in(currentRoom.roomID).emit("gameWonTTT",
+                                          currentRoom.currentPlayerID);
           return true;
       }
 
@@ -170,35 +260,283 @@ function checkForGameOver(socket) {
   return false
 }
 
-function changeCurrentPlayer(socket) {
-  socket.emit('notTurn', '')  // Send to current player
+// Changes current player
+// If playerOne was last player, playerTwo is new player and vis versa
+// Unlocks game after completeing operation
+function changeCurrentPlayer(socket, io, currentRoom) {
+  // Send to current player
+  io.to(currentRoom.currentPlayerID).emit('notTurnTTT', '')
 
-  if(currentPlayer.id == playerOne.id) {
-    currentPlayer = playerTwo;
+  // Switch current player
+  if(currentRoom.currentPlayerID == currentRoom.playerOneID) {
+    currentRoom.currentPlayerID = currentRoom.playerTwoID;
   }
   else {
-    currentPlayer = playerOne;
+    currentRoom.currentPlayerID = currentRoom.playerOneID;
   }
 
-  socket.to(currentPlayer.id).emit('playerTurn', '')
-  gameLocked = false;
+  // Send to new current player
+  io.to(currentRoom.currentPlayerID).emit('playerTurnTTT', '')
+  currentRoom.gameLocked = false;
 }
 
-function restartGame(socket) {
-  gameBoard = [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
-  currentPlayer = playerOne
-  // Send data to clients TODO
-  socket.emit('updateGameBoard', gameBoard)
-  socket.broadcast.emit('updateGameBoard', gameBoard)
-  if(playerOne != null && playerTwo != null) {
-    if(socket.id == playerOne.id) {
-      socket.emit('playerTurn', '')
-      socket.to(playerTwo.id).emit('notTurn', '')
-    }
-    else {
-      socket.to(playerOne.id).emit('playerTurn', '')
-      socket.emit('notTurn', '')
-    }
-    gameLocked = false;
+// Resets game board, and sends update message to clients with updated gameboard
+// Unlocks game after operation
+function restartGame(socket, io) {
+  let currentRoom = getRoomFromPlayerID(socket.id, playerList, roomList);
+
+  // Resets gameboard and current player
+  currentRoom.gameBoard = [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
+  currentRoom.currentPlayerID = currentRoom.playerOneID
+  // Send data to clients
+  io.in(currentRoom.roomID).emit("updateGameBoardTTT", currentRoom.gameBoard);
+
+  // Send current player turn to client and turn off game lock
+  io.to(currentRoom.playerOneID).emit("playerTurnTTT", "");
+  io.to(currentRoom.playerTwoID).emit("notTurnTTT", "");
+  // Unlocks game
+  currentRoom.gameLocked = false;
+}
+
+// Room functions
+
+// Check if queue has enough players to start game
+function checkToCreateRoom(queueList) {
+  if(queueList.length < 2) {
+    return false;
   }
+  return true;
+}
+
+// Creates a room, assigns players to said room, pushes new room to room list,
+// and returns room object
+function createRoom(queueList, gameBoard, gameTitle) {
+  let roomID = generateRandomID();
+  let roomObject = null
+  let playerOne = queueList[0];
+  let playerTwo = queueList[1];
+  let copiedGameBoard = [...gameBoard];
+
+  // Remove player one and two from queue
+  queueList.splice(0, 2);
+
+  // Create new room and assign players
+  playerOne.currentRoomID = roomID;
+  playerTwo.currentRoomID = roomID;
+  roomObject = new Room(roomID, playerOne.id, playerTwo.id, copiedGameBoard,
+                        gameTitle);
+  roomList.push({"RoomID": roomID, "RoomObject": roomObject});
+
+  // return room object
+  return roomObject;
+}
+
+// Removes room from room list
+function removeRoom(roomIDToRemove) {
+  let index = 0;
+
+  while(index < roomList.length) {
+    if(roomList[index]["RoomID"] == roomIDToRemove) {
+      // Removes array element at index: `index`
+      roomList.splice(index, 1);
+
+      return;
+    }
+    index++;
+  }
+}
+
+// Removes rooms that are empty from room list
+function removeEmptyRooms(roomList) {
+  let index = 0;
+
+  while(index < roomList.length) {
+    if(roomList[index]["RoomObject"].playerOneID == null
+       && roomList[index]["RoomObject"].playerTwoID == null) {
+        roomList.splice(index, 1);
+        index--;
+    }
+    index++;
+  }
+}
+
+function closeRoom(playerID, io) {
+  let player = getPlayerFromID(playerID, playerList);
+  io.in(player.currentRoomID).emit("returnToLobby", "");
+  removeRoom(player.currentRoomID);
+}
+
+// Generate random ID (string of a number)
+function generateRandomID() {
+  let randomID = 0;
+  let index = 0;
+  let runLoop = true;
+  // Check if randomID is currently in use
+  while(runLoop) {
+    runLoop = false;
+    randomID = Math.floor(Math.random() * 10000);
+    while(index < roomList.length) {
+      if(roomList[index]["roomID"] == randomID) {
+        runLoop = true;
+      }
+      index++;
+    }
+    index = 0;
+  }
+
+  return randomID.toString();
+}
+
+// Array management functions
+
+// Adds player to player list
+function addPlayerToplayerList(playerID, playerList) {
+  playerList.push(new Player(playerID));
+}
+
+// Removes player from player list
+function removePlayerFromplayerList(playerID, playerList) {
+  let index = 0;
+
+  while(index < playerList.length) {
+    if(playerList[index].id == playerID) {
+      // Removes array element at index: `index`
+      playerList.splice(index, 1);
+
+      return;
+    }
+    index++;
+  }
+}
+
+// Adds player to queue list
+function addPlayerToQueueList(playerID, playerList, queueList) {
+  let player;
+  let index = 0;
+
+  while(index < playerList.length) {
+    if(playerList[index].id == playerID) {
+      player = playerList[index];
+    }
+    index++;
+  }
+
+
+  if(player == null) {
+    return;
+  }
+
+  queueList.push(player);
+}
+
+// Removes player from queue list
+function removePlayerFromQueueList(playerID, queueList) {
+  let index = 0;
+
+  while(index < queueList.length) {
+    if(queueList[index].id == playerID) {
+      // Removes array element at index: `index`
+      queueList.splice(index, 1);
+
+      return;
+    }
+    index++;
+  }
+}
+
+// Get functions
+
+// Returns player from player id
+function getPlayerFromID(playerID, playerList) {
+  let index = 0;
+
+  while(index < playerList.length) {
+    if(playerList[index].id == playerID) {
+      return playerList[index];
+    }
+    index++;
+  }
+
+  return null;
+}
+
+// Returns room from player id
+function getRoomFromPlayerID(playerID, playerList, roomList) {
+  let player = getPlayerFromID(playerID, playerList);
+  let index = 0;
+
+  while(index < roomList.length) {
+    if(roomList[index]["RoomObject"].roomID == player.currentRoomID) {
+      return roomList[index]["RoomObject"];
+    }
+    index++;
+  }
+
+  return null;
+}
+
+// Returns room from player object
+function getRoomFromPlayer(player, roomList) {
+  let index = 0;
+
+  while(index < roomList.length) {
+    if(roomList[index]["RoomObject"].roomID == player.currentRoomID) {
+      return roomList[index]["RoomObject"];
+    }
+    index++;
+  }
+
+  return null;
+}
+
+// Returns room object from room id
+function getCurrentRoomFromID(roomID, roomList) {
+  let index = 0;
+
+  while(index < roomList.length) {
+    if(roomList[index]["RoomObject"].roomID == roomID) {
+      return roomList[index]["RoomObject"];
+    }
+    index++;
+  }
+
+  return null;
+}
+
+// Log functions
+
+function printPlayerList(playerList) {
+  let index = 0;
+
+  console.log("Current Player List");
+  while(index < playerList.length) {
+    console.log(playerList[index]);
+    index++;
+  }
+
+  console.log("\n\n");
+}
+
+function printQueueList(queueList) {
+  let index = 0;
+
+  console.log("Current Queue List");
+  while(index < queueList.length) {
+    console.log(queueList[index]);
+    index++;
+  }
+
+  console.log("\n\n");
+}
+
+function printRoomList(roomList) {
+  let index = 0;
+
+  console.log("Current room List");
+  while(index < roomList.length) {
+    console.log(roomList[index]);
+    index++;
+  }
+
+  console.log("\n\n");
 }
