@@ -221,12 +221,6 @@ function checkForGameOver(socket, io, currentRoom) {
   let index = 0;
   let roundDraw = !currentRoom.gameBoard.includes( 0 );
 
-  if(roundDraw) {
-    // Send draw to clients and return true
-    io.in(currentRoom.roomID).emit("gameDrawTTT", "Draw")
-    return true;
-  }
-
   //begin loop to test win conditions
   while( index <= 7) {
 
@@ -259,6 +253,12 @@ function checkForGameOver(socket, io, currentRoom) {
       index++;
   }
   //end testing loop
+  
+  if(roundDraw) {
+    // Send draw to clients and return true
+    io.in(currentRoom.roomID).emit("gameDrawTTT", "Draw")
+    return true;
+  }
 
   //otherwise, assume no winner
   return false
