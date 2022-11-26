@@ -103,6 +103,9 @@ io.on('connection', (socket) => {
   })
 
   socket.on("rejoinRoomTTT", (arg) => {
+    // TODO: Figure out URL to rejoin room
+
+
     let index = 0;
     let player = null;
     // Loop through room list
