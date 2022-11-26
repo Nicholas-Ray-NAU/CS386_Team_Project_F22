@@ -102,50 +102,29 @@ io.on('connection', (socket) => {
     io.in(roomID).emit("moveToTicTacToe", "");
   })
 
-  socket.on("rejoinRoomTTT", (arg) => {
-    // TODO: Figure out URL to rejoin room
+  socket.on("rejoinRoomTTT", (roomID) => {
+    room = getCurrentRoomFromID(roomID, roomList);
+    if(room.playerOneID == null) {
+      // Set client to player one in current room
+      socket.join(room.roomID);
+      room.playerOneID = socket.id;
+      room.currentPlayerID = socket.id;
 
+      player = getPlayerFromID(socket.id, playerList);
+      player.currentRoomID = room.roomID;
 
-    let index = 0;
-    let player = null;
-    // Loop through room list
-    while(index < roomList.length) {
+      io.to(socket.id).emit("playerTurnTTT", "");
+    }
+    else if (room.playerTwoID == null) {
 
-      // Check if room is a Tic Tac Toe room
-      if(roomList[index]["RoomObject"].gameTitle == "TTT") {
+      // Set client to player two  in current room
+      socket.join(room.roomID);
+      room.playerTwoID = socket.id;
 
-        // Check if either player is empty
-        if(roomList[index]["RoomObject"].playerOneID == null) {
+      player = getPlayerFromID(socket.id, playerList);
+      player.currentRoomID = room.roomID;
 
-          // Set client to player one in current room
-          socket.join(roomList[index]["RoomObject"].roomID);
-          roomList[index]["RoomObject"].playerOneID = socket.id;
-          roomList[index]["RoomObject"].currentPlayerID = socket.id;
-
-          player = getPlayerFromID(socket.id, playerList);
-          player.currentRoomID = roomList[index]["RoomObject"].roomID;
-
-          io.to(socket.id).emit("playerTurnTTT", "");
-          // Set index to roomList length to get out of loop
-          index = roomList.length;
-        }
-        else if (roomList[index]["RoomObject"].playerTwoID == null) {
-
-          // Set client to player two  in current room
-          socket.join(roomList[index]["RoomObject"].roomID);
-          roomList[index]["RoomObject"].playerTwoID = socket.id;
-
-          player = getPlayerFromID(socket.id, playerList);
-          player.currentRoomID = roomList[index]["RoomObject"].roomID;
-
-          io.to(socket.id).emit("notTurnTTT", "");
-          // Set index to roomList length to get out of loop
-          index = roomList.length;
-        }
-
-      }
-
-      index++;
+      io.to(socket.id).emit("notTurnTTT", "");
     }
   })
 
@@ -253,7 +232,7 @@ function checkForGameOver(socket, io, currentRoom) {
       index++;
   }
   //end testing loop
-  
+
   if(roundDraw) {
     // Send draw to clients and return true
     io.in(currentRoom.roomID).emit("gameDrawTTT", "Draw")

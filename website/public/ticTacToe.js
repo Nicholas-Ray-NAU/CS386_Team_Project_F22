@@ -1,5 +1,10 @@
+var name = window.localStorage.getItem("name");
+var roomID = window.localStorage.getItem("roomID");
+var hashID = window.localStorage.getItem("hashID");
+
+
 var socket = io();
-socket.emit('rejoinRoomTTT', "");
+socket.emit('rejoinRoomTTT', roomID);
 
 //Listeners (on-click)
 document.querySelector( '.game--restart' ).addEventListener(
