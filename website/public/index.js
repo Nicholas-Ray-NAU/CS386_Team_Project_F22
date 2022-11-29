@@ -1,14 +1,25 @@
 var socket = io()
 
-document.getElementById( 'joinTTT' ).addEventListener('click', sendJoinMessage );
+document.getElementById( 'joinTTT' ).addEventListener(
+                                          'click', sendJoinMessageTTT );
+document.getElementById( 'joinMancala' ).addEventListener(
+                                          'click', sendJoinMessageMancala );
 
-function sendJoinMessage() {
+function sendJoinMessageTTT() {
   socket.emit("joinTicTacToeQueue", "");
+}
+
+function sendJoinMessageMancala() {
+  socket.emit("joinMancalaQueue", "");
 }
 
 // Listeners
 socket.on('moveToTicTacToe', (arg) => {
   window.location.href = "ticTacToe.html";
+})
+
+socket.on('moveToMancala', (arg) => {
+  window.location.href = "mancala.html";
 })
 
 socket.on("setName", (name) => {
@@ -22,4 +33,9 @@ socket.on("setHashID", (hashID) => {
 socket.on('joinTicTacToeRoom', (roomID) => {
   window.localStorage.setItem("roomID", roomID)
   socket.emit("joinTicTacToeRoom", roomID)
+})
+
+socket.on('joinMancalaRoom', (roomID) => {
+  window.localStorage.setItem("roomID", roomID)
+  socket.emit("joinMancalaRoom", roomID)
 })
