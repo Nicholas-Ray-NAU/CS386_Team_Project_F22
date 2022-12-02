@@ -1,9 +1,10 @@
-var socket = io()
+var socket = io();
+socket.emit('rejoinRoomTTT', "");
 
 //Listeners (on-click)
 document.querySelector( '.game--restart' ).addEventListener(
                                                          'click', restartGame );
-const GAMEBOARDCONTAINER = document.getElementById("game-container");
+const GAMEBOARDCONTAINER = document.getElementById("game--container");
 const GAMEBOARDSIZE = 9;
 
 const statusDisplay = document.querySelector('.game--status');
@@ -37,12 +38,12 @@ function handleCellClick( clickedCellEvent ) {
                                                         'data-cell-index' ))
 
   // Send event to server
-  socket.emit('cellClicked', clickedCellIndex)
+  socket.emit('cellClickedTTT', clickedCellIndex)
 }
 
 function restartGame() {
   // Send restart command to server
-  socket.emit('restartGame', null)
+  socket.emit('restartGameTTT', null)
   statusDisplay.innerHTML = ""
 }
 
@@ -91,28 +92,36 @@ function handlePlayerEndTurn() {
   statusDisplay.innerHTML = currentPlayerNotTurn();
 }
 
-socket.on('updateGameCell', ( cellInfo ) => {
+socket.on('updateGameCellTTT', ( cellInfo ) => {
   updateGameCell( cellInfo );
 })
 
-socket.on('updateGameBoard', (gameBoard) => {
+socket.on('updateGameBoardTTT', (gameBoard) => {
   updateGameBoard( gameBoard );
 })
 
-socket.on('gameWon', (winnerId) => {
+socket.on('gameWonTTT', (winnerId) => {
   gameWon( winnerId );
 })
 
-socket.on('gameDraw', (arg) => {
+socket.on('gameDrawTTT', (arg) => {
   gameDraw( );
 })
 
-socket.on('playerTurn', (arg) => {
+socket.on('playerTurnTTT', (arg) => {
   handlePlayerStartTurn();
 })
 
-socket.on('notTurn', (arg) => {
+socket.on('notTurnTTT', (arg) => {
   handlePlayerEndTurn();
+})
+
+socket.on('reject', (arg) => {
+  window.location.href = "/rejectPage";
+})
+
+socket.on('returnToLobby', (arg) => {
+  window.location.href = "../index.html";
 })
 
 createGameBoard();

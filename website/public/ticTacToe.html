@@ -15,17 +15,28 @@
             <img src="images/logo.png" class="logo">
             <span class="menu">
               <a href="index.html">Home</a>
-              <a href="login.html">Login</a>
-			  <a href="signUp.html">Sign Up</a>
+              <a href="index.html">Login</a>
             </span>
         </header>
             <div id="main_content">
-              <div id="joinTTT">Join Tic Tac Toe</div>
+                <div class="col-left">
+                  <h2>Tic Tac Toe</h2>
+                  <div class="game--status"></div>
+                  <div  id="game--container" class="game--container">
+                  </div>
+                </div>
+                <div class="col-right">
+                  <h2>In-Game Chat</h2>
+                  <div id="chat">
+                      CHAT WILL GO HERE
+                  </div>
+                  <button class="game--restart ingame_button">Reset Game</button>
+                </div>
             </div>
         <footer id="footer" class="footer">
             CS386 Team project
         </footer>
-        <script type="module" src="index.js"></script>
+        <script type="module" src="ticTacToe.js"></script>
         <script src="/socket.io/socket.io.js"></script>
     </body>
 </html>

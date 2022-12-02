@@ -163,3 +163,158 @@ button:hover {
   margin-top: 10px;
   color: #5B58EA;
 }
+
+.Wrapper{
+  display: grid;
+  grid-template-columns: repeat(100, 1%);
+  grid-template-rows: repeat(22, 25px);
+
+}
+
+
+.MiddleBox{
+ display: grid;
+ grid-row-start: 8;
+ grid-row-end: 20;
+ grid-column-start: 40;
+ grid-column-end: 60;
+ background-color:rgb(176,224,230);
+ align-items: center;
+ justify-items: center;
+ border: solid;
+ border-color: rgb(50, 175, 255);
+}
+
+.Username{
+ display: grid;
+ grid-row-start: 11;
+ grid-row-end: 13;
+ grid-column-start: 44;
+ grid-column-end: 56;
+ width: 100%;
+ height: 40%;
+ border: solid;
+ border-color:rgb(200, 200, 200);
+}
+
+.UsernameLabel{
+ display: grid;
+ grid-row-start: 9;
+ grid-row-end: 11;
+ grid-column-start: 43;
+ grid-column-end: 57;
+}
+
+.Password{
+ display: grid;
+ grid-row-start: 15;
+ grid-row-end: 17;
+ grid-column-start: 44;
+ grid-column-end: 56;
+ width: 100%;
+ height: 40%;
+ border: solid;
+ border-color:rgb(200, 200, 200);
+}
+
+.PasswordLabel{
+ display: grid;
+ grid-row-start: 13;
+ grid-row-end: 15;
+ grid-column-start: 43;
+ grid-column-end: 57;
+}
+
+.Submit{
+ display: grid;
+ grid-row-start: 17;
+ grid-row-end: 19;
+ grid-column-start: 45;
+ grid-column-end: 55;
+ align-items: center;
+ background-color:rgb(210, 210, 210);
+ border: solid;
+ border-color:rgb(190,190,190); 
+}
+
+.logo2 {
+ display: grid;
+ grid-row-start: 1;
+ grid-column-start: 40;
+ grid-column-end: 50;
+ width: 200%;
+ height: 175px;
+}
+
+.PasswordSU{
+ display: grid;
+ grid-row-start: 15;
+ grid-row-end: 17;
+ grid-column-start: 47;
+ grid-column-end: 57;
+ width: 100%;
+ height: 40%;
+ border: solid;
+ border-color:rgb(200, 200, 200);
+}
+
+.PasswordLabelSU{
+ display: grid;
+ grid-row-start: 15;
+ grid-column-start: 41;
+}
+
+.UsernameSU{
+ display: grid;
+ grid-row-start: 13;
+ grid-row-end: 15;
+ grid-column-start: 47;
+ grid-column-end: 57;
+ width: 100%;
+ height: 40%;
+ border: solid;
+ border-color:rgb(200, 200, 200);
+}
+
+.UsernameLabelSU{
+ display: grid;
+ grid-row-start: 13;
+ grid-column-start: 41;
+}
+
+.LastName{
+ display: grid;
+ grid-row-start: 11;
+ grid-row-end: 13;
+ grid-column-start: 47;
+ grid-column-end: 57;
+ width: 100%;
+ height: 40%;
+ border: solid;
+ border-color:rgb(200, 200, 200);
+}
+
+.LastNameLabel{
+ display: grid;
+ grid-row-start: 11;
+ grid-column-start: 42;
+}
+
+
+.FirstName{
+ display: grid;
+ grid-row-start: 9;
+ grid-row-end: 11;
+ grid-column-start: 47;
+ grid-column-end: 57;
+ width: 100%;
+ height: 40%;
+ border: solid;
+ border-color:rgb(200, 200, 200);
+}
+
+.FirstNameLabel{
+ display: grid;
+ grid-row-start: 9;
+ grid-column-start: 42;
+}

@@ -19,13 +19,26 @@
 			  <a href="signUp.html">Sign Up</a>
             </span>
         </header>
-            <div id="main_content">
-              <div id="joinTTT">Join Tic Tac Toe</div>
-            </div>
-        <footer id="footer" class="footer">
-            CS386 Team project
-        </footer>
+		
+		<div class="Wrapper">
+			<p class="MiddleBox"> </p>
+				<img src="images/logo2.png" class="logo2">
+			
+				<label class="UsernameLabel" for="Username">
+					Username:
+				</label>
+					<input class="Username" name="Username" type="text">
+					
+
+				<label class="PasswordLabel" for="Password">
+					Password:
+				</label>
+					<input class="Password" name="Password" type="text">
+					
+				<button class="Submit" type="submit">Login</button>
+		</div>
+
         <script type="module" src="index.js"></script>
-        <script src="/socket.io/socket.io.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
     </body>
 </html>
