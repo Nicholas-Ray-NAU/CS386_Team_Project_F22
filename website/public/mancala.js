@@ -8,10 +8,18 @@ socket.emit('rejoinRoomMancala', roomID);
 //Listeners (on-click)
 document.querySelector( '.game--restart' ).addEventListener(
                                                          'click', restartGame );
+
+
+document.getElementById("chat-form").addEventListener("submit", handleChatSubmit
+                                                              , false);
+
 const GAMEBOARDCONTAINER = document.getElementById("game--container");
 const GAMEBOARDSIZE = 14;
 const PLAYERONEMANCALA = 6;
 const PLAYERTWOMANCALA = 13;
+const ERROR_USERNAME = 'ERROR';
+const ERROR_TYPE = 'error';
+const MESSAGE_TYPE = 'message';
 
 const statusDisplay = document.querySelector('.game--status');
 const winningMessage = () => `You won!`;
@@ -22,6 +30,7 @@ const currentPlayerNotTurn = () => `It's not your turn`;
 
 let gameBoard = [];
 let isPlayerOne = true;
+var usernameValue = 'Default_User';   // REMOVE LATER TODO
 
 function createGameBoard() {
   let index;
@@ -130,6 +139,50 @@ function handlePlayerEndTurn() {
   statusDisplay.innerHTML = currentPlayerNotTurn();
 }
 
+function handleChatSubmit(event) {
+  event.preventDefault();
+
+  //capture chat string
+  var capturedMessage = document.getElementById("chat-input");
+  var rawMessage = capturedMessage.value;
+
+  //If the string was captured, format it for sending
+  if (rawMessage.toString().length > 0) {
+      var messageData = {
+          type: MESSAGE_TYPE,
+          username: usernameValue,
+          message: rawMessage
+      }
+  }
+  //otherwise, assume failure to capture115
+  else {
+
+      //format error message
+      var messageData = {
+          type: ERROR_TYPE,
+          username: ERROR_USERNAME,
+          message: "Failed to capture chat message"
+      }
+
+
+  }
+
+  //send message data to be handled by server
+  socket.emit("sendChatMsg", messageData)
+
+  //clear captured message
+  capturedMessage.value = "";
+
+}
+
+function MessageAdd(messageData) {
+    //locate chat box
+    var chat_messages = document.getElementById("chat-messages");
+
+    //append chat data to end of chat box
+    chat_messages.insertAdjacentHTML("beforeend", messageData);
+    chat_messages.scrollTop = chat_messages.scrollHeight;
+}
 
 socket.on('updateGameBoardMancala', (gameBoard) => {
   updateGameBoard( gameBoard );
@@ -166,6 +219,18 @@ socket.on('reject', (arg) => {
 
 socket.on('returnToLobby', (arg) => {
   window.location.href = "../index.html";
+})
+
+socket.on('sendChatMsg', (messageData) => {
+  // For debugging
+  if (messageData.type == ERROR_TYPE){
+      console.log(messageData.username + ': ' + messageData.message);
+  }
+
+  if (messageData.type == MESSAGE_TYPE){
+    MessageAdd('<div class="message">' + messageData.username + ': '
+    + messageData.message + '</div>')
+  }
 })
 
 createGameBoard();

@@ -29,7 +29,11 @@
                 <div class="col-right">
                   <h2>In-Game Chat</h2>
                   <div id="chat">
-                      CHAT WILL GO HERE
+                    <div id="chat-messages"></div>
+                    <form id="chat-form" method="post">
+                      <input id="chat-input" type="text" name="message" placeHolder="Type a message..." maxlength="255"/>
+                      <button type="submit">Send</button>
+                    </form>
                   </div>
                   <button class="game--restart ingame_button">Reset Game</button>
                 </div>

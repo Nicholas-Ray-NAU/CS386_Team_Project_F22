@@ -194,3 +194,32 @@ button:hover {
   margin-top: 10px;
   color: #5B58EA;
 }
+
+div#chat-messages {
+    margin: 0.5em;
+    height: 80%;
+    background: White;
+    padding: 8px 15px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+form#chat-form input,
+form#chat-form button {
+    border: 1px solid #dfdbdb;
+    background: White;
+    font-weight: 300;
+    font-size: 12pt;
+    padding: 8px 15px;
+}
+
+form#chat-form input {
+    color: #001A23;
+    width: 65%;
+}
+
+form#chat-form button {
+    background: #5B58EA;
+    color: White;
+    cursor: pointer;
+}

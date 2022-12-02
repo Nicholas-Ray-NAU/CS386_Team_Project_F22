@@ -213,6 +213,11 @@ io.on('connection', (socket) => {
     restartGameTTT(socket, io)
   })
 
+  socket.on("sendChatMsg", (messageData) => {
+    let currentRoom = getRoomFromPlayerID(socket.id, playerList, roomList);
+    io.in(currentRoom.roomID).emit("sendChatMsg", messageData);
+  })
+
   socket.on('disconnect', () => {
     numUsers--;
     // Close room if player was in room, and send other player to lobby
