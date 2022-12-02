@@ -5,11 +5,17 @@ document.getElementById( 'joinTTT' ).addEventListener(
 document.getElementById( 'joinMancala' ).addEventListener(
                                           'click', sendJoinMessageMancala );
 
+const loading = document.getElementById( 'loading' )
+
 function sendJoinMessageTTT() {
+  loading.classList.remove("loading-off");
+  loading.classList.add("loading-on");
   socket.emit("joinTicTacToeQueue", "");
 }
 
 function sendJoinMessageMancala() {
+  loading.classList.remove("loading-off");
+  loading.classList.add("loading-on");
   socket.emit("joinMancalaQueue", "");
 }
 
