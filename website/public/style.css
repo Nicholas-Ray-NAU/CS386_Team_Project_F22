@@ -168,7 +168,6 @@ button:hover {
   display: grid;
   grid-template-columns: repeat(100, 1%);
   grid-template-rows: repeat(22, 25px);
-
 }
 
 
@@ -317,4 +316,46 @@ button:hover {
  display: grid;
  grid-row-start: 9;
  grid-column-start: 42;
+}
+
+
+
+.profile{
+display: grid;
+grid-row-start:2;
+grid-row-end: 3;
+grid-column-start: 1;
+grid-column-end: 30;
+font-size: 50px;
+}
+
+.fullname{
+display: grid;
+grid-row-start:7;
+grid-row-end:8;
+grid-column-start: 1;
+grid-column-end: 22;
+font-size: 30px;	
+}
+
+.username{
+display: grid;
+grid-row-start:10;
+grid-row-end:13;
+grid-column-start: 1;
+grid-column-end: 22;
+font-size: 30px;	
+}
+
+
+.box{
+ display: grid;
+ grid-row-start: 5;
+ grid-row-end: 13;
+ grid-column-start: 40;
+ grid-column-end: 45;
+ background-color:rgb(176,224,230);
+ border: solid;
+ border-width: 15px;
+ border-color:rgb(176,220,230);
 }

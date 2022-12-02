@@ -1,92 +1,40 @@
+var socket = io()
 
-
-
-
+//once button is pressed, check to see if hash is in the data file
 document.querySelector(".Submit").onclick = function() {
-	
-	//get user data form text boxes
+
+	//get the user data they input
 	let username = document.querySelector('.Username').value
 	let password = document.querySelector('.Password').value
+
+	//if anything enetered has a space, throw error
+	if( /\s/.test(username) || /\s/.test(password) ){
+		window.alert("Input Invalid: Entries cannot contain Spaces");	
+	}
 	
-	//ini0tialize the user exists flag to false
-	let userExists = false;
+	//username and password length test
+	else if(username.length == 0 || password.length == 0){
+		window.alert("Input Invalid: Entries cannot be empty");	
+	}
 	
-	//initialize the user data array for easy access to data
-	const userData = [username, password];
-	
-	//check if user already exists
-	fs.readFile('userData.txt', function(err, data){
-		
-		//loop through all users in data file
-		for(let i=0; i < data.length; i++){
-			
-			//if the username exists, exit the loop
-			if(username == data[i]//[index of username in data])
-				
-				userExists = true;
-				break;
-				
-		}
-
-		// if username is not taken check if password is correct
-		if(userExists){
-			
-			//check if password is right
-			if(password == data[i][1]){ //this is the password in the data file
-			
-				/* login stuff HERE 
-				#######################################
-				*/
-					
-				//send user to home page
-				window.location.replace("/index.html");
-			}
-			
-			//otherwise password is wrong and they have to redo it
-			else{
-				window.alert("ERROR: Password is incorrect");
-			}
-			
-		}
-		
-		//otherwise the username doesnt exist
-		else{
-			window.alert("ERROR: Username not found");	
-		}
-		
-		
-	});
-};
-
-
-
-
-/*const fs = require('fs')
-
-const SUBMIT_BUTTON = document.getElementsByClassName("Submit");
-
-let firstName = document.getElementsByName('FirstName');
-let lastName = document.getElementsByName('LastName'); 
-let username = document.getElementsByName('Username');
-let password = document.getElementsByName('Password');
-
-const userData = firstName + ', ' + lastName + ', ' + userName + ', ' + password;
-
-
-function signUp (userData) {
-	fs.writeFile('userData.txt' userData, (err) =>{
-		if (err) throw err;
-	})
+	//otherwise login and password are valid inputs and try to login
+	else{
+		socket.emit('loginAttempt', username, password);
+	}
 }
 
-SUBMIT_BUTTON.addEventListener('click', signUp(userData));
 
+socket.on('loginAccepted', (...args) => {
+	/* login stuff HERE 
+	#######################################
+	*/
+	window.location.assign("/indexloggedIn.html");
+});
 	
-const SUBMIT_BUTTON = document.getElementsByClassName("Submit");
-SUBMIT_BUTTON.addEventListener('click', console.log("IT WORKS BIIIITCH"));
+socket.on('passwordFailed', (arg) => {
+	window.alert("The password entered is incorrect");
+});
 
-
-
-<script type="module" src="index.js"></script>
-<script src="/socket.io/socket.io.js"></script>
-*/
+socket.on('userNonexistant', (arg) => {
+	window.alert("There is no account with that username");
+});
