@@ -175,6 +175,7 @@ function handleChatSubmit(event) {
 
 }
 
+// Adds chat message to chat div
 function MessageAdd(messageData) {
     //locate chat box
     var chat_messages = document.getElementById("chat-messages");
