@@ -1,4 +1,5 @@
 // Setup basic express server
+const fs = require("fs");
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -422,7 +423,7 @@ function restartGameMancala(socket, io) {
   let currentRoom = getRoomFromPlayerID(socket.id, playerList, roomList);
 
   // Resets gameboard and current player
-  currentRoom.gameBoard = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1];
+  currentRoom.gameBoard = gameBoardMancala;
   currentRoom.currentPlayerID = currentRoom.playerOneID
   // Send data to clients
   io.in(currentRoom.roomID).emit("updateGameBoardMancala", currentRoom.gameBoard);
