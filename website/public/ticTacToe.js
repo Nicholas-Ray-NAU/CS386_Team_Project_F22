@@ -1,7 +1,7 @@
 var name =  window.localStorage.getItem("name");
+var username =  window.localStorage.getItem("username");
 var roomID = window.localStorage.getItem("roomID");
 var hashID = window.localStorage.getItem("hashID");
-
 
 var socket = io();
 socket.emit('rejoinRoomTTT', roomID);
@@ -26,7 +26,6 @@ const currentPlayerTurn = () => `It's your turn`;
 const currentPlayerNotTurn = () => `It's not your turn`;
 
 let gameBoard = [];
-var usernameValue = 'Default_User';   // REMOVE LATER TODO
 
 function createGameBoard() {
   let index;
@@ -115,7 +114,7 @@ function handleChatSubmit(event) {
   if (rawMessage.toString().length > 0) {
       var messageData = {
           type: MESSAGE_TYPE,
-          username: usernameValue,
+          username: username,
           message: rawMessage
       }
   }
