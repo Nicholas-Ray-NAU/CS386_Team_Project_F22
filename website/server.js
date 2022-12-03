@@ -1,4 +1,5 @@
 // Setup basic express server
+const fs = require("fs");
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -44,6 +45,15 @@ class Player {
   }
 }
 
+
+let roomList = [];
+let playerList = [];
+let ticTacToeQueue = [];
+let mancalaQueue = [];
+let numUsers = 0;
+let gameBoardTTT = [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
+let gameBoardMancala = [4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0];
+
 let roomList = [];
 let playerList = [];
 let ticTacToeQueue = [];
@@ -61,7 +71,9 @@ const winningConditions = [
     [2, 4, 6]
 ];
 
-
+const PLAYERONEMANCALA = 6;
+const PLAYERTWOMANCALA = 13;
+const MANCALABOARDSIZE = 14;
 
 io.on('connection', (socket) => {
   numUsers++;
@@ -126,9 +138,8 @@ io.on('connection', (socket) => {
   // #########################################################################
 
 
-
-
   // Queuing
+
 
   socket.on('joinTicTacToeQueue', (arg) => {
     let roomID;
@@ -150,7 +161,77 @@ io.on('connection', (socket) => {
     }
   });
 
+  socket.on('joinMancalaQueue', (arg) => {
+    let roomID;
+    addPlayerToQueueList(socket.id, playerList, mancalaQueue);
+    printQueueList(mancalaQueue);
 
+    // Check if there are enough players in queue to create room
+    if(checkToCreateRoom(mancalaQueue)) {
+      roomObject = createRoom(mancalaQueue, gameBoardMancala, "Mancala");
+
+      // Assign rooms to clients
+      io.to(roomObject.playerOneID).emit("joinMancalaRoom",
+                                              roomObject.roomID);
+      io.to(roomObject.playerTwoID).emit("joinMancalaRoom",
+                                              roomObject.roomID);
+
+      // Send client command to change page
+      socket.to(roomObject.roomID).emit("moveToMancala", "");
+    }
+  });
+
+  // Mancala
+
+  socket.on("joinMancalaRoom", (roomID) => {
+    let currentRoom = getCurrentRoomFromID(roomID, roomList);
+    // Reset players to null to reassign after they reconnect
+    currentRoom.playerOneID = null;
+    currentRoom.playerTwoID = null;
+    currentRoom.currentPlayerID = null;
+    // Have client join room
+    socket.join(roomID);
+    // Send client command to change page
+    io.in(roomID).emit("moveToMancala", "");
+  })
+
+  socket.on("rejoinRoomMancala", (roomID) => {
+    room = getCurrentRoomFromID(roomID, roomList);
+    if(room.playerOneID == null) {
+      // Set client to player one in current room
+      socket.join(room.roomID);
+      room.playerOneID = socket.id;
+      room.currentPlayerID = socket.id;
+
+      player = getPlayerFromID(socket.id, playerList);
+      player.currentRoomID = room.roomID;
+
+      io.to(socket.id).emit("playerAssignment", 1);
+      io.to(socket.id).emit("playerTurnMancala", "");
+    }
+    else if (room.playerTwoID == null) {
+
+      // Set client to player two  in current room
+      socket.join(room.roomID);
+      room.playerTwoID = socket.id;
+
+      player = getPlayerFromID(socket.id, playerList);
+      player.currentRoomID = room.roomID;
+
+      io.to(socket.id).emit("playerAssignment", 2);
+      io.to(socket.id).emit("notTurnMancala", "");
+    }
+    console.log(room.gameBoard);
+    io.in(roomID).emit("updateGameBoardMancala", room.gameBoard);
+  })
+
+  socket.on("cellClickedMancala", (cellClickedIndex) => {
+    handleCellClickedMancala(socket, io, cellClickedIndex)
+  })
+
+  socket.on("restartGameMancala", (arg) => {
+    restartGameMancala(socket, io)
+  })
 
   // Tic Tac Toe
 
@@ -166,59 +247,44 @@ io.on('connection', (socket) => {
     io.in(roomID).emit("moveToTicTacToe", "");
   })
 
-  socket.on("rejoinRoomTTT", (arg) => {
-    // TODO: Figure out URL to rejoin room
+  socket.on("rejoinRoomTTT", (roomID) => {
+    room = getCurrentRoomFromID(roomID, roomList);
+    if(room.playerOneID == null) {
+      // Set client to player one in current room
+      socket.join(room.roomID);
+      room.playerOneID = socket.id;
+      room.currentPlayerID = socket.id;
 
+      player = getPlayerFromID(socket.id, playerList);
+      player.currentRoomID = room.roomID;
 
-    let index = 0;
-    let player = null;
-    // Loop through room list
-    while(index < roomList.length) {
+      io.to(socket.id).emit("playerTurnTTT", "");
+    }
+    else if (room.playerTwoID == null) {
 
-      // Check if room is a Tic Tac Toe room
-      if(roomList[index]["RoomObject"].gameTitle == "TTT") {
+      // Set client to player two  in current room
+      socket.join(room.roomID);
+      room.playerTwoID = socket.id;
 
-        // Check if either player is empty
-        if(roomList[index]["RoomObject"].playerOneID == null) {
+      player = getPlayerFromID(socket.id, playerList);
+      player.currentRoomID = room.roomID;
 
-          // Set client to player one in current room
-          socket.join(roomList[index]["RoomObject"].roomID);
-          roomList[index]["RoomObject"].playerOneID = socket.id;
-          roomList[index]["RoomObject"].currentPlayerID = socket.id;
-
-          player = getPlayerFromID(socket.id, playerList);
-          player.currentRoomID = roomList[index]["RoomObject"].roomID;
-
-          io.to(socket.id).emit("playerTurnTTT", "");
-          // Set index to roomList length to get out of loop
-          index = roomList.length;
-        }
-        else if (roomList[index]["RoomObject"].playerTwoID == null) {
-
-          // Set client to player two  in current room
-          socket.join(roomList[index]["RoomObject"].roomID);
-          roomList[index]["RoomObject"].playerTwoID = socket.id;
-
-          player = getPlayerFromID(socket.id, playerList);
-          player.currentRoomID = roomList[index]["RoomObject"].roomID;
-
-          io.to(socket.id).emit("notTurnTTT", "");
-          // Set index to roomList length to get out of loop
-          index = roomList.length;
-        }
-
-      }
-
-      index++;
+      io.to(socket.id).emit("notTurnTTT", "");
     }
   })
 
   socket.on("cellClickedTTT", (cellClickedIndex) => {
-    handleCellClicked(socket, io, cellClickedIndex)
+
+    handleCellClickedTTT(socket, io, cellClickedIndex)
   })
 
   socket.on("restartGameTTT", (arg) => {
-    restartGame(socket, io)
+    restartGameTTT(socket, io)
+  })
+
+  socket.on("sendChatMsg", (messageData) => {
+    let currentRoom = getRoomFromPlayerID(socket.id, playerList, roomList);
+    io.in(currentRoom.roomID).emit("sendChatMsg", messageData);
   })
 
   socket.on('disconnect', () => {
@@ -234,6 +300,7 @@ io.on('connection', (socket) => {
 
 });
 
+// Mancala functions
 
 /* ########################################### SIGN UP##################################################### */
 function signUp(username, firstname, lastname, password){
@@ -345,8 +412,213 @@ function hashFunction(username){
 
 // Tic Tac Toe functions
 
+
+// Handles cell click for mancala
+//  Uses: handleCellClickedMancalaHelper function
+function handleCellClickedMancala(socket, io, cellClickedIndex) {
+  // Get current room and player
+  let currentPlayer = getPlayerFromID(socket.id, playerList);
+  let currentRoom = getRoomFromPlayer(currentPlayer, roomList);
+  let changePlayer = true;
+
+  // Return out of function if the game is locked or client is not current player
+  if(currentRoom.gameLocked || socket.id != currentRoom.currentPlayerID) {
+    return;
+  }
+
+
+  // Lock game
+  currentRoom.gameLocked = true;
+
+  // Check if current player is player one
+  changePlayer = handleCellClickedMancalaHelper(cellClickedIndex, currentPlayer.id,
+                                                currentRoom.playerOneID,
+                                                currentRoom.playerTwoID,
+                                                currentRoom)
+  io.in(currentRoom.roomID).emit('updateGameBoardMancala', currentRoom.gameBoard)
+
+  // Check if game over
+  if (checkForGameOverMancala(socket, io, currentRoom)) {
+    return
+  }
+
+  if(changePlayer) {
+    changeCurrentPlayerMancala(socket, io, currentRoom);
+  }
+  else {
+    currentRoom.gameLocked = false;
+  }
+}
+
+// Handles mancala specific rules
+function handleCellClickedMancalaHelper(index, currentPlayerID, playerOneID,
+                                        playerTwoID, currentRoom) {
+  let currentNumStones = gameBoardMancala[index];
+  currentRoom.gameBoard[index % MANCALABOARDSIZE] = 0;
+  // Moves mancala stones across board
+  while(currentNumStones > 0) {
+
+    index++;
+    // Check if player one and is not own mancala
+    if(currentPlayerID == playerOneID && index % MANCALABOARDSIZE != PLAYERTWOMANCALA) {
+      currentRoom.gameBoard[index % MANCALABOARDSIZE]++;
+      currentNumStones--;
+    }
+    // Check if player two and is not own mancala
+    if(currentPlayerID == playerTwoID && index % MANCALABOARDSIZE != PLAYERONEMANCALA) {
+      currentRoom.gameBoard[index % MANCALABOARDSIZE]++;
+      currentNumStones--;
+    }
+
+  }
+
+  // Normalize index to get correct index and avoid out of bounds index
+  let normalizedIndex = index % MANCALABOARDSIZE;
+
+  // Handle case that last stone landed in own side and slot was empty
+  if(currentPlayerID == playerOneID && normalizedIndex > 0
+     && normalizedIndex < PLAYERONEMANCALA
+     && currentRoom.gameBoard[normalizedIndex] == 1)
+  {
+    currentRoom.gameBoard[normalizedIndex] +=
+              currentRoom.gameBoard[PLAYERTWOMANCALA - (normalizedIndex + 1)];
+    currentRoom.gameBoard[PLAYERTWOMANCALA - (normalizedIndex + 1)] = 0;
+  }
+  else if (currentPlayerID == playerTwoID
+           && normalizedIndex > PLAYERONEMANCALA
+           && normalizedIndex < PLAYERTWOMANCALA
+           && currentRoom.gameBoard[normalizedIndex] == 1)
+  {
+    currentRoom.gameBoard[normalizedIndex]
+          += currentRoom.gameBoard[PLAYERTWOMANCALA - (normalizedIndex + 1)];
+    currentRoom.gameBoard[PLAYERTWOMANCALA - (normalizedIndex + 1)] = 0;
+  }
+
+  // Handle case that last stone landed in own mancala
+  if(currentPlayerID == playerOneID && normalizedIndex == PLAYERONEMANCALA) {
+    return false;
+  }
+  else if(currentPlayerID == playerTwoID && normalizedIndex == PLAYERTWOMANCALA) {
+    return false;
+  }
+
+  return true;
+}
+
+// Check if mancala game has ended, if so check which player won/draw
+//  Uses checkForGameOverMancalaHelper
+function checkForGameOverMancala(socket, io, currentRoom) {
+  let index = 0;
+  let playerOneDone = true;
+  let playerTwoDone = true;
+
+  // Check if playerOne side is completed
+  for(index = 0; index < PLAYERONEMANCALA; index++) {
+    if(currentRoom.gameBoard[index] != 0) {
+      playerOneDone = false;
+    }
+  }
+
+  if(playerOneDone) {
+    checkForGameOverMancalaHelper(socket, io, currentRoom, currentRoom.playerTwoID)
+  }
+
+  // Check if player two side is completed
+  for(index = PLAYERONEMANCALA + 1; index < PLAYERTWOMANCALA; index++) {
+    if(currentRoom.gameBoard[index] != 0) {
+      playerTwoDone = false;
+    }
+  }
+
+  if(playerTwoDone) {
+    checkForGameOverMancalaHelper(socket, io, currentRoom, currentRoom.playerOneID)
+  }
+}
+
+function checkForGameOverMancalaHelper(socket, io, currentRoom, playerWithStones) {
+  let index = 0;
+  let finalIndex = 0;
+  let stoneSum = 0;
+  let mancalaToAddTo = 0;
+
+  if(playerWithStones == currentRoom.playerOneID) {
+    index = 0;
+    finalIndex = PLAYERONEMANCALA - 1;
+    playerOneIsWithStones = true;
+    mancalaToAddTo = PLAYERONEMANCALA;
+  }
+  else {
+    index = PLAYERONEMANCALA + 1;
+    finalIndex = PLAYERTWOMANCALA - 1;
+    mancalaToAddTo = PLAYERTWOMANCALA;
+  }
+
+  while(index <= finalIndex) {
+    stoneSum += currentRoom.gameBoard[index];
+    currentRoom.gameBoard[index] = 0;
+
+    index++;
+  }
+
+  currentRoom.gameBoard[mancalaToAddTo] += stoneSum;
+
+  // Send gameboard
+  io.in(currentRoom.roomID).emit('updateGameBoardMancala', gameBoardMancala)
+  // Check who won
+  // DRAW
+  if(currentRoom.gameBoard[PLAYERONEMANCALA] == currentRoom.gameBoard[PLAYERTWOMANCALA]) {
+    io.in(currentRoom.roomID).emit("gameDrawMancala", "Draw");
+  }
+  // Player one won
+  else if(currentRoom.gameBoard[PLAYERONEMANCALA] > currentRoom.gameBoard[PLAYERTWOMANCALA]) {
+    io.in(currentRoom.roomID).emit("gameWonMancala", currentRoom.playerOneID);
+  }
+  // Player two won
+  else {
+    io.in(currentRoom.roomID).emit("gameWonMancala", currentRoom.playerTwoID);
+  }
+
+}
+
+// Changes current player for mancala
+function changeCurrentPlayerMancala(socket, io, currentRoom) {
+  // Send to current player
+  io.to(currentRoom.currentPlayerID).emit('notTurnMancala', '')
+
+  // Switch current player
+  if(currentRoom.currentPlayerID == currentRoom.playerOneID) {
+    currentRoom.currentPlayerID = currentRoom.playerTwoID;
+  }
+  else {
+    currentRoom.currentPlayerID = currentRoom.playerOneID;
+  }
+
+  // Send to new current player
+  io.to(currentRoom.currentPlayerID).emit('playerTurnMancala', '')
+  currentRoom.gameLocked = false;
+}
+
+// Resets gameboard and player turn and sends this info to players
+function restartGameMancala(socket, io) {
+  let currentRoom = getRoomFromPlayerID(socket.id, playerList, roomList);
+
+  // Resets gameboard and current player
+  currentRoom.gameBoard = gameBoardMancala;
+  currentRoom.currentPlayerID = currentRoom.playerOneID
+  // Send data to clients
+  io.in(currentRoom.roomID).emit("updateGameBoardMancala", currentRoom.gameBoard);
+
+  // Send current player turn to client and turn off game lock
+  io.to(currentRoom.playerOneID).emit("playerTurnMancala", "");
+  io.to(currentRoom.playerTwoID).emit("notTurnMancala", "");
+  // Unlocks game
+  currentRoom.gameLocked = false;
+}
+
+// Tic Tac Toe functions
+
 // Handles cell click event from client
-function handleCellClicked(socket, io, cellClickedIndex) {
+function handleCellClickedTTT(socket, io, cellClickedIndex) {
   // Get current room and player
   let currentPlayer = getPlayerFromID(socket.id, playerList);
   let currentRoom = getRoomFromPlayer(currentPlayer, roomList);
@@ -379,18 +651,18 @@ function handleCellClicked(socket, io, cellClickedIndex) {
   }
 
   // Check if game over
-  if (checkForGameOver(socket, io, currentRoom)) {
+  if (checkForGameOverTTT(socket, io, currentRoom)) {
     return
   }
 
-  changeCurrentPlayer(socket, io, currentRoom);
+  changeCurrentPlayerTTT(socket, io, currentRoom);
 }
 
 // Checks if game is over
 // Sends 'gameDrawTTT' message, if game resulted in a draw
 // Sends 'gameWonTTT' message, if game resulted in a win
 // Locks game if game resulted in a draw or win
-function checkForGameOver(socket, io, currentRoom) {
+function checkForGameOverTTT(socket, io, currentRoom) {
   let index = 0;
   let roundDraw = !currentRoom.gameBoard.includes( 0 );
 
@@ -433,6 +705,12 @@ function checkForGameOver(socket, io, currentRoom) {
     return true;
   }
 
+  if(roundDraw) {
+    // Send draw to clients and return true
+    io.in(currentRoom.roomID).emit("gameDrawTTT", "Draw")
+    return true;
+  }
+
   //otherwise, assume no winner
   return false
 }
@@ -440,7 +718,7 @@ function checkForGameOver(socket, io, currentRoom) {
 // Changes current player
 // If playerOne was last player, playerTwo is new player and vis versa
 // Unlocks game after completeing operation
-function changeCurrentPlayer(socket, io, currentRoom) {
+function changeCurrentPlayerTTT(socket, io, currentRoom) {
   // Send to current player
   io.to(currentRoom.currentPlayerID).emit('notTurnTTT', '')
 
@@ -459,7 +737,7 @@ function changeCurrentPlayer(socket, io, currentRoom) {
 
 // Resets game board, and sends update message to clients with updated gameboard
 // Unlocks game after operation
-function restartGame(socket, io) {
+function restartGameTTT(socket, io) {
   let currentRoom = getRoomFromPlayerID(socket.id, playerList, roomList);
 
   // Resets gameboard and current player
@@ -584,6 +862,195 @@ function removePlayerFromplayerList(playerID, playerList) {
     }
     index++;
   }
+}
+
+// Adds player to queue list
+function addPlayerToQueueList(playerID, playerList, queueList) {
+  let player;
+  let index = 0;
+
+  // Get player
+  while(index < playerList.length) {
+    if(playerList[index].id == playerID) {
+      player = playerList[index];
+    }
+    index++;
+  }
+
+
+  if(player == null) {
+    return;
+  }
+
+
+  // Check if player is already in queue
+  index = 0;
+  while(index < queueList.length) {
+    if(queueList[index].id == player.id) {
+      // Player is in queue, returns out of function
+      return;
+    }
+    index++;
+  }
+
+  queueList.push(player);
+}
+
+// Removes player from queue list
+function removePlayerFromQueueList(playerID, queueList) {
+  let index = 0;
+
+  while(index < queueList.length) {
+    if(queueList[index].id == playerID) {
+      // Removes array element at index: `index`
+      queueList.splice(index, 1);
+
+      return;
+    }
+    index++;
+  }
+}
+
+// Get functions
+
+// Returns player from player id
+function getPlayerFromID(playerID, playerList) {
+  let index = 0;
+
+  while(index < playerList.length) {
+    if(playerList[index].id == playerID) {
+      return playerList[index];
+    }
+    index++;
+  }
+
+  return null;
+}
+
+// Returns room from player id
+function getRoomFromPlayerID(playerID, playerList, roomList) {
+  let player = getPlayerFromID(playerID, playerList);
+  let index = 0;
+
+  while(index < roomList.length) {
+    if(roomList[index]["RoomObject"].roomID == player.currentRoomID) {
+      return roomList[index]["RoomObject"];
+    }
+    index++;
+  }
+}
+
+function closeRoom(playerID, io) {
+  let player = getPlayerFromID(playerID, playerList);
+  io.in(player.currentRoomID).emit("returnToLobby", "");
+  removeRoom(player.currentRoomID);
+}
+
+// Generate random ID (string of a number)
+function generateRandomID() {
+  let randomID = 0;
+  let index = 0;
+  let runLoop = true;
+  // Check if randomID is currently in use
+  while(runLoop) {
+    runLoop = false;
+    randomID = Math.floor(Math.random() * 10000);
+    while(index < roomList.length) {
+      if(roomList[index]["roomID"] == randomID) {
+        runLoop = true;
+      }
+      index++;
+    }
+    index = 0;
+  }
+
+  return randomID.toString();
+}
+
+// Array management functions
+
+// Adds player to player list
+function addPlayerToplayerList(playerID, playerList) {
+  playerList.push(new Player(playerID));
+}
+
+// Removes player from player list
+function removePlayerFromplayerList(playerID, playerList) {
+  let index = 0;
+
+  while(index < playerList.length) {
+    if(playerList[index].id == playerID) {
+      // Removes array element at index: `index`
+      playerList.splice(index, 1);
+
+      return;
+  return null;
+}
+
+// Returns room from player object
+function getRoomFromPlayer(player, roomList) {
+  let index = 0;
+
+  while(index < roomList.length) {
+    if(roomList[index]["RoomObject"].roomID == player.currentRoomID) {
+      return roomList[index]["RoomObject"];
+    }
+    index++;
+  }
+
+  return null;
+}
+
+// Returns room object from room id
+function getCurrentRoomFromID(roomID, roomList) {
+  let index = 0;
+
+  while(index < roomList.length) {
+    if(roomList[index]["RoomObject"].roomID == roomID) {
+      return roomList[index]["RoomObject"];
+    }
+    index++;
+  }
+
+  return null;
+}
+
+// Log functions
+
+function printPlayerList(playerList) {
+  let index = 0;
+
+  console.log("Current Player List");
+  while(index < playerList.length) {
+    console.log(playerList[index]);
+    index++;
+  }
+
+  console.log("\n\n");
+}
+
+function printQueueList(queueList) {
+  let index = 0;
+
+  console.log("Current Queue List");
+  while(index < queueList.length) {
+    console.log(queueList[index]);
+    index++;
+  }
+
+  console.log("\n\n");
+}
+
+function printRoomList(roomList) {
+  let index = 0;
+
+  console.log("Current room List");
+  while(index < roomList.length) {
+    console.log(roomList[index]);
+    index++;
+  }
+
+  console.log("\n\n");
 }
 
 // Adds player to queue list
