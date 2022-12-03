@@ -6,7 +6,6 @@ const path = require('path');
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 const port = process.env.PORT || 3000;
-const fs = require('fs');
 
 
 
@@ -54,12 +53,7 @@ let numUsers = 0;
 let gameBoardTTT = [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
 let gameBoardMancala = [4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0];
 
-let roomList = [];
-let playerList = [];
-let ticTacToeQueue = [];
-let numUsers = 0;
-let gameBoardTTT = [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
-  
+
 const winningConditions = [
     [0, 1, 2],
     [3, 4, 5],
@@ -86,14 +80,14 @@ io.on('connection', (socket) => {
 
 
   // #########################################################################
-  
+
 
   //create the hash table
   userData = createHashArray()
-  
+
   //socket handler for login attempt
   socket.on('loginAttempt', (...args)=> {
-	  
+
 	  //if the username exists
 	  if( userData[hashFunction(args[0])] != undefined ){
 
@@ -101,40 +95,40 @@ io.on('connection', (socket) => {
 		  if(userData[hashFunction(args[0])][4] == args[1]){
 			 socket.emit('loginAccepted', args[0], args[1], args[2]);
 		  }
-		  
+
 		  //otherwise password is wrong
 		  else{
 			  socket.emit('passwordFailed', "");
 		  }
-		  
+
 	  }
 	  //otherwise the username doesnt exist
 	  else{
 		  socket.emit("userNonexistant", "");
 	  }
-	  
+
   });
-  
+
   //socket handler for sign up attempt
   socket.on('signupAttempt', (...args) => {
-	  
+
 		//check if username is already taken
 		if( userData[hashFunction(args[0])] == undefined){
-			
+
 			//if not, create profile
 			signUp(args[0], args[1], args[2], args[3]);
-			
+
 			socket.emit('signupSuccess', args[0], args[3]);
 			//socket.emit('loginAccepted', args[0], args[1]);
 		}
-		
+
 		//otherwise the name is taken
 		else{
 			socket.emit('usernameTaken', "");
 		}
-	 
+
   });
-  
+
   // #########################################################################
 
 
@@ -306,7 +300,7 @@ io.on('connection', (socket) => {
 function signUp(username, firstname, lastname, password){
 	//initialize the string ot go into the file
 	let userData = '\n' + hashFunction(username) + ' ' + username + ' ' + firstname + ' ' + lastname + ' ' + password + ',';
-	
+
 	//write the data into the user data file
 	fs.appendFile('userData.txt', userData, err => {
 		if (err) {
@@ -321,7 +315,7 @@ function signUp(username, firstname, lastname, password){
 function createHashArray(){
 	//read the data file into one long string
 	let fileString = fs.readFileSync('userData.txt').toString();
-	
+
 	//intitialize the data file string index and the hash table array of arrays
 	let i = 0;
 	const allUserData = new Array;
@@ -330,33 +324,33 @@ function createHashArray(){
 	while(i < fileString.length){
 		//intialize the arrary of individuals user data
 		const userData = new Array;
-		
+
 		//get the hash of the current user
 		let hash="";
-		
+
 		while(fileString[i] != " "){
 			//the first digits of each line are hash, and put them into hash variable
 			hash = hash + fileString[i];
 			i++;
 		}
-		
+
 		//get off of the space character
 		i++;
-		
+
 		//make hash an integer
 		hash = parseInt(hash);
-		
+
 		//set the first entry of the users array to their hash
 		userData[0] = hash;
-		
+
 		//create user data index
 		let userDataIndex = 1;
-		
+
 		//while not at the end of a line, write data into an array
 		while(true){
-			
+
 			let string = ""
-			
+
 			//for each string in user, go until end space or comma
 			while( fileString[i] != " " && fileString[i] != ',' ){
 				string = string + fileString[i];
@@ -365,20 +359,20 @@ function createHashArray(){
 			//put the data into the users data array
 			userData[userDataIndex] = string;
 			userDataIndex++;
-			
+
 			//if comma, exit loop
 			if(fileString[i] == ','){
 				break;
 			}
-			
+
 			//increment data file string by 1 to get off space
 			i++;
 		}
-		
+
 		//put the users data into the index with the value of their hash
 		allUserData[hash] = userData;
-		
-		
+
+
 		//increment until
 		while(fileString[i] != ','){
 			i++;
@@ -386,12 +380,12 @@ function createHashArray(){
 		//increment by one more to get a new line
 		i++;
 	}
-	
+
 	//console.log(allUserData);
-	
+
 	//return the user data array of arrays
 	return allUserData;
-}	
+}
 /* ########################################### HASH FUNCTION ################################# */
 function hashFunction(username){
    let hashValue = 0;
@@ -698,7 +692,7 @@ function checkForGameOverTTT(socket, io, currentRoom) {
       index++;
   }
   //end testing loop
-  
+
   if(roundDraw) {
     // Send draw to clients and return true
     io.in(currentRoom.roomID).emit("gameDrawTTT", "Draw")
@@ -984,6 +978,8 @@ function removePlayerFromplayerList(playerID, playerList) {
       playerList.splice(index, 1);
 
       return;
+    }
+  }
   return null;
 }
 

@@ -9,14 +9,14 @@ document.querySelector(".Submit").onclick = function() {
 
 	//if anything enetered has a space, throw error
 	if( /\s/.test(username) || /\s/.test(password) ){
-		window.alert("Input Invalid: Entries cannot contain Spaces");	
+		window.alert("Input Invalid: Entries cannot contain Spaces");
 	}
-	
+
 	//username and password length test
 	else if(username.length == 0 || password.length == 0){
-		window.alert("Input Invalid: Entries cannot be empty");	
+		window.alert("Input Invalid: Entries cannot be empty");
 	}
-	
+
 	//otherwise login and password are valid inputs and try to login
 	else{
 		socket.emit('loginAttempt', username, password);
@@ -25,12 +25,13 @@ document.querySelector(".Submit").onclick = function() {
 
 
 socket.on('loginAccepted', (...args) => {
-	/* login stuff HERE 
+	/* login stuff HERE
 	#######################################
 	*/
-	window.location.assign("/indexloggedIn.html");
+	// window.location.assign("/indexLoggedIn.html");
+	window.location.assign("./index.html");
 });
-	
+
 socket.on('passwordFailed', (arg) => {
 	window.alert("The password entered is incorrect");
 });
