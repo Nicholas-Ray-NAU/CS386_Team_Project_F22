@@ -6,6 +6,9 @@ const path = require('path');
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 const port = process.env.PORT || 3000;
+const fs = require('fs');
+
+
 
 server.listen(port, () => {
   console.log('Server listening at port %d', port);
@@ -42,6 +45,7 @@ class Player {
   }
 }
 
+
 let roomList = [];
 let playerList = [];
 let ticTacToeQueue = [];
@@ -50,6 +54,12 @@ let numUsers = 0;
 let gameBoardTTT = [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
 let gameBoardMancala = [4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0];
 
+let roomList = [];
+let playerList = [];
+let ticTacToeQueue = [];
+let numUsers = 0;
+let gameBoardTTT = [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
+  
 const winningConditions = [
     [0, 1, 2],
     [3, 4, 5],
@@ -60,6 +70,7 @@ const winningConditions = [
     [0, 4, 8],
     [2, 4, 6]
 ];
+
 const PLAYERONEMANCALA = 6;
 const PLAYERTWOMANCALA = 13;
 const MANCALABOARDSIZE = 14;
@@ -72,7 +83,63 @@ io.on('connection', (socket) => {
   addPlayerToplayerList(socket.id, playerList);
   printPlayerList(playerList);
 
+
+
+  // #########################################################################
+  
+
+  //create the hash table
+  userData = createHashArray()
+  
+  //socket handler for login attempt
+  socket.on('loginAttempt', (...args)=> {
+	  
+	  //if the username exists
+	  if( userData[hashFunction(args[0])] != undefined ){
+
+		  //if the password matches
+		  if(userData[hashFunction(args[0])][4] == args[1]){
+			 socket.emit('loginAccepted', args[0], args[1], args[2]);
+		  }
+		  
+		  //otherwise password is wrong
+		  else{
+			  socket.emit('passwordFailed', "");
+		  }
+		  
+	  }
+	  //otherwise the username doesnt exist
+	  else{
+		  socket.emit("userNonexistant", "");
+	  }
+	  
+  });
+  
+  //socket handler for sign up attempt
+  socket.on('signupAttempt', (...args) => {
+	  
+		//check if username is already taken
+		if( userData[hashFunction(args[0])] == undefined){
+			
+			//if not, create profile
+			signUp(args[0], args[1], args[2], args[3]);
+			
+			socket.emit('signupSuccess', args[0], args[3]);
+			//socket.emit('loginAccepted', args[0], args[1]);
+		}
+		
+		//otherwise the name is taken
+		else{
+			socket.emit('usernameTaken', "");
+		}
+	 
+  });
+  
+  // #########################################################################
+
+
   // Queuing
+
 
   socket.on('joinTicTacToeQueue', (arg) => {
     let roomID;
@@ -207,6 +274,7 @@ io.on('connection', (socket) => {
   })
 
   socket.on("cellClickedTTT", (cellClickedIndex) => {
+
     handleCellClickedTTT(socket, io, cellClickedIndex)
   })
 
@@ -234,6 +302,117 @@ io.on('connection', (socket) => {
 
 // Mancala functions
 
+/* ########################################### SIGN UP##################################################### */
+function signUp(username, firstname, lastname, password){
+	//initialize the string ot go into the file
+	let userData = '\n' + hashFunction(username) + ' ' + username + ' ' + firstname + ' ' + lastname + ' ' + password + ',';
+	
+	//write the data into the user data file
+	fs.appendFile('userData.txt', userData, err => {
+		if (err) {
+			console.error(err);
+		}
+	});
+}
+
+
+
+/* ########################################### CREATE HASH ARRAY ##################################################### */
+function createHashArray(){
+	//read the data file into one long string
+	let fileString = fs.readFileSync('userData.txt').toString();
+	
+	//intitialize the data file string index and the hash table array of arrays
+	let i = 0;
+	const allUserData = new Array;
+
+	// loop through all values of the data file and put into user data
+	while(i < fileString.length){
+		//intialize the arrary of individuals user data
+		const userData = new Array;
+		
+		//get the hash of the current user
+		let hash="";
+		
+		while(fileString[i] != " "){
+			//the first digits of each line are hash, and put them into hash variable
+			hash = hash + fileString[i];
+			i++;
+		}
+		
+		//get off of the space character
+		i++;
+		
+		//make hash an integer
+		hash = parseInt(hash);
+		
+		//set the first entry of the users array to their hash
+		userData[0] = hash;
+		
+		//create user data index
+		let userDataIndex = 1;
+		
+		//while not at the end of a line, write data into an array
+		while(true){
+			
+			let string = ""
+			
+			//for each string in user, go until end space or comma
+			while( fileString[i] != " " && fileString[i] != ',' ){
+				string = string + fileString[i];
+				i++;
+			}
+			//put the data into the users data array
+			userData[userDataIndex] = string;
+			userDataIndex++;
+			
+			//if comma, exit loop
+			if(fileString[i] == ','){
+				break;
+			}
+			
+			//increment data file string by 1 to get off space
+			i++;
+		}
+		
+		//put the users data into the index with the value of their hash
+		allUserData[hash] = userData;
+		
+		
+		//increment until
+		while(fileString[i] != ','){
+			i++;
+		}
+		//increment by one more to get a new line
+		i++;
+	}
+	
+	//console.log(allUserData);
+	
+	//return the user data array of arrays
+	return allUserData;
+}	
+/* ########################################### HASH FUNCTION ################################# */
+function hashFunction(username){
+   let hashValue = 0;
+   const passwordArray = username.split("");
+
+   for( let i = 0; i < passwordArray.length; i++ ){
+	  hashValue += passwordArray[i].charCodeAt(0);
+	  hashValue *= passwordArray[i].charCodeAt(0);
+   }
+
+   hashValue %= 1000;
+
+   return hashValue;
+}
+
+
+
+
+// Tic Tac Toe functions
+
+
 // Handles cell click for mancala
 //  Uses: handleCellClickedMancalaHelper function
 function handleCellClickedMancala(socket, io, cellClickedIndex) {
@@ -246,6 +425,7 @@ function handleCellClickedMancala(socket, io, cellClickedIndex) {
   if(currentRoom.gameLocked || socket.id != currentRoom.currentPlayerID) {
     return;
   }
+
 
   // Lock game
   currentRoom.gameLocked = true;
@@ -518,6 +698,12 @@ function checkForGameOverTTT(socket, io, currentRoom) {
       index++;
   }
   //end testing loop
+  
+  if(roundDraw) {
+    // Send draw to clients and return true
+    io.in(currentRoom.roomID).emit("gameDrawTTT", "Draw")
+    return true;
+  }
 
   if(roundDraw) {
     // Send draw to clients and return true
@@ -676,6 +862,195 @@ function removePlayerFromplayerList(playerID, playerList) {
     }
     index++;
   }
+}
+
+// Adds player to queue list
+function addPlayerToQueueList(playerID, playerList, queueList) {
+  let player;
+  let index = 0;
+
+  // Get player
+  while(index < playerList.length) {
+    if(playerList[index].id == playerID) {
+      player = playerList[index];
+    }
+    index++;
+  }
+
+
+  if(player == null) {
+    return;
+  }
+
+
+  // Check if player is already in queue
+  index = 0;
+  while(index < queueList.length) {
+    if(queueList[index].id == player.id) {
+      // Player is in queue, returns out of function
+      return;
+    }
+    index++;
+  }
+
+  queueList.push(player);
+}
+
+// Removes player from queue list
+function removePlayerFromQueueList(playerID, queueList) {
+  let index = 0;
+
+  while(index < queueList.length) {
+    if(queueList[index].id == playerID) {
+      // Removes array element at index: `index`
+      queueList.splice(index, 1);
+
+      return;
+    }
+    index++;
+  }
+}
+
+// Get functions
+
+// Returns player from player id
+function getPlayerFromID(playerID, playerList) {
+  let index = 0;
+
+  while(index < playerList.length) {
+    if(playerList[index].id == playerID) {
+      return playerList[index];
+    }
+    index++;
+  }
+
+  return null;
+}
+
+// Returns room from player id
+function getRoomFromPlayerID(playerID, playerList, roomList) {
+  let player = getPlayerFromID(playerID, playerList);
+  let index = 0;
+
+  while(index < roomList.length) {
+    if(roomList[index]["RoomObject"].roomID == player.currentRoomID) {
+      return roomList[index]["RoomObject"];
+    }
+    index++;
+  }
+}
+
+function closeRoom(playerID, io) {
+  let player = getPlayerFromID(playerID, playerList);
+  io.in(player.currentRoomID).emit("returnToLobby", "");
+  removeRoom(player.currentRoomID);
+}
+
+// Generate random ID (string of a number)
+function generateRandomID() {
+  let randomID = 0;
+  let index = 0;
+  let runLoop = true;
+  // Check if randomID is currently in use
+  while(runLoop) {
+    runLoop = false;
+    randomID = Math.floor(Math.random() * 10000);
+    while(index < roomList.length) {
+      if(roomList[index]["roomID"] == randomID) {
+        runLoop = true;
+      }
+      index++;
+    }
+    index = 0;
+  }
+
+  return randomID.toString();
+}
+
+// Array management functions
+
+// Adds player to player list
+function addPlayerToplayerList(playerID, playerList) {
+  playerList.push(new Player(playerID));
+}
+
+// Removes player from player list
+function removePlayerFromplayerList(playerID, playerList) {
+  let index = 0;
+
+  while(index < playerList.length) {
+    if(playerList[index].id == playerID) {
+      // Removes array element at index: `index`
+      playerList.splice(index, 1);
+
+      return;
+  return null;
+}
+
+// Returns room from player object
+function getRoomFromPlayer(player, roomList) {
+  let index = 0;
+
+  while(index < roomList.length) {
+    if(roomList[index]["RoomObject"].roomID == player.currentRoomID) {
+      return roomList[index]["RoomObject"];
+    }
+    index++;
+  }
+
+  return null;
+}
+
+// Returns room object from room id
+function getCurrentRoomFromID(roomID, roomList) {
+  let index = 0;
+
+  while(index < roomList.length) {
+    if(roomList[index]["RoomObject"].roomID == roomID) {
+      return roomList[index]["RoomObject"];
+    }
+    index++;
+  }
+
+  return null;
+}
+
+// Log functions
+
+function printPlayerList(playerList) {
+  let index = 0;
+
+  console.log("Current Player List");
+  while(index < playerList.length) {
+    console.log(playerList[index]);
+    index++;
+  }
+
+  console.log("\n\n");
+}
+
+function printQueueList(queueList) {
+  let index = 0;
+
+  console.log("Current Queue List");
+  while(index < queueList.length) {
+    console.log(queueList[index]);
+    index++;
+  }
+
+  console.log("\n\n");
+}
+
+function printRoomList(roomList) {
+  let index = 0;
+
+  console.log("Current room List");
+  while(index < roomList.length) {
+    console.log(roomList[index]);
+    index++;
+  }
+
+  console.log("\n\n");
 }
 
 // Adds player to queue list

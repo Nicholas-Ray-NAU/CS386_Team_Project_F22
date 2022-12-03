@@ -86,6 +86,20 @@ socket.on('moveToTicTacToe', (arg) => {
   window.location.href = "ticTacToe.html";
 })
 
+
+/*
+						///PROFILE STUFF///
+//get the users data 
+//socket.emit('changeHTML', "");
+
+//change the html to the users data
+socket.on('loadProfile', (...args) => {
+	document.querySelector(".username").innerHTML = 'Username: ' + args[0];
+	document.querySelector(".fullname").innerHTML = 'Name: ' + args[1];
+});
+	
+*/
+
 socket.on('moveToMancala', (arg) => {
   window.location.href = "mancala.html";
 })

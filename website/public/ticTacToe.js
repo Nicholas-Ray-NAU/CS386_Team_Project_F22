@@ -1,3 +1,4 @@
+
 var name =  window.localStorage.getItem("name");
 var username =  window.localStorage.getItem("username");
 var roomID = window.localStorage.getItem("roomID");
@@ -9,8 +10,6 @@ socket.emit('rejoinRoomTTT', roomID);
 //Listeners (on-click)
 document.querySelector( '.game--restart' ).addEventListener(
                                                          'click', restartGame );
-document.getElementById("chat-form").addEventListener("submit", handleChatSubmit
-                                                             , false);
 
 const GAMEBOARDCONTAINER = document.getElementById("game--container");
 const GAMEBOARDSIZE = 9;
