@@ -37,19 +37,11 @@ Users will connect to the website by inputting the link www.gameytime.me into a 
  - Tests are located [here](tests/)
 
 ### All Tests executed
-![Player One Final State](/Images/D6_Testing_All_Passed.png)
+![All Tests Passing](/Images/D6_Testing_All_Passed.PNG)
 
 #### Example code - Proper Landing Page Behavior
-![MVP testing Part 3](/Images/D6_Testing_Landing_Passed.PNG)
-
-You should implement automated tests for the features described in the previous subsection. Provide the following information:
-
-- Test framework you used to develop your tests (e.g., JUnit, unittest, pytest, etc.):
-- Link to your GitHub folder where your automated unit tests are located.
-- An example of a test case. Include in your answer a GitHub link to the class being tested and to the test.
-- A print screen showing the result of the automated tests execution. 
-
-Grading criteria (3 points): You should have an adequate number of automated tests. They should be well written and match the features implemented in the aforementioned pull requests.
+![Landing Page Passing Code](/Images/D6_Testing_Landing_Passed.PNG)
+Landing page code is located [here](Tests/Landing_Page.spec.js)
 
 # Demo
 https://www.youtube.com/watch?v=0dL0KnqnaLk
