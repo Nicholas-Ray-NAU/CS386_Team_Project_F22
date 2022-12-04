@@ -13,35 +13,35 @@ document.getElementById( 'joinMancala' ).addEventListener(
 const loading = document.getElementById( 'loading' )
 
 function sendJoinMessageTTT() {
-    
+
     //check if username is set to default
     if( window.localStorage.username == default_username )
         {
-        
+
         //prompt for a username
         let username = prompt("Please Enter A Username", "Player");
-        
+
         //check for failure to set username
         if( username == null )
             {
-            
+
             //begin input loop to force username
             do
                 {
-                
+
                 //update username to new input
                 username = prompt("Please Enter A Username", "Player");
 
                 }
             while( username == null );
             //end username loop
-            
+
             }
-        
+
         //assume proper input, set username value
         window.localStorage.setItem("username", username);
         }
-   
+
   loading.classList.remove("loading-off");
   loading.classList.add("loading-on");
   console.log("Waiting for second client...");
@@ -52,27 +52,27 @@ function sendJoinMessageMancala() {
     //check if username is set to default
     if( window.localStorage.username == default_username )
         {
-        
+
         //prompt for a username
         let username = prompt("Please Enter A Username", "Player");
-        
+
         //check for failure to set username
         if( username == null )
             {
-            
+
             //begin input loop to force username
             do
                 {
-                
+
                 //update username to new input
                 username = prompt("Please Enter A Username", "Player");
 
                 }
             while( username == null );
             //end username loop
-            
+
             }
-        
+
         //assume proper input, set username value
         window.localStorage.setItem("username", username);
         }
@@ -83,13 +83,13 @@ function sendJoinMessageMancala() {
 
 // Listeners
 socket.on('moveToTicTacToe', (arg) => {
-  window.location.href = "ticTacToe.html";
+  window.location.href = "./ticTacToe.html";
 })
 
 
 /*
 						///PROFILE STUFF///
-//get the users data 
+//get the users data
 //socket.emit('changeHTML', "");
 
 //change the html to the users data
@@ -97,11 +97,12 @@ socket.on('loadProfile', (...args) => {
 	document.querySelector(".username").innerHTML = 'Username: ' + args[0];
 	document.querySelector(".fullname").innerHTML = 'Name: ' + args[1];
 });
-	
+
 */
 
 socket.on('moveToMancala', (arg) => {
-  window.location.href = "mancala.html";
+  console.log("move to mancala");
+  window.location.href = "./mancala.html";
 })
 
 socket.on("setName", (name) => {

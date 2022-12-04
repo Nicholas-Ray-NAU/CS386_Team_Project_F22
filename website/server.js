@@ -187,6 +187,7 @@ io.on('connection', (socket) => {
     socket.join(roomID);
     // Send client command to change page
     io.in(roomID).emit("moveToMancala", "");
+    printRoomList(roomList)
   })
 
   socket.on("rejoinRoomMancala", (roomID) => {
@@ -215,7 +216,6 @@ io.on('connection', (socket) => {
       io.to(socket.id).emit("playerAssignment", 2);
       io.to(socket.id).emit("notTurnMancala", "");
     }
-    console.log(room.gameBoard);
     io.in(roomID).emit("updateGameBoardMancala", room.gameBoard);
   })
 
@@ -308,8 +308,6 @@ function signUp(username, firstname, lastname, password){
 		}
 	});
 }
-
-
 
 /* ########################################### CREATE HASH ARRAY ##################################################### */
 function createHashArray(){
