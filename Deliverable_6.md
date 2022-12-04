@@ -32,6 +32,16 @@ Users will connect to the website by inputting the link www.gameytime.me into a 
 
 
 # Tests
+### Test framework
+ - [Playwright](https://playwright.dev/)
+ - Tests are located [here](tests/)
+
+### All Tests executed
+![Player One Final State](/Images/D6_Testing_All_Passed.png)
+
+#### Example code - Proper Landing Page Behavior
+![MVP testing Part 3](/Images/D6_Testing_Landing_Passed.PNG)
+
 You should implement automated tests for the features described in the previous subsection. Provide the following information:
 
 - Test framework you used to develop your tests (e.g., JUnit, unittest, pytest, etc.):
