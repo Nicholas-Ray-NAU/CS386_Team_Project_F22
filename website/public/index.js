@@ -90,7 +90,6 @@ socket.on('moveToTicTacToe', (arg) => {
   window.location.href = "./ticTacToe.html";
 })
 
-
 socket.on('moveToMancala', (arg) => {
   console.log("move to mancala");
   window.location.href = "./mancala.html";
