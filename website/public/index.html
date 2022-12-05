@@ -11,16 +11,41 @@
         <title>GameyTime</title>
     </head>
     <body>
+    <!-- for loading modal, change z-index and opacity -->
+    <div id="loading" class="loading-off">
+        <div id="loadingModal">
+            <p>Waiting for the player...</p>
+            <div id="loaderbox">
+                <div class="loader"></div>
+            </div>
+        </div>
+    </div>
         <header id="header" class="header">
-            <img src="images/logo.png" class="logo">
+            <a href="index.html"><img src="images/logo.png" class="logo"></a>
             <span class="menu">
-              <a href="index.html">Home</a>
-              <a href="index.html">Login</a>
+              <a href="./index.html">Home</a>
+              <a href="./login.html">Login</a>
             </span>
         </header>
-            <div id="main_content">
-              <div id="joinTTT">Join Tic Tac Toe</div>
+        <div id="main_banner">
+            <p id="banner_title">Let's Play!</p>
+            <p id="banner_subtitle">You can explore games and playing with your friend without download!</p>
+        </div>
+        <div id="gamelist">
+            <p>Here’s the games you can play anytime</p>
+            <div id="gameBox">
+                <div id="joinTTT">
+                    <img src="images/TicTacToeBg.png" alt="goTicTacToe" title="goTicTacToe">
+                </div>
+                <p>Tic Tac Toe</p>
             </div>
+            <div id="gameBox">
+                <div id="joinMancala">
+                    <img src="images/MancalaBg.png" alt="goMancala" title="goMancala">
+                </div>
+                <p>Mancala</p>
+            </div>
+        </div>
         <footer id="footer" class="footer">
             CS386 Team project
         </footer>
