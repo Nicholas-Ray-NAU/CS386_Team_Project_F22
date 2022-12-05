@@ -77,9 +77,9 @@ io.on('connection', (socket) => {
   addPlayerToplayerList(socket.id, playerList);
   printPlayerList(playerList);
 
-  
+
   // #########################################################################
-  
+
   //create the hash table
   userData = createHashArray()
 
@@ -91,7 +91,7 @@ io.on('connection', (socket) => {
 
 		  //if the password matches log them in
 		  if(userData[hashFunction(args[0])][4] == args[1]){
-			 let name = userData[hashFunction(args[0])][2] + " " + userData[hashFunction(args[0])][3];  
+			 let name = userData[hashFunction(args[0])][2] + " " + userData[hashFunction(args[0])][3];
 			 socket.emit('loginAccepted', args[0], name);
 		  }
 

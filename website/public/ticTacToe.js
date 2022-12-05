@@ -11,6 +11,9 @@ socket.emit('rejoinRoomTTT', roomID);
 document.querySelector( '.game--restart' ).addEventListener(
                                                          'click', restartGame );
 
+document.getElementById("chat-form").addEventListener("submit", handleChatSubmit
+                                                             , false);
+
 const GAMEBOARDCONTAINER = document.getElementById("game--container");
 const GAMEBOARDSIZE = 9;
 const ERROR_USERNAME = 'ERROR';
@@ -135,9 +138,9 @@ function handleChatSubmit(event) {
 
   //clear captured message
   capturedMessage.value = "";
-
 }
 
+// Adds chat message to chat div
 function MessageAdd(messageData) {
     //locate chat box
     var chat_messages = document.getElementById("chat-messages");
