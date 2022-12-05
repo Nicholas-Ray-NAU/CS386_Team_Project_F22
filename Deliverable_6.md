@@ -30,6 +30,23 @@ Users will connect to the website by inputting the link www.gameytime.me into a 
 * Implemented by: Suji Baek
 * Approved by: Zachary Hallemeyer
 
+> Requirement: As a player, I want to communicate with my opponent so that they are aware of what I have to say.
+* Issue: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/issues/11
+* Pull request: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/pull/42
+* Implemented by: Nicholas Ray
+* Approved by: Suji Baek
+
+> Requirement: As a gamer, I want easy access so that I waste less time with credentials.
+* Issue: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/issues/8
+* Pull request: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/pull/42
+* Implemented by: Nicholas Ray
+* Approved by: Suji Baek
+
+> Requirement: As a user, I want to create an account so that I can access my scores and rankings easily.
+* Issue: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/issues/10
+* Pull request: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/pull/42
+* Implemented by: Cristian Marrufo
+* Approved by: Suji Baek
 
 # Tests
 ### Test framework
