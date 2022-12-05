@@ -17,12 +17,18 @@ Users will connect to the website by inputting the link www.gameytime.me into a 
 * Pull request: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/pull/39
 * Implemented by: Zachary Hallemeyer
 * Approved by: Gavin Russell
+* Pull request: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/pull/42
+* Implemented by: Nicholas Ray
+* Approved by: Suji Baek
 
 > Requirement: As a gamer, I want to be able to create a profile so that my game data and scores are stored.
 * Issue: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/issues/32 
 * Pull request: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/pull/37
 * Implemented by: Gavin Russell
 * Approved by: Zachary Hallemeyer
+* Pull request: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/pull/40
+* Implemented by: Cristian Marrufo
+* Approved by: Suji Baek
 
 > Requirement: As a player, I want a simple UI so that I can find my desired game fast.
 * Issue: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/issues/4
@@ -30,23 +36,6 @@ Users will connect to the website by inputting the link www.gameytime.me into a 
 * Implemented by: Suji Baek
 * Approved by: Zachary Hallemeyer
 
-> Requirement: As a player, I want to communicate with my opponent so that they are aware of what I have to say.
-* Issue: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/issues/11
-* Pull request: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/pull/42
-* Implemented by: Nicholas Ray
-* Approved by: Suji Baek
-
-> Requirement: As a gamer, I want easy access so that I waste less time with credentials.
-* Issue: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/issues/8
-* Pull request: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/pull/42
-* Implemented by: Nicholas Ray
-* Approved by: Suji Baek
-
-> Requirement: As a user, I want to create an account so that I can access my scores and rankings easily.
-* Issue: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/issues/10
-* Pull request: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/pull/42
-* Implemented by: Cristian Marrufo
-* Approved by: Suji Baek
 
 # Tests
 ### Test framework
