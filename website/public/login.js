@@ -23,13 +23,11 @@ document.querySelector(".Submit").onclick = function() {
 	}
 }
 
-
 socket.on('loginAccepted', (...args) => {
-	/* login stuff HERE
-	#######################################
-	*/
-	// window.location.assign("/indexLoggedIn.html");
-	window.location.assign("./index.html");
+	window.localStorage.setItem("username", args[0]);
+	window.localStorage.setItem("name", args[1]);
+	window.location.replace("./indexLoggedIn.html");
+  
 });
 
 socket.on('passwordFailed', (arg) => {
