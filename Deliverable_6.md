@@ -40,7 +40,7 @@ Users will connect to the website by inputting the link www.gameytime.me into a 
 # Tests
 ### Test framework
  - [Playwright](https://playwright.dev/)
- - Tests are located [here](tests/)
+ - Tests are located [here](Tests/)
 
 ### All Tests executed
 ![All Tests Passing](/Images/D6_Testing_All_Passed.PNG)
