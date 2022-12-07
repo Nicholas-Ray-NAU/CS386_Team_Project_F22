@@ -5,7 +5,13 @@ Users will connect to the website by inputting the link www.gameytime.me into a 
 
 # Verification (tests)
 ## Unit test
-
+#### Test framework : Mocha
+#### Unit test code: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/blob/Deliverable07/website/public/login.spec.js
+#### An example of a test case that makes use of mock objects. Include in your answer a GitHub link to the class being tested and to the test.
+* https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/blob/Deliverable07/website/public/login.js
+1) If space is exist, login will be failed - loginFail Function
+2) If empty data is exist, login will be failed - LoginFailEmpty Function
+#### A print screen showing the result of the unit tests execution
 <img width="1303" alt="image" src="https://user-images.githubusercontent.com/38903362/206122310-f798ba7b-ce9f-4b2d-a9df-0021842f6e48.png">
 
 ## Acceptance test
