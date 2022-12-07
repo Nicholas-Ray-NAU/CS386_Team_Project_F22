@@ -409,7 +409,8 @@ function handleCellClickedMancala(socket, io, cellClickedIndex) {
   let changePlayer = true;
 
   // Return out of function if the game is locked or client is not current player
-  if(currentRoom.gameLocked || socket.id != currentRoom.currentPlayerID) {
+  if(currentRoom.gameLocked || socket.id != currentRoom.currentPlayerID
+     || currentRoom.gameBoard[cellClickedIndex] == 0) {
     return;
   }
 
@@ -440,7 +441,7 @@ function handleCellClickedMancala(socket, io, cellClickedIndex) {
 // Handles mancala specific rules
 function handleCellClickedMancalaHelper(index, currentPlayerID, playerOneID,
                                         playerTwoID, currentRoom) {
-  let currentNumStones = gameBoardMancala[index];
+  let currentNumStones = currentRoom.gameBoard[index];
   currentRoom.gameBoard[index % MANCALABOARDSIZE] = 0;
   // Moves mancala stones across board
   while(currentNumStones > 0) {
@@ -508,6 +509,7 @@ function checkForGameOverMancala(socket, io, currentRoom) {
 
   if(playerOneDone) {
     checkForGameOverMancalaHelper(socket, io, currentRoom, currentRoom.playerTwoID)
+    return;
   }
 
   // Check if player two side is completed
@@ -550,7 +552,7 @@ function checkForGameOverMancalaHelper(socket, io, currentRoom, playerWithStones
   currentRoom.gameBoard[mancalaToAddTo] += stoneSum;
 
   // Send gameboard
-  io.in(currentRoom.roomID).emit('updateGameBoardMancala', gameBoardMancala)
+  io.in(currentRoom.roomID).emit('updateGameBoardMancala', currentRoom.gameBoard)
   // Check who won
   // DRAW
   if(currentRoom.gameBoard[PLAYERONEMANCALA] == currentRoom.gameBoard[PLAYERTWOMANCALA]) {
