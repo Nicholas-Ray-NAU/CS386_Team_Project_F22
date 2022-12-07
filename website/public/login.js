@@ -26,8 +26,9 @@ document.querySelector(".Submit").onclick = function() {
 socket.on('loginAccepted', (...args) => {
 	window.localStorage.setItem("username", args[0]);
 	window.localStorage.setItem("name", args[1]);
+	window.localStorage.setItem("loggedIn", true);
 	window.location.replace("./indexLoggedIn.html");
-  
+
 });
 
 socket.on('passwordFailed', (arg) => {

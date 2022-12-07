@@ -29,6 +29,11 @@ const currentPlayerNotTurn = () => `It's not your turn`;
 
 let gameBoard = [];
 
+// Check if user is logged in
+if(window.localStorage.getItem("loggedIn")) {
+  document.getElementById("index-link").href = "indexLoggedIn.html"
+}
+
 function createGameBoard() {
   let index;
 

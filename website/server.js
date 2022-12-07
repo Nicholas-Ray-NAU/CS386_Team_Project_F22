@@ -267,7 +267,7 @@ io.on('connection', (socket) => {
 
   socket.on("cellClickedTTT", (cellClickedIndex) => {
 
-    ha1ndleCellClickedTTT(socket, io, cellClickedIndex)
+    handleCellClickedTTT(socket, io, cellClickedIndex)
   })
 
   socket.on("restartGameTTT", (arg) => {
