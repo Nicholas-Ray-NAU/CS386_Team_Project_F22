@@ -267,7 +267,7 @@ io.on('connection', (socket) => {
 
   socket.on("cellClickedTTT", (cellClickedIndex) => {
 
-    handleCellClickedTTT(socket, io, cellClickedIndex)
+    ha1ndleCellClickedTTT(socket, io, cellClickedIndex)
   })
 
   socket.on("restartGameTTT", (arg) => {
@@ -396,9 +396,6 @@ function hashFunction(username){
 
    return hashValue;
 }
-
-
-
 
 // Tic Tac Toe functions
 
