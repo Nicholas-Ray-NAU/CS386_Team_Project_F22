@@ -6,16 +6,7 @@ Users will connect to the website by inputting the link www.gameytime.me into a 
 # Verification (tests)
 ## Unit test
 
-A unit test is an automated test that aims to verify the behavior of a component isolated from the rest of the system. For this deliverable, show an example of a unit test that uses mock objects to isolate the class from the rest of the system. 
-
-Test framework you used to develop your tests (e.g., JUnit, unittest, pytest, etc.):
-Link to your GitHub folder where your automated unit tests are located.
-An example of a test case that makes use of mock objects. Include in your answer a GitHub link to the class being tested and to the test.
-A print screen showing the result of the unit tests execution. 
-
-Grading criteria (5 points): adequate choice of a test framework, coverage of the tests, quality of the tests, adequate use of Mock objects, and a print screen showing successful test execution.
-
-https://unitjs.com/ 
+<img width="1303" alt="image" src="https://user-images.githubusercontent.com/38903362/206122310-f798ba7b-ce9f-4b2d-a9df-0021842f6e48.png">
 
 ## Acceptance test
 An acceptance test is a test that verifies the correct implementation of a feature from the user interface perspective. An acceptance test is a black box test (the system is tested without knowledge about its internal implementation). Provide the following information:
