@@ -4,7 +4,7 @@ const assert = require('assert');
 
 
 describe("login Unit Test Result", function() {
-    it("If space is exsit, login will be failed", function() {
+    it("If space is exist, login will be failed", function() {
         const username = "space space";
         const password = "password password";
         assert.equal(true, loginFail(username, password));
