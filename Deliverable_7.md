@@ -12,7 +12,7 @@ Users will connect to the website by inputting the link www.gameytime.me into a 
 1) If space is exist, login will be failed - loginFail Function
 2) If empty data is exist, login will be failed - LoginFailEmpty Function
 #### A print screen showing the result of the unit tests execution
-<img width="1303" alt="image" src="https://user-images.githubusercontent.com/38903362/206122310-f798ba7b-ce9f-4b2d-a9df-0021842f6e48.png">
+<img width="1441" alt="image" src="https://user-images.githubusercontent.com/38903362/206126253-d5efe73e-065d-4a20-9484-9c6d7f274290.png">
 
 ## Acceptance test
 An acceptance test is a test that verifies the correct implementation of a feature from the user interface perspective. An acceptance test is a black box test (the system is tested without knowledge about its internal implementation). Provide the following information:
