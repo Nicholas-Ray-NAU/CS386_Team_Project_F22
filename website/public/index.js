@@ -1,8 +1,14 @@
 var socket = io()
 
 const default_username = 'default';
+const default_name = 'default';
 
-window.localStorage.setItem("username", default_username);
+if(window.localStorage.username == null) {
+	window.localStorage.setItem("username", default_username);
+	window.localStorage.setItem("name", default_name);
+}
+
+
 let capturedMessage = '';
 
 document.getElementById( 'joinTTT' ).addEventListener(
