@@ -5,8 +5,9 @@ Users will connect to the website by inputting the link www.gameytime.me into a 
 
 # Verification (tests)
 ## Unit test
-#### Test framework : Mocha
-#### Unit test code: https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/blob/Deliverable07/website/public/login.spec.js
+#### Test framework
+ - [Mocha](https://mochajs.org/)
+ - Tests are located [here](website/public/login.spec.js)
 #### An example of a test case that makes use of mock objects. Include in your answer a GitHub link to the class being tested and to the test.
 * https://github.com/Nicholas-Ray-NAU/CS386_Team_Project_F22/blob/Deliverable07/website/public/login.js
 1) If space is exist, login will be failed - loginFail Function
@@ -15,20 +16,18 @@ Users will connect to the website by inputting the link www.gameytime.me into a 
 <img width="1441" alt="image" src="https://user-images.githubusercontent.com/38903362/206126253-d5efe73e-065d-4a20-9484-9c6d7f274290.png">
 
 ## Acceptance test
-An acceptance test is a test that verifies the correct implementation of a feature from the user interface perspective. An acceptance test is a black box test (the system is tested without knowledge about its internal implementation). Provide the following information:
+### Test framework
+ - [Playwright](https://playwright.dev/)
+ - Tests are located [here](Tests/)
 
-Test framework you used to develop your tests (e.g., Selenium, Katalon Studio, Espresso2, Cucumber, etc.):
-Link to your GitHub folder where your automated acceptance tests are located.
-An example of an acceptance test. Include in your answer a GitHub link to the test and an explanation about the tested feature.
-A print screen/video showing the acceptance test execution. 
+### All Tests executed
+![All Tests Passing](/Images/D6_Testing_All_Passed.PNG)
 
-Grading criteria (7 points): adequate choice of a test framework, coverage of the tests, quality of the tests, adequate example of an acceptance test, print screen/video showing successful tests execution.
+#### Example code - Proper Landing Page Behavior
+![Landing Page Passing Code](/Images/D6_Testing_Landing_Passed.PNG)
+Landing page code is located [here](Tests/Landing_Page.spec.js)
 
 # Validation (user evaluation)
-Validation aims to ensure that you developed the right product. At the beginning of the semester, you talked to the clients/potential users to understand their needs. Now it is time to check if you are on the right track by conducting some user evaluation on the actual system. Include in this deliverable the following information:
-
-Script: The script should have the tasks that you gave to the user, what data you collected, and the questions you asked. In particular, do not forget to add questions about the users’ general impressions. You can ask open questions (e.g., How would you describe the homepage of our app? How do you compare our system to the competitor X?) or closed questions (On a scale of 1 to 10, how would you rate the layout of our application? On the same scale, how likely would you use the system in its current state?). Take a look at the inception and requirements deliverables to help create the script. Design a script to check if you are achieving your initial goals and if the features are implemented in a satisfactory way. 
-
 ## Questions 
 #### On a scale of 1 to 10, how would you rate the layout of our application?
 - Answer 1. 10
@@ -61,12 +60,8 @@ Script: The script should have the tasks that you gave to the user, what data yo
 #### How likely are you to use our website to play with your friends compared to similar websites? 
 - Answer 1. Depends on how quick I want to game
 - Answer 2. This website was more straightforward and simple than other similar websites. I enjoyed how easy it was to navigate and the overall design more than other websites.
-- Answer 3. Very likely
+- Answer 3. Very likely  
 
-Results: Conduct the user evaluation with at least 3 users. Report the data that you collected.
-
-## Reflections: Reflect on what you observed. Some questions that you can explore: What features worked well? What can be changed? How is the learning curve of your system? Did the users perform the tasks as you expected? Did the users’ actions produce the results they expected? What did the users like the most? Is your value proposition accomplished? 
+## Reflections
 
 It seems that we have done a great job on this project overall. Our main goal was to make something simple and convenient, and our users that tested it seem to agree that we got it right. They all said that the convenience and accessibility of the site was one of the things we did really well. They were all able to navigate the site very easily as there is little to mislead and distract them. They all quite enjoyed the layout of the website and found it easy to use. Even when users first accessed the website, they immediately knew what to do and how to use it. Because of this simplicity and accessibility, the users used the website exactly as expected. Logging in and signing up were extremely simple and intuitive for them, and joining and playing games was very simple for them to figure out and do. Not only did they use the website as expected, but the website itself functioned as expected. There was only one notable bug that one person ran into, which was fixed shortly after. However, the one thing that the users found to be sub-par was the design of the website. One user found it boring to look at, which is a cost of simplicity and time. However, through all of this we believe that we have achieved our value proposition and have created a website that achieves the goals we initially set for it.
-	
-Grading criteria (17 points): adequate script, adequate report of the results, adequate reflection, language.
