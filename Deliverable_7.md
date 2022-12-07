@@ -31,42 +31,42 @@ Script: The script should have the tasks that you gave to the user, what data yo
 
 ## Questions 
 #### On a scale of 1 to 10, how would you rate the layout of our application?
-- Answer 1
-- Answer 2
-- Answer 3
+- Answer 1. 10
+- Answer 2. I would give the overall layout a 10 out of 10. The home screen was easy to navigate. The different game screens were laid out well and the game chat was a nice feature to have.
+- Answer 3. 8.5
 #### On a scale of 1 to 10, how would you rate the accessibility of the website?
-- Answer 1
-- Answer 2
-- Answer 3
+- Answer 1. 10
+- Answer 2. I would give the accessibility a 9 out of 10, all parts of the website were easy to access, the black text on the blue background used on a couple of the screens may be difficult for some people to see.
+- Answer 3. 10
 #### On a scale of 1 to 10, how would you rate how easy it is to get into a game?
-- Answer 1
-- Answer 2
-- Answer 3
+- Answer 1. 10
+- Answer 2. I would rate the ease of accessing the games a 10 out of 10. I just had to click and wait for another player. Accessing the games was very intuitive. 
+- Answer 3. 9
 #### On a scale of 1 to 10, how would you rate how easy it is to create an account?
-- Answer 1
-- Answer 2
-- Answer 3
+- Answer 1. 10
+- Answer 2. I would rate making an account a 10 out of 10. It was easy to find the login and sign up options and the process to signup was very straightforward.
+- Answer 3. 10
 #### Would you play on this website again?
-- Answer 1
-- Answer 2
-- Answer 3
-#### Would you play on this website with your friend
-- Answer 1
-- Answer 2
-- Answer 3
+- Answer 1. Yes
+- Answer 2. I would play on the website again, it was easy to use and the games were fun with a friend.
+- Answer 3. Yes
+#### Would you play on this website with your friends?
+- Answer 1. Yes
+- Answer 2. The website was easy to use and I would be willing to play with a friend on the website again.
+- Answer 3. Yes
 #### How would you rate the general aesthetic and visual design of the website?
-- Answer 1
-- Answer 2
-- Answer 3
+- Answer 1. 6.5
+- Answer 2. I would give the general looks and design a 9 out of 10, it has a clear  professional look. The games are designed nicely and easy to play. More color on the games could be a nice addition. 
+- Answer 3. 10
 #### How likely are you to use our website to play with your friends compared to similar websites? 
-- Answer 1
-- Answer 2
-- Answer 3
+- Answer 1. Depends on how quick I want to game
+- Answer 2. This website was more straightforward and simple than other similar websites. I enjoyed how easy it was to navigate and the overall design more than other websites.
+- Answer 3. Very likely
 
 Results: Conduct the user evaluation with at least 3 users. Report the data that you collected.
 
 ## Reflections: Reflect on what you observed. Some questions that you can explore: What features worked well? What can be changed? How is the learning curve of your system? Did the users perform the tasks as you expected? Did the users’ actions produce the results they expected? What did the users like the most? Is your value proposition accomplished? 
 
-	// To be completed once we have the feedback for user evaluation
+It seems that we have done a great job on this project overall. Our main goal was to make something simple and convenient, and our users that tested it seem to agree that we got it right. They all said that the convenience and accessibility of the site was one of the things we did really well. They were all able to navigate the site very easily as there is little to mislead and distract them. They all quite enjoyed the layout of the website and found it easy to use. Even when users first accessed the website, they immediately knew what to do and how to use it. Because of this simplicity and accessibility, the users used the website exactly as expected. Logging in and signing up were extremely simple and intuitive for them, and joining and playing games was very simple for them to figure out and do. Not only did they use the website as expected, but the website itself functioned as expected. There was only one notable bug that one person ran into, which was fixed shortly after. However, the one thing that the users found to be sub-par was the design of the website. One user found it boring to look at, which is a cost of simplicity and time. However, through all of this we believe that we have achieved our value proposition and have created a website that achieves the goals we initially set for it.
 	
 Grading criteria (17 points): adequate script, adequate report of the results, adequate reflection, language.
