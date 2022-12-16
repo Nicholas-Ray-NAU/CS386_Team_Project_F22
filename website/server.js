@@ -78,9 +78,7 @@ io.on('connection', (socket) => {
   printPlayerList(playerList);
 
 
-
   // #########################################################################
-
 
   //create the hash table
   userData = createHashArray()
@@ -91,9 +89,10 @@ io.on('connection', (socket) => {
 	  //if the username exists
 	  if( userData[hashFunction(args[0])] != undefined ){
 
-		  //if the password matches
+		  //if the password matches log them in
 		  if(userData[hashFunction(args[0])][4] == args[1]){
-			 socket.emit('loginAccepted', args[0], args[1], args[2]);
+			 let name = userData[hashFunction(args[0])][2] + " " + userData[hashFunction(args[0])][3];
+			 socket.emit('loginAccepted', args[0], name);
 		  }
 
 		  //otherwise password is wrong
@@ -118,8 +117,7 @@ io.on('connection', (socket) => {
 			//if not, create profile
 			signUp(args[0], args[1], args[2], args[3]);
 
-			socket.emit('signupSuccess', args[0], args[3]);
-			//socket.emit('loginAccepted', args[0], args[1]);
+			socket.emit('signupSuccess', "");
 		}
 
 		//otherwise the name is taken
@@ -399,9 +397,6 @@ function hashFunction(username){
    return hashValue;
 }
 
-
-
-
 // Tic Tac Toe functions
 
 
@@ -414,7 +409,8 @@ function handleCellClickedMancala(socket, io, cellClickedIndex) {
   let changePlayer = true;
 
   // Return out of function if the game is locked or client is not current player
-  if(currentRoom.gameLocked || socket.id != currentRoom.currentPlayerID) {
+  if(currentRoom.gameLocked || socket.id != currentRoom.currentPlayerID
+     || currentRoom.gameBoard[cellClickedIndex] == 0) {
     return;
   }
 
@@ -445,7 +441,7 @@ function handleCellClickedMancala(socket, io, cellClickedIndex) {
 // Handles mancala specific rules
 function handleCellClickedMancalaHelper(index, currentPlayerID, playerOneID,
                                         playerTwoID, currentRoom) {
-  let currentNumStones = gameBoardMancala[index];
+  let currentNumStones = currentRoom.gameBoard[index];
   currentRoom.gameBoard[index % MANCALABOARDSIZE] = 0;
   // Moves mancala stones across board
   while(currentNumStones > 0) {
@@ -513,6 +509,7 @@ function checkForGameOverMancala(socket, io, currentRoom) {
 
   if(playerOneDone) {
     checkForGameOverMancalaHelper(socket, io, currentRoom, currentRoom.playerTwoID)
+    return;
   }
 
   // Check if player two side is completed
@@ -555,7 +552,7 @@ function checkForGameOverMancalaHelper(socket, io, currentRoom, playerWithStones
   currentRoom.gameBoard[mancalaToAddTo] += stoneSum;
 
   // Send gameboard
-  io.in(currentRoom.roomID).emit('updateGameBoardMancala', gameBoardMancala)
+  io.in(currentRoom.roomID).emit('updateGameBoardMancala', currentRoom.gameBoard)
   // Check who won
   // DRAW
   if(currentRoom.gameBoard[PLAYERONEMANCALA] == currentRoom.gameBoard[PLAYERTWOMANCALA]) {

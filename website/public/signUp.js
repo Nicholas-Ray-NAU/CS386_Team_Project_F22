@@ -25,14 +25,12 @@ document.querySelector(".Submit").onclick = function() {
 	
 }
 
-socket.on('signupSuccess', (...args) => {
-	/* login stuff HERE 
-	#######################################
-	*/
+socket.on('signupSuccess', (arg) => {
+	//go to login page
 	window.location.replace("/login.html");
 	
 });
 
-socket.on('usernameTaken', (arg) => {		
+socket.on('usernameTaken', (arg) => {	
 	window.alert("Username is already taken");
 });

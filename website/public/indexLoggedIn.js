@@ -1,16 +1,6 @@
 var socket = io()
 
 const default_username = 'default';
-const default_name = 'default';
-
-if(window.localStorage.username == null) {
-	window.localStorage.setItem("username", default_username);
-	window.localStorage.setItem("name", default_name);
-}
-
-//reset the users data on the main page, not the logged in one
-window.localStorage.setItem("name", default_username);
-window.localStorage.setItem("username", default_username);
 
 let capturedMessage = '';
 
@@ -20,6 +10,7 @@ document.getElementById( 'joinMancala' ).addEventListener(
                                           'click', sendJoinMessageMancala );
 
 const loading = document.getElementById( 'loading' )
+
 
 function sendJoinMessageTTT() {
 
@@ -95,11 +86,14 @@ socket.on('moveToTicTacToe', (arg) => {
   window.location.href = "./ticTacToe.html";
 })
 
+
 socket.on('moveToMancala', (arg) => {
   console.log("move to mancala");
   window.location.href = "./mancala.html";
 })
 
+
+///////////// NOT SURE IF THESE ARE REQUIRED
 socket.on("setName", (name) => {
   window.localStorage.setItem("name", name);
 })
@@ -107,6 +101,8 @@ socket.on("setName", (name) => {
 socket.on("setHashID", (hashID) => {
   window.localStorage.setItem("hashID", hashID);
 })
+/////////////
+
 
 socket.on('joinTicTacToeRoom', (roomID) => {
   window.localStorage.setItem("roomID", roomID)
