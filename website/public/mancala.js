@@ -1,18 +1,23 @@
-
 var name =  window.localStorage.getItem("name");
 var username =  window.localStorage.getItem("username");
 var roomID = window.localStorage.getItem("roomID");
 var hashID = window.localStorage.getItem("hashID");
 
 var socket = io();
-socket.emit('rejoinRoomTTT', roomID);
+socket.emit('rejoinRoomMancala', roomID);
 
 //Listeners (on-click)
 document.querySelector( '.game--restart' ).addEventListener(
                                                          'click', restartGame );
 
+
+document.getElementById("chat-form").addEventListener("submit", handleChatSubmit
+                                                              , false);
+
 const GAMEBOARDCONTAINER = document.getElementById("game--container");
-const GAMEBOARDSIZE = 9;
+const GAMEBOARDSIZE = 14;
+const PLAYERONEMANCALA = 6;
+const PLAYERTWOMANCALA = 13;
 const ERROR_USERNAME = 'ERROR';
 const ERROR_TYPE = 'error';
 const MESSAGE_TYPE = 'message';
@@ -25,60 +30,92 @@ const currentPlayerTurn = () => `It's your turn`;
 const currentPlayerNotTurn = () => `It's not your turn`;
 
 let gameBoard = [];
+let isPlayerOne = true;
 
 function createGameBoard() {
   let index;
 
+  const playerOneMancala = document.createElement("div");
+  playerOneMancala.classList.add("mancala--cell");
+  GAMEBOARDCONTAINER.append(playerOneMancala);
+
+  const rowContainer = document.createElement("div");
+  rowContainer.classList.add("rows--container");
+  GAMEBOARDCONTAINER.appendChild(rowContainer);
+
+  const rowOne = document.createElement("div");
+  rowOne.classList.add("row--container");
+  rowContainer.appendChild(rowOne);
+
+  const rowTwo = document.createElement("div");
+  rowTwo.classList.add("row--container");
+  rowTwo.classList.add("row--container--two");
+  rowContainer.appendChild(rowTwo);
+
+  const playerTwoMancala = document.createElement("div");
+  playerTwoMancala.classList.add("mancala--cell");
+  GAMEBOARDCONTAINER.append(playerTwoMancala);
+
+
   // Creates GRIDSIZE amount of boxes for each row
-  for(index = 0; index < GAMEBOARDSIZE; index++)
+  for(index = 0; index < PLAYERONEMANCALA; index++)
   {
-      const cell = document.createElement("div");
+      let cell = document.createElement("div");
       cell.addEventListener('click', handleCellClick)
       cell.setAttribute("data-cell-index", `${index}`)
       cell.classList.add("cell");
       gameBoard.push(cell);
-      GAMEBOARDCONTAINER.appendChild(cell);
+      rowOne.appendChild(cell);
   }
+
+  gameBoard.push(playerOneMancala);
+
+  for(index = PLAYERONEMANCALA + 1; index < PLAYERTWOMANCALA; index++) {
+    let cell = document.createElement("div");
+    cell.setAttribute("data-cell-index", `${index}`)
+    cell.classList.add("cell");
+    gameBoard.push(cell);
+    rowTwo.appendChild(cell);
+  }
+  gameBoard.push(playerTwoMancala);
 }
 
-function handleCellClick( clickedCellEvent ) {
+function handleCellClick(clickedCellEvent) {
   //get clicked cell location
-  const clickedCell = clickedCellEvent.target;
-  const clickedCellIndex = parseInt( clickedCell.getAttribute(
+  let clickedCell = clickedCellEvent.target;
+  let clickedCellIndex = parseInt( clickedCell.getAttribute(
                                                         'data-cell-index' ))
 
+  if(!isPlayerOne) {
+    clickedCellIndex += 7;
+  }
+
   // Send event to server
-  socket.emit('cellClickedTTT', clickedCellIndex)
+  socket.emit('cellClickedMancala', clickedCellIndex)
 }
 
 function restartGame() {
   // Send restart command to server
-  socket.emit('restartGameTTT', null)
+  socket.emit('restartGameMancala', null)
   statusDisplay.innerHTML = ""
 }
 
-function updateGameCell( cellInfo ) {
-  // Update game cell with cell index and x or o
-  gameBoard[cellInfo["Cell Index"]].innerHTML = cellInfo["text"];
-}
-
-function updateGameBoard( updatedGameBoard ) {
-  let index;
-
-  for(index = 0; index < GAMEBOARDSIZE; index++) {
-    if(updatedGameBoard[index] == 0) {
-      gameBoard[index].innerHTML = "";
+function updateGameBoard(updatedGameBoard) {
+  if (isPlayerOne) {
+    for(let index = 0; index < GAMEBOARDSIZE; index++) {
+      gameBoard[index].textContent = updatedGameBoard[index];
     }
-    else if (updatedGameBoard[index] == 1) {
-      gameBoard[index].innerHTML = "x";
-    }
-    else if (updatedGameBoard[index] == 2) {
-      gameBoard[index].innerHTML = "o";
+  }
+  else {
+    let reversedIndex = 7;
+    for(let index = 0; index < GAMEBOARDSIZE; index++) {
+      gameBoard[reversedIndex % GAMEBOARDSIZE].textContent = updatedGameBoard[index];
+      reversedIndex++;
     }
   }
 }
 
-function gameWon( winnerId ) {
+function gameWon(winnerId) {
   if(socket.id == winnerId) {
     statusDisplay.innerHTML = winningMessage();
     window.alert( winningMessage() );
@@ -89,7 +126,7 @@ function gameWon( winnerId ) {
   }
 }
 
-function gameDraw(  ) {
+function gameDraw() {
   statusDisplay.innerHTML = drawMessage();
   window.alert( drawMessage() );
 }
@@ -138,6 +175,7 @@ function handleChatSubmit(event) {
 
 }
 
+// Adds chat message to chat div
 function MessageAdd(messageData) {
     //locate chat box
     var chat_messages = document.getElementById("chat-messages");
@@ -147,28 +185,33 @@ function MessageAdd(messageData) {
     chat_messages.scrollTop = chat_messages.scrollHeight;
 }
 
-socket.on('updateGameCellTTT', ( cellInfo ) => {
-  updateGameCell( cellInfo );
-})
-
-socket.on('updateGameBoardTTT', (gameBoard) => {
+socket.on('updateGameBoardMancala', (gameBoard) => {
   updateGameBoard( gameBoard );
 })
 
-socket.on('gameWonTTT', (winnerId) => {
+socket.on('gameWonMancala', (winnerId) => {
   gameWon( winnerId );
 })
 
-socket.on('gameDrawTTT', (arg) => {
+socket.on('gameDrawMancala', (arg) => {
   gameDraw( );
 })
 
-socket.on('playerTurnTTT', (arg) => {
+socket.on('playerTurnMancala', (arg) => {
   handlePlayerStartTurn();
 })
 
-socket.on('notTurnTTT', (arg) => {
+socket.on('notTurnMancala', (arg) => {
   handlePlayerEndTurn();
+})
+
+socket.on('playerAssignment', (playerAssignment) => {
+  if(playerAssignment == 1) {
+    isPlayerOne = true;
+  }
+  else {
+    isPlayerOne = false;
+  }
 })
 
 socket.on('reject', (arg) => {

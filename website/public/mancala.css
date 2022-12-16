@@ -1,0 +1,225 @@
+/*
+COLOR PALETTE
+Black: #001A23
+Dark Greyish Green: #31493C
+Light Greyish Green: #7A9E7E
+Mint: #B3EFB2
+Greyish White: #E8F1F2
+*/
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "roboto";
+}
+
+body {
+  text-align: center;
+}
+
+h1 {
+    text-align: center;
+    font-size: 50px;
+}
+
+section {
+    text-align: center;
+}
+
+.header {
+  width: 100%;
+  min-height: 10vh;
+}
+
+.logo {
+  margin-left: 40px;
+  margin-top: 20px;
+  float: left;
+}
+
+.menu {
+  width:200px;
+  height: 20px;
+  display: block;
+  float: right;
+  margin: 20px 0 0 0;
+}
+
+.menu a {
+  display: block;
+  float: left;
+  padding-right: 20px;
+}
+
+
+.main {
+  justify-content: center;
+  align-items: center;
+}
+
+.game_title {
+  width: 100%;
+  height: 20px;
+  display: inline-block;
+}
+
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  margin-top:50px;
+  background-color: #F8F8F8;
+  padding: 20px;
+}
+
+div.flex {
+    display: flex;
+    margin: 0px;
+}
+
+.col-left {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 600px;
+    background-color: #F8F8F8;
+    border-radius: 10px;
+    float: left;
+    text-align: center;
+}
+
+.col-right {
+    display: block;
+    width:35%;
+    height: 600px;
+    background-color: #F8F8F8;
+    border-radius: 10px;
+    text-align: center;
+    float: right;
+}
+
+#main_content {
+  text-align: center;
+  margin: 20px auto;
+  display: inline-block;
+  width: 95%;
+}
+
+#main_content h2 {
+  font-size: 32px;
+  font-weight: bold;
+  padding:20px 0;
+}
+
+button {
+    background-color: #00C78C;
+    border: none;
+    text-align: center;
+	  font-size: 15px;
+    border-radius: 5px;
+    margin-top:16px;
+}
+
+button:hover {
+  background-color: #423FD9;
+}
+
+.game--container {
+  /* display: grid; */
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  margin: 50px auto;
+}
+
+.row--container {
+  display: flex;
+  flex-direction: row;
+  padding: 3rem;
+}
+.row--container--two {
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 3rem;
+}
+
+.rows--container {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.cell {
+    !-font-family: "Permanent Marker", cursive;
+    font-weight: 800;
+    width: 60px;
+    height: 60px;
+    box-shadow: 0 0 0 1px #333333;
+    border: 1px solid #333333;
+    cursor: pointer;
+    line-height: 100px;
+    font-size: 60px;
+}
+
+.mancala--cell {
+    !-font-family: "Permanent Marker", cursive;
+    font-weight: 800;
+    width: 100px;
+    height: 200px;
+    box-shadow: 0 0 0 1px #333333;
+    border: 1px solid #333333;
+    cursor: pointer;
+    line-height: 100px;
+    font-size: 60px;
+}
+
+#chat {
+    width: 100%;
+    height: 65%;
+    background: #ccc;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.ingame_button {
+  width: 250px;
+  height: 50px;
+  background: #5B58EA;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  color: white;
+}
+
+.game--status {
+  margin-top: 10px;
+  color: #5B58EA;
+}
+
+div#chat-messages {
+    margin: 0.5em;
+    height: 80%;
+    background: White;
+    padding: 8px 15px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+form#chat-form input,
+form#chat-form button {
+    border: 1px solid #dfdbdb;
+    background: White;
+    font-weight: 300;
+    font-size: 12pt;
+    padding: 8px 15px;
+}
+
+form#chat-form input {
+    color: #001A23;
+    width: 65%;
+}
+
+form#chat-form button {
+    background: #5B58EA;
+    color: White;
+    cursor: pointer;
+}
