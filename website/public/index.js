@@ -1,11 +1,16 @@
 var socket = io()
 
 const default_username = 'default';
+const default_name = 'default';
+
+if(window.localStorage.username == null) {
+	window.localStorage.setItem("username", default_username);
+	window.localStorage.setItem("name", default_name);
+}
 
 //reset the users data on the main page, not the logged in one
 window.localStorage.setItem("name", default_username);
 window.localStorage.setItem("username", default_username);
-
 
 let capturedMessage = '';
 
